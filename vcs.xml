@@ -14,6 +14,10 @@
           <option name="url" value="http://github.com" />
           <option name="userName" value="u6499990@anu.edu.au" />
         </UrlAndUserName>
+        <UrlAndUserName>
+          <option name="url" value="http://gitlab.cecs.anu.edu.au" />
+          <option name="userName" value="u6499990" />
+        </UrlAndUserName>
       </list>
     </option>
     <option name="cloneParentDir" value="C:\Users\95714\PycharmProjects" />
