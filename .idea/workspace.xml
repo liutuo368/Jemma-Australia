@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b61882db-262f-4360-8edc-e0bfb5cec556" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Home_app/migrations/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Jemma/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Jemma/settings.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,6 +20,7 @@
   <component name="ProjectId" id="1aOUGjbt4i9W0jrux2PxZ1d7UsX" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
   </component>
   <component name="RunDashboard">
@@ -69,8 +70,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1586606039888</updated>
-      <workItem from="1586606066916" duration="622000" />
+      <workItem from="1586606066916" duration="1319000" />
     </task>
+    <task id="LOCAL-00001" summary="add one app">
+      <created>1586606714073</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1586606714073</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -86,5 +95,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="add one app" />
+    <option name="LAST_COMMIT_MESSAGE" value="add one app" />
   </component>
 </project>
