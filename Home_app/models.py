@@ -28,7 +28,7 @@ class Customer(models.Model):
     FirstName = models.CharField(max_length=20)
     LastName = models.CharField(max_length=20)
     Pass = models.CharField(max_length=20)
-    Email = models.CharField(max_length=30)
+    Email = models.EmailField(max_length=30)
     Phone = models.CharField(max_length=10)
     Address1 = models.CharField(max_length=100)
     Address2 = models.CharField(max_length=100, null=True)
@@ -47,14 +47,15 @@ class Order(models.Model):
     Category = models.CharField(max_length=20)
     TradieId = models.ForeignKey(Tradie, on_delete=models.CASCADE)
     CustomerId = models.ForeignKey(Customer, on_delete=models.CASCADE)
+    OrderDate= models.DateTimeField(auto_now_add=True)
 
 
 class Certificate(models.Model):
     TradieId = models.ForeignKey(Tradie, on_delete=models.CASCADE)
     CertificateName = models.CharField(max_length=50)
     CertificateStatus = models.CharField(max_length=10)
-    ExpireDate = models.DateField
-    Price = models.DecimalField
+    ExpireDate = models.DateField()
+    Price = models.DecimalField()
 
     class Meta:
         unique_together = ("TradieId", "CertificateName")
@@ -64,7 +65,7 @@ class Rating(models.Model):
     UserId = models.CharField(max_length=10)
     OrderId = models.ForeignKey(Order, on_delete=models.CASCADE)
     Review = models.CharField(max_length=255)
-    Points = models.IntegerField
+    Points = models.IntegerField()
 
     class Meta:
         unique_together = ("UserId", "OrderId")
