@@ -7,7 +7,7 @@ class Tradie(models.Model):
     FirstName = models.CharField(max_length=20)
     LastName = models.CharField(max_length=20)
     Pass = models.CharField(max_length=20)
-    Email = models.EmailField()
+    Email = models.EmailField(default='xxx@xxx.xxx')
     Phone = models.CharField(max_length=10)
     Address1 = models.CharField(max_length=100)
     Address2 = models.CharField(max_length=100, null=True)
@@ -15,7 +15,7 @@ class Tradie(models.Model):
     State = models.CharField(max_length=5)
     Postcode = models.CharField(max_length=5)
     Company = models.CharField(max_length=50, null=True)
-    TravelDistance = models.DecimalField
+    TravelDistance = models.DecimalField(max_digits=4, decimal_places=2, default=0.0)
     ABN = models.CharField(max_length=15)
     BSB = models.CharField(max_length=10)
     AccountNo = models.CharField(max_length=10)
@@ -28,7 +28,7 @@ class Customer(models.Model):
     FirstName = models.CharField(max_length=20)
     LastName = models.CharField(max_length=20)
     Pass = models.CharField(max_length=20)
-    Email = models.EmailField()
+    Email = models.EmailField(default='xxx@xxx.xxx')
     Phone = models.CharField(max_length=10)
     Address1 = models.CharField(max_length=100)
     Address2 = models.CharField(max_length=100, null=True)
@@ -45,7 +45,7 @@ class Order(models.Model):
     OrderId = models.CharField(max_length=10, primary_key=True)
     OrderStatus = models.CharField(max_length=15)
     Category = models.CharField(max_length=20)
-    OrderDate = models.DateField()
+    OrderDate = models.DateField(default='1999-1-1')
     TradieId = models.ForeignKey(Tradie, on_delete=models.CASCADE)
     CustomerId = models.ForeignKey(Customer, on_delete=models.CASCADE)
 
@@ -54,8 +54,8 @@ class Certificate(models.Model):
     TradieId = models.ForeignKey(Tradie, on_delete=models.CASCADE)
     CertificateName = models.CharField(max_length=50)
     CertificateStatus = models.CharField(max_length=10)
-    ExpireDate = models.DateField()
-    Price = models.DecimalField()
+    ExpireDate = models.DateField(default='1999-1-1')
+    Price = models.DecimalField(max_digits=4, decimal_places=2, default=0.0)
 
     class Meta:
         unique_together = ("TradieId", "CertificateName")
@@ -65,7 +65,7 @@ class Rating(models.Model):
     UserId = models.CharField(max_length=10)
     OrderId = models.ForeignKey(Order, on_delete=models.CASCADE)
     Review = models.CharField(max_length=255)
-    Points = models.IntegerField()
+    Points = models.IntegerField(default=5)
 
     class Meta:
         unique_together = ("UserId", "OrderId")
