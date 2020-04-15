@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b61882db-262f-4360-8edc-e0bfb5cec556" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Jemma.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Jemma.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -19,22 +19,17 @@
   </component>
   <component name="ProjectId" id="1aOUGjbt4i9W0jrux2PxZ1d7UsX" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/HTML" />
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunManager">
     <configuration name="Jemma" type="Python.DjangoServer" factoryName="Django server">
@@ -72,6 +67,9 @@
       <option name="presentableId" value="Default" />
       <updated>1586606039888</updated>
       <workItem from="1586606066916" duration="1319000" />
+      <workItem from="1586738556852" duration="2259000" />
+      <workItem from="1586930909655" duration="280000" />
+      <workItem from="1586939512237" duration="5347000" />
     </task>
     <task id="LOCAL-00001" summary="add one app">
       <created>1586606714073</created>
@@ -80,7 +78,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586606714073</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Created database models">
+      <created>1586949290316</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1586949290316</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -91,7 +96,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -99,6 +106,33 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="add one app" />
-    <option name="LAST_COMMIT_MESSAGE" value="add one app" />
+    <MESSAGE value="Created database models" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created database models" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="558" y="129" width="860" height="847" key="CommitChangelistDialog2" timestamp="1586949290079">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="558" y="129" width="860" height="847" key="CommitChangelistDialog2/67.27.1853.1053@67.27.1853.1053" timestamp="1586949290079" />
+    <state x="242" y="116" width="1482" height="872" key="DiffContextDialog" timestamp="1586949382262">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="242" y="116" width="1482" height="872" key="DiffContextDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1586949382262" />
+    <state x="762" y="245" width="443" height="614" key="RollbackChangesDialog" timestamp="1586949394516">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="762" y="245" width="443" height="614" key="RollbackChangesDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1586949394516" />
+    <state x="482" y="187" key="SettingsEditor" timestamp="1586738586793">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="482" y="187" key="SettingsEditor/67.27.1853.1053@67.27.1853.1053" timestamp="1586738586793" />
+    <state x="668" y="346" width="641" height="413" key="git4idea.merge.GitPullDialog" timestamp="1586949295004">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="668" y="346" width="641" height="413" key="git4idea.merge.GitPullDialog/67.27.1853.1053@67.27.1853.1053" timestamp="1586949295004" />
+    <state x="656" y="257" width="672" height="678" key="search.everywhere.popup" timestamp="1586945494783">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="656" y="257" width="672" height="678" key="search.everywhere.popup/67.27.1853.1053@67.27.1853.1053" timestamp="1586945494783" />
   </component>
 </project>
