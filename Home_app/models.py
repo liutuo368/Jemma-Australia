@@ -7,7 +7,7 @@ class Tradie(models.Model):
     FirstName = models.CharField(max_length=20)
     LastName = models.CharField(max_length=20)
     Pass = models.CharField(max_length=20)
-    Email = models.EmailField(default='xxx@xxx.xxx')
+    Email = models.CharField(max_length=30)
     Phone = models.CharField(max_length=10)
     Address1 = models.CharField(max_length=100)
     Address2 = models.CharField(max_length=100, null=True)
@@ -15,7 +15,7 @@ class Tradie(models.Model):
     State = models.CharField(max_length=5)
     Postcode = models.CharField(max_length=5)
     Company = models.CharField(max_length=50, null=True)
-    TravelDistance = models.DecimalField(max_digits=4, decimal_places=2, default=0.0)
+    TravelDistance = models.DecimalField(max_digits=4, decimal_places=2)
     ABN = models.CharField(max_length=15)
     BSB = models.CharField(max_length=10)
     AccountNo = models.CharField(max_length=10)
@@ -47,14 +47,15 @@ class Order(models.Model):
     Category = models.CharField(max_length=20)
     TradieId = models.ForeignKey("Tradie", on_delete=models.CASCADE)
     CustomerId = models.ForeignKey("Customer", on_delete=models.CASCADE)
-    OrderDate= models.DateTimeField(auto_now_add=True)
+    OrderDate = models.DateTimeField(auto_now_add=True)
+
 
 class Certificate(models.Model):
     TradieId = models.ForeignKey("Tradie", on_delete=models.CASCADE)
     CertificateName = models.CharField(max_length=50)
     CertificateStatus = models.CharField(max_length=10)
     ExpireDate = models.DateField()
-    Price = models.DecimalField()
+    Price = models.DecimalField(max_digits=4, decimal_places=2)
 
     class Meta:
         unique_together = ("TradieId", "CertificateName")

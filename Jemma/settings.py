@@ -78,9 +78,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'Jemma',
-        'USER': 'root',
-        'PASSWORD': 'Jemma8715',
-        'HOST': 'localhost',
+        'USER': 'admin',
+        'PASSWORD': 'ECMDNUeF4zByMv3q',
+        'HOST': 'jemmatestdatabase.cfcqlfv4vump.ap-southeast-2.rds.amazonaws.com',
         'PORT': '3306',
     }
 }
