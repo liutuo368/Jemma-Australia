@@ -6,32 +6,29 @@ from .models import Tradie
 
 def index(request):
 
-    return render(request, "HTML/home.html")
+    return render(request, "home.html")
 
-def login(request):
-
-    return render(request, "HTML/login.html")
 
 def about_us(request):
 
-    return render(request, "HTML/about_us.html")
+    return render(request, "Tradie/about_us.html")
 
 def contact(request):
 
-    return render(request, "HTML/contact.html")
+    return render(request, "Tradie/contact.html")
 
 
 def tradie_profile(request):
 
-    return render(request, "HTML/home.html")
+    return render(request, "Tradie/tradie_profile.html")
 
 
 def tradie_history(request):
 
-    return render(request, "HTML/tradie_history.html")
+    return render(request, "Tradie/tradie_history.html")
 
 
 def tradie_current_job(request):
 
-    return render(request, "HTML/tradie_current_job.html")
+    return render(request, "Tradie/tradie_current_job.html")
 
