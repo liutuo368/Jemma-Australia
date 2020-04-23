@@ -1,10 +1,10 @@
 <!doctype html>
 <html lang="en">
+
+
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
     <link rel="icon" href="../../../../favicon.ico">
 
        <!-- Latest compiled and minified CSS -->
@@ -19,33 +19,100 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
-    <title>Dashboard for tradie</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="../../../../dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom styles for this template -->
-    <link href="tradie_profile.css" rel="stylesheet">
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $("#menu").load("menu");
+    });
+    </script>
+
+      <title>Dashboard for tradie</title>
 
   </head>
 
   <body>
+ <nav class="navbar navbar-expand-sm bg-white navbar-light justify-content-center" >
+        <!-- Brand/logo -->
+        <a class="navbar-brand" href="#">
+          <img src="../static/IMAGES/JemmaLogo.png" alt="logo" style="width:80px;">
+        </a>
 
-  <script type="text/javascript">
-      $(document).ready(function() {$("#menu").load("menu");});
-  </script>
+        <!-- Links -->
+        <ul class="navbar-nav " >
+          <li class="nav-item">
+            <a class="nav-link" href="">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Why Jemma?</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">How it works</a>
+          </li>
+            <li class="nav-item">
+            <a class="nav-link" href="about_us">About us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="contact">Contact</a>
+          </li>
+            <li class="nav-item">
+            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#myModal">Sign in</button>
 
-  <div id='menu'></div>
+                <div class="modal fade" id="myModal">
+                    <div class="modal-dialog">
+                     <div class="modal-content">
 
-    <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
-      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Company name</a>
-      <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
-      <ul class="navbar-nav px-3">
-        <li class="nav-item text-nowrap">
-          <a class="nav-link" href="#">Sign out</a>
-        </li>
-      </ul>
-    </nav>
+                     <!-- Modal Header -->
+                     <div class="modal-header">
+                      <h4 class="modal-title">Sign in </h4>
+                     <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <!--form for login-->
+                        <form action="/">
+                          <div class="form-group" class="was-validated">
+                            <label for="email">Email address:</label>
+                            <input type="email" class="form-control" placeholder="Enter email" id="email" placeholder="Enter username" name="uname" require>
+                              <div class="valid-feedback">Valid.</div>
+                                <div class="invalid-feedback">Please fill out this field.</div>
+                          </div>
+                          <div class="form-group">
+                            <label for="pwd">Password:</label>
+                            <input type="password" class="form-control" placeholder="Enter password" id="pwd" placeholder="Enter password" name="pswd" required>
+                              <div class="valid-feedback">Valid.</div>
+                                 <div class="invalid-feedback">Please fill out this field.</div>
+                          </div>
+                            <label for="radio"> User Type:</label> <br>
+                            <label class="radio-inline">
+                            <input type="radio" name="optionsRadiosinline" id="optionsRadios1" value="option1" checked> Tradie
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="optionsRadiosinline" id="optionsRadios2"  value="option2"> Customer
+                            </label>
+                          <div class="form-group form-check">
+                            <label class="form-check-label">
+                              <input class="form-check-input" type="checkbox"> Remember me
+                            </label>
+                          </div>
+                          <button type="submit" class="btn btn-secondary">Submit</button>
+                        </form>
+                     </div>
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+
+                    </div>
+                    </div>
+                </div>
+
+          </li>
+        </ul>
+      </nav>
+
 
     <div class="container-fluid">
       <div class="row">
@@ -88,7 +155,7 @@
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-            <h1 class="h2">Dashboard</h1>
+            <h1 class="h2">Jason</h1>
             <div class="btn-toolbar mb-2 mb-md-0">
               <div class="btn-group mr-2">
                 <button class="btn btn-sm btn-outline-secondary">Share</button>
@@ -101,9 +168,6 @@
             </div>
           </div>
 
-          <canvas class="my-4" id="myChart" width="900" height="380"></canvas>
-
-          <h2>Section title</h2>
           <div class="table-responsive">
             <table class="table table-striped table-sm">
               <thead>
