@@ -2,55 +2,70 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 
-class User(AbstractUser):
-    is_Tradie = models.BooleanField(default=False)
-    is_Customer = models.BooleanField(default=False)
-    phone = models.CharField(max_length=10)
-    address1 = models.CharField(max_length=100)
-    address2 = models.CharField(max_length=100, null=True)
-    suburb = models.CharField(max_length=15)
-    state = models.CharField(max_length=5)
-    postcode = models.CharField(max_length=5)
-    accountStatus = models.CharField(max_length=10)
-
-
 class Tradie(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
-    company = models.CharField(max_length=50, null=True)
-    travelDistance = models.DecimalField(max_digits=4, decimal_places=2)
+    TradieId = models.CharField(max_length=10, primary_key=True)
+    FirstName = models.CharField(max_length=20)
+    LastName = models.CharField(max_length=20)
+    Pass = models.CharField(max_length=20)
+    Email = models.CharField(max_length=30)
+    Phone = models.CharField(max_length=10)
+    Address1 = models.CharField(max_length=100)
+    Address2 = models.CharField(max_length=100, null=True)
+    Suburb = models.CharField(max_length=15)
+    State = models.CharField(max_length=5)
+    Postcode = models.CharField(max_length=5)
+    Company = models.CharField(max_length=50, null=True)
+    TravelDistance = models.DecimalField(max_digits=4, decimal_places=2)
     ABN = models.CharField(max_length=15)
     BSB = models.CharField(max_length=10)
-    accountNo = models.CharField(max_length=10)
-    accountName = models.CharField(max_length=30)
+    AccountNo = models.CharField(max_length=10)
+    AccountName = models.CharField(max_length=30)
+    AccountStatus = models.CharField(max_length=10)
 
 
 class Customer(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
-    cardHolder = models.CharField(max_length=30)
-    cardNo = models.CharField(max_length=30)
-    cardValidDate = models.CharField(max_length=5)
+    CustomerId = models.CharField(max_length=10, primary_key=True)
+    FirstName = models.CharField(max_length=20)
+    LastName = models.CharField(max_length=20)
+    Pass = models.CharField(max_length=20)
+    Email = models.CharField(max_length=30)
+    Phone = models.CharField(max_length=10)
+    Address1 = models.CharField(max_length=100)
+    Address2 = models.CharField(max_length=100, null=True)
+    Suburb = models.CharField(max_length=15)
+    State = models.CharField(max_length=5)
+    Postcode = models.CharField(max_length=5)
+    CardHolder = models.CharField(max_length=30)
+    CardNo = models.CharField(max_length=30)
+    CardValidDate = models.CharField(max_length=5)
+    AccountStatus = models.CharField(max_length=10)
 
 
 class Order(models.Model):
-    tradie = models.OneToOneField(Tradie, on_delete=models.DO_NOTHING)
-    customer = models.OneToOneField(Customer, on_delete=models.DO_NOTHING)
-    orderStatus = models.CharField(max_length=15)
-    category = models.CharField(max_length=20)
+    OrderId = models.CharField(max_length=10, primary_key=True)
+    OrderStatus = models.CharField(max_length=15)
+    Category = models.CharField(max_length=20)
+    TradieId = models.ForeignKey("Tradie", on_delete=models.CASCADE)
+    CustomerId = models.ForeignKey("Customer", on_delete=models.CASCADE)
     OrderDate = models.DateTimeField(auto_now_add=True)
 
 
 class Certificate(models.Model):
-    tradie = models.ForeignKey("Tradie", on_delete=models.CASCADE)
-    certificateName = models.CharField(max_length=50)
-    certificateStatus = models.CharField(max_length=10)
-    expireDate = models.DateField()
-    price = models.DecimalField(max_digits=4, decimal_places=2)
+    TradieId = models.ForeignKey("Tradie", on_delete=models.CASCADE)
+    CertificateName = models.CharField(max_length=50)
+    CertificateStatus = models.CharField(max_length=10)
+    ExpireDate = models.DateField()
+    Price = models.DecimalField(max_digits=4, decimal_places=2)
+
+    class Meta:
+        unique_together = ("TradieId", "CertificateName")
 
 
 class Rating(models.Model):
-    user = models.ForeignKey("User", on_delete=models.DO_NOTHING)
-    order = models.ForeignKey("Order", on_delete=models.DO_NOTHING)
-    review = models.CharField(max_length=255)
-    points = models.IntegerField()
+    UserId = models.CharField(max_length=10)
+    OrderId = models.ForeignKey("Order", on_delete=models.CASCADE)
+    Review = models.CharField(max_length=255)
+    Points = models.IntegerField()
 
-
+    class Meta:
+        unique_together = ("UserId", "OrderId")

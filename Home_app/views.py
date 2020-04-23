@@ -4,6 +4,7 @@ from .models import Tradie
 
 # Create your views here.
 
+
 def index(request):
 
     return render(request, "home.html")
@@ -12,6 +13,7 @@ def index(request):
 def about_us(request):
 
     return render(request, "Tradie/about_us.html")
+
 
 def contact(request):
 
@@ -31,4 +33,9 @@ def tradie_history(request):
 def tradie_current_job(request):
 
     return render(request, "Tradie/tradie_current_job.html")
+
+
+def menu(request):
+    return render(request, "SubTemplate/menu.html")
+
 
