@@ -1,5 +1,6 @@
 body {
   font-size: .875rem;
+  font-weight: bold;
 }
 
 .feather {
@@ -35,6 +36,8 @@ body {
 .sidebar .nav-link {
   font-weight: 500;
   color: #333;
+ <!-- change color from blue to black, but no changes -->
+
 }
 
 .sidebar .nav-link .feather {
@@ -43,7 +46,8 @@ body {
 }
 
 .sidebar .nav-link.active {
-  color: #007bff;
+  color: #000103;
+  <!-- change color from blue to black, but no changes -->
 }
 
 .sidebar .nav-link:hover .feather,

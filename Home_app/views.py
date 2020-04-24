@@ -36,6 +36,6 @@ def tradie_current_job(request):
 
 
 def menu(request):
-    return render(request, "SubTemplate/menu.html")
+    return render(request, "SubTemplate/top_menu_without_sign_in.html")
 
 
