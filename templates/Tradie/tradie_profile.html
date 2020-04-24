@@ -1,13 +1,12 @@
 <!doctype html>
 <html lang="en">
 
-
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" href="../../../../favicon.ico">
 
-       <!-- Latest compiled and minified CSS -->
+    <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
     <!-- jQuery library -->
@@ -19,45 +18,77 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
-      <title>Dashboard for tradie</title>
+    <!-- CSS -->
+    <style type="text/css">
+        .nav-pills .nav-link.active {
+            background-color: #c8f693;
+        }
+    </style>
 
-  </head>
-  <body>
+    <title>Dashboard for tradie</title>
 
-  <!-- Top menu -->
-	<nav class="d-flex flex-column flex-md-row align-items-center p-0 px-md-4 mb-3 bg-white">
+</head>
+<body>
 
-	 <nav class="my-0 mr-md-auto p-2 navbar navbar-expand-sm bg-white navbar-light justify-content-center">
+<div class="container-fluid">
+    <div class="row">
 
-         <a class="navbar-brand my-0 mr-md-auto" href="#">
-             <img src="../../static/IMAGES/JemmaLogo.png" alt="logo" style="width:80px;"></a>
-		<a class=" my-0 mr-md-0 p-2 nav-link" href="#"><strong>&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;Home</strong></a>
-         <a class=" my-0 mr-md-0 p-2 nav-link" href="#"><strong>Why Jemma</strong></a>
-         <a class=" my-0 mr-md-auto p-2 nav-link" href="#"><strong>How it works</strong></a>
+        <!--Side bar -->
+        <nav class="col-md-3 d-none d-md-block sidebar nav nav-pills">
+            <div class="sidebar-sticky">
+                <ul class="nav flex-column">
+                    <li class="nav-item-4">
+                        <a class="nav-link active" data-toggle="pill" href="#" style="color: #222222">
+                            <span data-feather="user"></span>
+                            Profile <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="pill" href="#" style="color: #222222">
+                            <span data-feather="file"></span>
+                            Current Job
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="pill" href="#" style="color: #222222">
+                            <span data-feather="activity"></span>
+                            Job History
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="pill" href="#" style="color: #222222">
+                            <span data-feather="database"></span>
+                            Statistics
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="pill" href="#" style="color: #222222">
+                            <span data-feather="calendar"></span>
+                            Calender
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
 
-	 </nav>
+    </div>
+</div>
 
-      <nav class="my-2 my-md-0 mr-md-3 navbar navbar-expand-sm bg-white navbar-light justify-content-center">
-          <a class="p-2 nav-link" href="../Tradie/about_us.html"><strong>About us</strong></a>
-        <a class="p-2 nav-link" href="../Tradie/contact.html"><strong>Contract</strong></a>
-      </nav>
-        <img class="img-rounded" src="../../static/IMAGES/jackie.jpg" alt="logo" style="width:50px;"></a>
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+<script src="../../../../assets/js/vendor/popper.min.js"></script>
+<script src="../../../../dist/js/bootstrap.min.js"></script>
 
+<!-- Icons -->
+<script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+<script>
+    feather.replace()
+</script>
 
-    </nav>
-    <!-- Bootstrap core JavaScript
-  ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-    <script src="../../../../assets/js/vendor/popper.min.js"></script>
-    <script src="../../../../dist/js/bootstrap.min.js"></script>
-
-    <!-- Icons -->
-    <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
-    <script>
-      feather.replace()
-    </script>
-
-  </body>
+</body>
 </html>
