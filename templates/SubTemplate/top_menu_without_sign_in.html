@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" href="../../../../favicon.ico">
+
+       <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+      <title>Dashboard for tradie</title>
+
+          <style type="text/css">
+
+        .nav-link {
+            color: #47525E;
+        }
+
+        .nav-item:hover .nav-link {
+        color: #c8f693;
+        }
+    </style>
+  </head>
+  <body>
+
+  <!-- Top menu -->
+	<nav class="d-flex flex-column flex-md-row align-items-center p-0 px-md-4 mb-3 bg-white">
+
+	 <nav class="my-0 mr-md-auto navbar navbar-expand-sm bg-white navbar-light justify-content-center">
+            <a class="p-2 nav-link" href="#">
+             <img src="../../static/IMAGES/JemmaLogo.png" alt="logo" style="width:80px;"></a>
+        <ul class="nav">
+          <li class="nav-item">
+		    <a class="p-2 nav-link" href="#"><strong>&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;Home</strong></a>
+          </li>
+          <li class="nav-item">
+            <a class=" my-0 mr-md-0 p-2 nav-link" href="#"><strong>Why Jemma</strong></a>
+          </li>
+          <li class="nav-item">
+            <a class=" my-0 mr-md-auto p-2 nav-link" href="#"><strong>How it works</strong></a>
+          </li>
+        </ul>
+	 </nav>
+
+        <nav class="my-2 my-md-0 mr-md-3 navbar navbar-expand-sm bg-white navbar-light justify-content-center">
+          <ul class="nav">
+              <li class="nav-item">
+                  <a class="p-2 nav-link" href="../Tradie/about_us.html"><strong>About us</strong></a>
+              </li>
+              <li class="nav-item">
+                  <a class="p-2 nav-link" href="../Tradie/contact.html"><strong>Contract</strong></a>
+              </li>
+          </ul>
+      </nav>
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">Sign up</button>
+
+                <div class="modal fade" id="myModal">
+                    <div class="modal-dialog">
+                     <div class="modal-content">
+
+                     <!-- Modal Header -->
+                     <div class="modal-header">
+                      <h4 class="modal-title">Sign in </h4>
+                     <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                        <!--form for login-->
+                        <form action="/">
+                          <div class="form-group was-validated">
+                            <label for="email">Email address:</label>
+                            <input type="email" class="form-control" placeholder="Enter email" id="email" placeholder="Enter username" name="uname" require>
+                              <div class="valid-feedback">Valid.</div>
+                                <div class="invalid-feedback">Please fill out this field.</div>
+                          </div>
+
+                          <div class="form-group">
+                            <label for="pwd">Password:</label>
+                            <input type="password" class="form-control" placeholder="Enter password" id="pwd" placeholder="Enter password" name="pswd" required>
+                              <div class="valid-feedback">Valid.</div>
+                                 <div class="invalid-feedback">Please fill out this field.</div>
+                          </div>
+                            <label for="radio"> User Type:</label> <br>
+                            <label class="radio-inline">
+                            <input type="radio" name="optionsRadiosinline" id="optionsRadios1" value="option1" checked> Tradie
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="optionsRadiosinline" id="optionsRadios2"  value="option2"> Customer
+                            </label>
+                          <div class="form-group form-check">
+                            <label class="form-check-label">
+                              <input class="form-check-input" type="checkbox"> Remember me
+                            </label>
+                          </div>
+                          <button type="submit" class="btn btn-secondary">Submit</button>
+                        </form>
+                     </div>
+
+
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                    </div>
+
+                    </div>
+                    </div>
+                </div>
+
+    </nav>
+    <!-- Bootstrap core JavaScript
+  ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="../../../../assets/js/vendor/popper.min.js"></script>
+    <script src="../../../../dist/js/bootstrap.min.js"></script>
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+    <script>
+      feather.replace()
+    </script>
+
+  </body>
+</html>

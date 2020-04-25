@@ -2,9 +2,220 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="../static/CSS/home.css">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <!-- Calendar library -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css"
+          rel="stylesheet"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+    <script src="https://cdn.bootcss.com/moment.js/2.22.0/moment-with-locales.js"></script>
+</head>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#profile_header").load("../SubTemplate/profileHeader.html");
+    });
+
+    <!-- checkbox-->
+    $(document).ready(function () {
+        //init val
+        var initwei = $('#wei').val();
+        $("input[name='wz']").each(function (i) {
+            if (initwei.indexOf($(this).val()) != -1) {
+                $(this).prop('checked', true);
+            }
+        });
+
+        $('#submitBtn').on('click', function () {
+            //set val
+            var wzstr = '';
+            $("input[name='wz']:checked").each(function (i) {
+                wzstr = wzstr + $(this).val() + ',';
+            });
+            $('#wei').val(wzstr);
+        });
+    });
+</script>
+
+<style type="text/css">
+    .header-color
+    {
+        background-color: #bbbbbb;
+    }
+    .row-color {
+        background-color: #efefef;
+    }
+</style>
+
+
+<title>Jemma - CurrentJob</title>
 </head>
 <body>
+<div>
+    <div id='profile_header'></div>
+    <div id="search" class="row" style="height: 70px;">
+        <div class="col-xs-5 col-md-5 text-center "></div>
+        <div class="col-xs-5 col-md-5 text-center ">
+            <input class="form-control" id="myInput" type="text" placeholder="Search..">
+        </div>
+        <div class="col-xs-2 col-md-2 text-center"></div>
+    </div>
+    <div id="checkBoxList" class="row" style="height: 35px">
+        <div class="col-xs-4 col-md-4 text-center"></div>
+        <div class="col-xs-3 col-md-3 text-center">
+            <label style="width: 30%; height: 30px">
+                <input type="checkbox" name="wz" value="Accepted" class="unchecked">Accepted
+            </label>
+            <label style="width: 30%">
+                <input type="checkbox" name="wz" value="Pending" class="unchecked">Pending
+            </label>
+            <label style="width: 30%">
+                <input type="checkbox" name="wz" value="Rejected" class="unchecked">Rejected
+            </label>
+            <div class="left ml10" style="display: none">
+                <input type="submit" id="submitBtn" class="btn btn-default" value="Search"/>
+                <input type="hidden" id="wei" name="wei" style="dispaly:none"/>
+            </div>
+        </div>
+        <div class="row col-xs-1 col-md-1 " style="width: 100%">
+        </div>
+        <div class="row col-xs-2 col-md-2 " style="width: 100%">
+            <div class="col-xs-3 col-md-3">From</div>
+            <div class="col-xs-6 col-md-6">
+                <input data-date-format="dd/mm/yyyy" id="datepicker1" style="width: 100px">
+            </div>
+        </div>
+        <div class="row col-xs-2 col-md-2 align-left">
+            <div class="col-xs-1 col-md-1 align-left">To</div>
+            <div class="col-xs-6 col-md-6 text-left">
+                <input data-date-format="dd/mm/yyyy" id="datepicker2" style="width: 100px">
+            </div>
+        </div>
+    </div>
+    <div style="height: 20px"></div>
+    <div id="jobList" class="row col-xs-12 col-md-12 text-center">
+        <div class="col-xs-4 col-md-4 "></div>
+        <div class="col-xs-7 col-md-7 border">
+            <div class="col-xs-12 col-md-12 table-responsive border">
+                <table class="table">
+                    <thead>
+                    <tr class="header-color">
+                        <th scope="col">#</th>
+                        <th scope="col">Heading</th>
+                        <th scope="col">Heading</th>
+                        <th scope="col">Heading</th>
+                        <th scope="col">Heading</th>
+                        <th scope="col">Heading</th>
+                        <th scope="col">Heading</th>
+                        <th scope="col">Heading</th>
+                        <th scope="col">Heading</th>
+                        <th scope="col">Heading</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">1</th>
+                        <td>Cell</td>
+                        <td>Cell</td>
+                        <td>Cell</td>
+                        <td>Cell</td>
+                        <td>Cell</td>
+                        <td>Cell</td>
+                        <td>Cell</td>
+                        <td>Cell</td>
+                        <td>Cell</td>
+                    </tr>
+                    <tr class="row-color">
+                        <th scope="row">2</th>
+                        <td>Cell</td>
+                        <td>Cell</td>
+                        <td>Cell</td>
+                        <td>Cell</td>
+                        <td>Cell</td>
+                        <td>Cell</td>
+                        <td>Cell</td>
+                        <td>Cell</td>
+                        <td>Cell</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">3</th>
+                        <td>Cell</td>
+                        <td>Cell</td>
+                        <td>Cell</td>
+                        <td>Cell</td>
+                        <td>Cell</td>
+                        <td>Cell</td>
+                        <td>Cell</td>
+                        <td>Cell</td>
+                        <td>Cell</td>
+                    </tr>
+                      <tr class="row-color">
+                        <th scope="row">3</th>
+                        <td>Cell</td>
+                        <td>Cell</td>
+                        <td>Cell</td>
+                        <td>Cell</td>
+                        <td>Cell</td>
+                        <td>Cell</td>
+                        <td>Cell</td>
+                        <td>Cell</td>
+                        <td>Cell</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-xs-2 col-md-2 border"></div>
+    </div>
+</div>
 
 </body>
+<script type="text/javascript">
+
+    function DatePicker(beginSelector, endSelector) {
+        // 仅选择日期
+        $(beginSelector).datepicker(
+            {
+                format: 'dd/mm/yyyy',
+                weekStart: 1,
+                autoclose: true,
+                todayHighlight: true,
+            }).on('changeDate', function (ev) {
+            if (ev.date) {
+                $(endSelector).datepicker('setStartDate', new Date(ev.date.valueOf()))
+            } else {
+                $(endSelector).datepicker('setStartDate', null);
+            }
+        })
+
+        $(endSelector).datepicker(
+            {
+                format: 'dd/mm/yyyy',
+                weekStart: 1,
+                autoclose: true,
+                todayHighlight: true,
+            }).on('changeDate', function (ev) {
+            if (ev.date) {
+                $(beginSelector).datepicker('setEndDate', new Date(ev.date.valueOf()))
+            } else {
+                $(beginSelector).datepicker('setEndDate', new Date());
+            }
+
+        })
+    }
+
+    DatePicker("#datepicker1", "#datepicker2");
+
+</script>
 </html>
