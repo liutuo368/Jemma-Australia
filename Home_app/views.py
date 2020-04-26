@@ -7,17 +7,17 @@ from .models import Tradie
 
 def index(request):
 
-    return render(request, "home.html")
+    return render(request, "Home/home.html")
 
 
 def about_us(request):
 
-    return render(request, "Tradie/about_us.html")
+    return render(request, "Home/about_us.html")
 
 
 def contact(request):
 
-    return render(request, "Tradie/contact.html")
+    return render(request, "Home/contact.html")
 
 
 def tradie_profile(request):
