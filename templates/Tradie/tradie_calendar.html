@@ -24,7 +24,8 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
-            $("#profile_header").load("../SubTemplate/profileHeader.html");
+            $("#top_menu").load("../SubTemplate/top_menu_sign_in.html");
+            $("#side_menu").load("../SubTemplate/side_menu.html");
         });
 
     </script>
@@ -41,601 +42,596 @@
             background-color: #bbbbbb;
         }
 
+        .page-content{
+            margin-left: 0px;
+        }
     </style>
     <title>Calendar</title>
 </head>
 <body>
-<div id='profile_header'></div>
-<div id='calendarDiv' class="row col-xs-12 col-md-12 text-center">
-    <div class="row col-xs-2 col-md-2"></div>
-    <div class="row col-xs-9 col-md-9 ">
-        <div class="page-container row-fluid">
+<div id="top_menu"></div>
+<div class="row col-xs-12 col-md-12">
+    <div class="col-xs-2 col-md-2 " style="margin-left: 7%">
+        <div style="height: 15%"></div>
+        <div id="side_menu" style="width: 100%"></div>
+    </div>
+    <div class="col-xs-8 col-md-8 " style="margin-left: 3%">
+        <div id="profile_photo" class="container align-items-center justify-content-center">
+            <div class="row">
+                <div class="col-xs-2 col-md-2 text-left ">
+                    <div style="height: 100%; width: 100%">
+                        <img class="img-rounded rounded-circle mh-100" src="../../static/IMAGES/jackie50x50.jpg">
+                    </div>
+                </div>
+                <div class="col-xs-7 col-md-7 text-left ">
+                    <div class="media h-100">
+                        <div class="align-self-center text-left">
+                            <h3 class="text-left align-middle" align="left"> Welcome, {{ tradie.name }}</h3>
+                            <h5 class="text-left align-middle" align="left">{{ company.name }}</h5>
+                        </div>
 
-            <!-- BEGIN SIDEBAR -->
+                    </div>
+                </div>
+                <div class="col-xs-2 col-md-2 text-center">
+                    <div></div>
+                </div>
+            </div>
 
-            <div class="page-sidebar nav-collapse collapse">
+        </div>
+        <div style="height: 5%"></div>
+        <div id='calendarDiv' class="row col-xs-12 col-md-12 text-left">
+            <div class="row col-xs-12 col-md-12 text-left  ">
+                <div class="page-container row-fluid text-left ">
 
-                <!-- BEGIN SIDEBAR MENU -->
+                    <!-- BEGIN SIDEBAR -->
 
-                <ul class="page-sidebar-menu">
+                    <div class="page-sidebar nav-collapse collapse" style="width: 100%; height: 100%">
 
-                    <li>
+                        <!-- BEGIN SIDEBAR MENU -->
 
-                        <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
-
-                        <div class="sidebar-toggler hidden-phone"></div>
-
-                        <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
-
-                    </li>
-
-                    <li>
-
-                        <!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
-
-                        <form class="sidebar-search">
-
-                            <div class="input-box">
-
-                                <a href="javascript:;" class="remove"></a>
-
-                                <input type="text" placeholder="Search..."/>
-
-                                <input type="button" class="submit" value=" "/>
-
-                            </div>
-
-                        </form>
-
-                        <!-- END RESPONSIVE QUICK SEARCH FORM -->
-
-                    </li>
-
-                    <li class="start ">
-
-                        <a href="index.html">
-
-                            <i class="icon-home"></i>
-
-                            <span class="title">Dashboard</span>
-
-                        </a>
-
-                    </li>
-
-                    <li class="">
-
-                        <a href="javascript:;">
-
-                            <i class="icon-cogs"></i>
-
-                            <span class="title">Layouts</span>
-
-                            <span class="arrow "></span>
-
-                        </a>
-
-                        <ul class="sub-menu">
+                        <ul class="page-sidebar-menu">
 
                             <li>
 
-                                <a href="layout_horizontal_sidebar_menu.html">
+                                <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
 
-                                    Horzontal & Sidebar Menu</a>
+                                <div class="sidebar-toggler hidden-phone"></div>
+
+                                <!-- BEGIN SIDEBAR TOGGLER BUTTON -->
 
                             </li>
 
                             <li>
 
-                                <a href="layout_horizontal_menu1.html">
+                                <!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
 
-                                    Horzontal Menu 1</a>
+                                <form class="sidebar-search">
 
-                            </li>
+                                    <div class="input-box">
 
-                            <li>
+                                        <a href="javascript:;" class="remove"></a>
 
-                                <a href="layout_horizontal_menu2.html">
+                                        <input type="text" placeholder="Search..."/>
 
-                                    Horzontal Menu 2</a>
+                                        <input type="button" class="submit" value=" "/>
 
-                            </li>
+                                    </div>
 
-                            <li>
+                                </form>
 
-                                <a href="layout_promo.html">
-
-                                    Promo Page</a>
+                                <!-- END RESPONSIVE QUICK SEARCH FORM -->
 
                             </li>
 
-                            <li>
+                            <li class="start ">
 
-                                <a href="layout_email.html">
+                                <a href="index.html">
 
-                                    Email Templates</a>
+                                    <i class="icon-home"></i>
 
-                            </li>
+                                    <span class="title">Dashboard</span>
 
-                            <li>
-
-                                <a href="layout_ajax.html">
-
-                                    Content Loading via Ajax</a>
+                                </a>
 
                             </li>
 
-                            <li>
-
-                                <a href="layout_sidebar_closed.html">
-
-                                    Sidebar Closed Page</a>
-
-                            </li>
-
-                            <li>
-
-                                <a href="layout_blank_page.html">
-
-                                    Blank Page</a>
-
-                            </li>
-
-                            <li>
-
-                                <a href="layout_boxed_page.html">
-
-                                    Boxed Page</a>
-
-                            </li>
-
-                            <li>
-
-                                <a href="layout_boxed_not_responsive.html">
-
-                                    Non-Responsive Boxed Layout</a>
-
-                            </li>
-
-                        </ul>
-
-                    </li>
-
-                    <li class="">
-
-                        <a href="javascript:;">
-
-                            <i class="icon-bookmark-empty"></i>
-
-                            <span class="title">UI Features</span>
-
-                            <span class="arrow "></span>
-
-                        </a>
-
-                        <ul class="sub-menu">
-
-                            <li>
-
-                                <a href="ui_general.html">
-
-                                    General</a>
-
-                            </li>
-
-                            <li>
-
-                                <a href="ui_buttons.html">
-
-                                    Buttons</a>
-
-                            </li>
-
-                            <li>
-
-                                <a href="ui_modals.html">
-
-                                    Enhanced Modals</a>
-
-                            </li>
-
-                            <li>
-
-                                <a href="ui_tabs_accordions.html">
-
-                                    Tabs & Accordions</a>
-
-                            </li>
-
-                            <li>
-
-                                <a href="ui_jqueryui.html">
-
-                                    jQuery UI Components</a>
-
-                            </li>
-
-                            <li>
-
-                                <a href="ui_sliders.html">
-
-                                    Sliders</a>
-
-                            </li>
-
-                            <li>
-
-                                <a href="ui_tiles.html">
-
-                                    Tiles</a>
-
-                            </li>
-
-                            <li>
-
-                                <a href="ui_typography.html">
-
-                                    Typography</a>
-
-                            </li>
-
-                            <li>
-
-                                <a href="ui_tree.html">
-
-                                    Tree View</a>
-
-                            </li>
-
-                            <li>
-
-                                <a href="ui_nestable.html">
-
-                                    Nestable List</a>
-
-                            </li>
-
-                        </ul>
-
-                    </li>
-
-                    <li class="">
-
-                        <a href="javascript:;">
-
-                            <i class="icon-table"></i>
-
-                            <span class="title">Form Stuff</span>
-
-                            <span class="arrow "></span>
-
-                        </a>
-
-                        <ul class="sub-menu">
-
-                            <li>
-
-                                <a href="form_layout.html">
-
-                                    Form Layouts</a>
-
-                            </li>
-
-                            <li>
-
-                                <a href="form_samples.html">
-
-                                    Advance Form Samples</a>
-
-                            </li>
-
-                            <li>
-
-                                <a href="form_component.html">
-
-                                    Form Components</a>
-
-                            </li>
-
-                            <li>
-
-                                <a href="form_wizard.html">
-
-                                    Form Wizard</a>
-
-                            </li>
-
-                            <li>
-
-                                <a href="form_validation.html">
-
-                                    Form Validation</a>
-
-                            </li>
-
-                            <li>
-
-                                <a href="form_fileupload.html">
-
-                                    Multiple File Upload</a>
-
-                            </li>
-
-                            <li>
-
-                                <a href="form_dropzone.html">
-
-                                    Dropzone File Upload</a>
-
-                            </li>
-
-                        </ul>
-
-                    </li>
-
-                    <li class="active ">
-
-                        <a href="javascript:;">
-
-                            <i class="icon-briefcase"></i>
-
-                            <span class="title">Pages</span>
-
-                            <span class="selected"></span>
-
-                            <span class="arrow open"></span>
-
-                        </a>
-
-                        <ul class="sub-menu">
-
-                            <li>
-
-                                <a href="page_timeline.html">
-
-                                    <i class="icon-time"></i>
-
-                                    Timeline</a>
-
-                            </li>
-
-                            <li>
-
-                                <a href="page_coming_soon.html">
-
-                                    <i class="icon-cogs"></i>
-
-                                    Coming Soon</a>
-
-                            </li>
-
-                            <li>
-
-                                <a href="page_blog.html">
-
-                                    <i class="icon-comments"></i>
-
-                                    Blog</a>
-
-                            </li>
-
-                            <li>
-
-                                <a href="page_blog_item.html">
-
-                                    <i class="icon-font"></i>
-
-                                    Blog Post</a>
-
-                            </li>
-
-                            <li>
-
-                                <a href="page_news.html">
-
-                                    <i class="icon-coffee"></i>
-
-                                    News</a>
-
-                            </li>
-
-                            <li>
-
-                                <a href="page_news_item.html">
-
-                                    <i class="icon-bell"></i>
-
-                                    News View</a>
-
-                            </li>
-
-                            <li>
-
-                                <a href="page_about.html">
-
-                                    <i class="icon-group"></i>
-
-                                    About Us</a>
-
-                            </li>
-
-                            <li>
-
-                                <a href="page_contact.html">
-
-                                    <i class="icon-envelope-alt"></i>
-
-                                    Contact Us</a>
-
-                            </li>
-
-                            <li class="active">
-
-                                <a href="page_calendar.html">
-
-                                    <i class="icon-calendar"></i>
-
-                                    Calendar</a>
-
-                            </li>
-
-                        </ul>
-
-                    </li>
-
-                    <li class="">
-
-                        <a href="javascript:;">
-
-                            <i class="icon-gift"></i>
-
-                            <span class="title">Extra</span>
-
-                            <span class="arrow "></span>
-
-                        </a>
-
-                        <ul class="sub-menu">
-
-                            <li>
-
-                                <a href="extra_profile.html">
-
-                                    User Profile</a>
-
-                            </li>
-
-                            <li>
-
-                                <a href="extra_lock.html">
-
-                                    Lock Screen</a>
-
-                            </li>
-
-                            <li>
-
-                                <a href="extra_faq.html">
-
-                                    FAQ</a>
-
-                            </li>
-
-                            <li>
-
-                                <a href="inbox.html">
-
-                                    Inbox</a>
-
-                            </li>
-
-                            <li>
-
-                                <a href="extra_search.html">
-
-                                    Search Results</a>
-
-                            </li>
-
-                            <li>
-
-                                <a href="extra_invoice.html">
-
-                                    Invoice</a>
-
-                            </li>
-
-                            <li>
-
-                                <a href="extra_pricing_table.html">
-
-                                    Pricing Tables</a>
-
-                            </li>
-
-                            <li>
-
-                                <a href="extra_image_manager.html">
-
-                                    Image Manager</a>
-
-                            </li>
-
-                            <li>
-
-                                <a href="extra_404_option1.html">
-
-                                    404 Page Option 1</a>
-
-                            </li>
-
-                            <li>
-
-                                <a href="extra_404_option2.html">
-
-                                    404 Page Option 2</a>
-
-                            </li>
-
-                            <li>
-
-                                <a href="extra_404_option3.html">
-
-                                    404 Page Option 3</a>
-
-                            </li>
-
-                            <li>
-
-                                <a href="extra_500_option1.html">
-
-                                    500 Page Option 1</a>
-
-                            </li>
-
-                            <li>
-
-                                <a href="extra_500_option2.html">
-
-                                    500 Page Option 2</a>
-
-                            </li>
-
-                        </ul>
-
-                    </li>
-
-                    <li>
-
-                        <a class="active" href="javascript:;">
-
-                            <i class="icon-sitemap"></i>
-
-                            <span class="title">3 Level Menu</span>
-
-                            <span class="arrow "></span>
-
-                        </a>
-
-                        <ul class="sub-menu">
-
-                            <li>
+                            <li class="">
 
                                 <a href="javascript:;">
 
-                                    Item 1
+                                    <i class="icon-cogs"></i>
 
-                                    <span class="arrow"></span>
+                                    <span class="title">Layouts</span>
+
+                                    <span class="arrow "></span>
 
                                 </a>
 
                                 <ul class="sub-menu">
 
-                                    <li><a href="#">Sample Link 1</a></li>
+                                    <li>
 
-                                    <li><a href="#">Sample Link 2</a></li>
+                                        <a href="layout_horizontal_sidebar_menu.html">
 
-                                    <li><a href="#">Sample Link 3</a></li>
+                                            Horzontal & Sidebar Menu</a>
+
+                                    </li>
+
+                                    <li>
+
+                                        <a href="layout_horizontal_menu1.html">
+
+                                            Horzontal Menu 1</a>
+
+                                    </li>
+
+                                    <li>
+
+                                        <a href="layout_horizontal_menu2.html">
+
+                                            Horzontal Menu 2</a>
+
+                                    </li>
+
+                                    <li>
+
+                                        <a href="layout_promo.html">
+
+                                            Promo Page</a>
+
+                                    </li>
+
+                                    <li>
+
+                                        <a href="layout_email.html">
+
+                                            Email Templates</a>
+
+                                    </li>
+
+                                    <li>
+
+                                        <a href="layout_ajax.html">
+
+                                            Content Loading via Ajax</a>
+
+                                    </li>
+
+                                    <li>
+
+                                        <a href="layout_sidebar_closed.html">
+
+                                            Sidebar Closed Page</a>
+
+                                    </li>
+
+                                    <li>
+
+                                        <a href="layout_blank_page.html">
+
+                                            Blank Page</a>
+
+                                    </li>
+
+                                    <li>
+
+                                        <a href="layout_boxed_page.html">
+
+                                            Boxed Page</a>
+
+                                    </li>
+
+                                    <li>
+
+                                        <a href="layout_boxed_not_responsive.html">
+
+                                            Non-Responsive Boxed Layout</a>
+
+                                    </li>
+
+                                </ul>
+
+                            </li>
+
+                            <li class="">
+
+                                <a href="javascript:;">
+
+                                    <i class="icon-bookmark-empty"></i>
+
+                                    <span class="title">UI Features</span>
+
+                                    <span class="arrow "></span>
+
+                                </a>
+
+                                <ul class="sub-menu">
+
+                                    <li>
+
+                                        <a href="ui_general.html">
+
+                                            General</a>
+
+                                    </li>
+
+                                    <li>
+
+                                        <a href="ui_buttons.html">
+
+                                            Buttons</a>
+
+                                    </li>
+
+                                    <li>
+
+                                        <a href="ui_modals.html">
+
+                                            Enhanced Modals</a>
+
+                                    </li>
+
+                                    <li>
+
+                                        <a href="ui_tabs_accordions.html">
+
+                                            Tabs & Accordions</a>
+
+                                    </li>
+
+                                    <li>
+
+                                        <a href="ui_jqueryui.html">
+
+                                            jQuery UI Components</a>
+
+                                    </li>
+
+                                    <li>
+
+                                        <a href="ui_sliders.html">
+
+                                            Sliders</a>
+
+                                    </li>
+
+                                    <li>
+
+                                        <a href="ui_tiles.html">
+
+                                            Tiles</a>
+
+                                    </li>
+
+                                    <li>
+
+                                        <a href="ui_typography.html">
+
+                                            Typography</a>
+
+                                    </li>
+
+                                    <li>
+
+                                        <a href="ui_tree.html">
+
+                                            Tree View</a>
+
+                                    </li>
+
+                                    <li>
+
+                                        <a href="ui_nestable.html">
+
+                                            Nestable List</a>
+
+                                    </li>
+
+                                </ul>
+
+                            </li>
+
+                            <li class="">
+
+                                <a href="javascript:;">
+
+                                    <i class="icon-table"></i>
+
+                                    <span class="title">Form Stuff</span>
+
+                                    <span class="arrow "></span>
+
+                                </a>
+
+                                <ul class="sub-menu">
+
+                                    <li>
+
+                                        <a href="form_layout.html">
+
+                                            Form Layouts</a>
+
+                                    </li>
+
+                                    <li>
+
+                                        <a href="form_samples.html">
+
+                                            Advance Form Samples</a>
+
+                                    </li>
+
+                                    <li>
+
+                                        <a href="form_component.html">
+
+                                            Form Components</a>
+
+                                    </li>
+
+                                    <li>
+
+                                        <a href="form_wizard.html">
+
+                                            Form Wizard</a>
+
+                                    </li>
+
+                                    <li>
+
+                                        <a href="form_validation.html">
+
+                                            Form Validation</a>
+
+                                    </li>
+
+                                    <li>
+
+                                        <a href="form_fileupload.html">
+
+                                            Multiple File Upload</a>
+
+                                    </li>
+
+                                    <li>
+
+                                        <a href="form_dropzone.html">
+
+                                            Dropzone File Upload</a>
+
+                                    </li>
+
+                                </ul>
+
+                            </li>
+
+                            <li class="active ">
+
+                                <a href="javascript:;">
+
+                                    <i class="icon-briefcase"></i>
+
+                                    <span class="title">Pages</span>
+
+                                    <span class="selected"></span>
+
+                                    <span class="arrow open"></span>
+
+                                </a>
+
+                                <ul class="sub-menu">
+
+                                    <li>
+
+                                        <a href="page_timeline.html">
+
+                                            <i class="icon-time"></i>
+
+                                            Timeline</a>
+
+                                    </li>
+
+                                    <li>
+
+                                        <a href="page_coming_soon.html">
+
+                                            <i class="icon-cogs"></i>
+
+                                            Coming Soon</a>
+
+                                    </li>
+
+                                    <li>
+
+                                        <a href="page_blog.html">
+
+                                            <i class="icon-comments"></i>
+
+                                            Blog</a>
+
+                                    </li>
+
+                                    <li>
+
+                                        <a href="page_blog_item.html">
+
+                                            <i class="icon-font"></i>
+
+                                            Blog Post</a>
+
+                                    </li>
+
+                                    <li>
+
+                                        <a href="page_news.html">
+
+                                            <i class="icon-coffee"></i>
+
+                                            News</a>
+
+                                    </li>
+
+                                    <li>
+
+                                        <a href="page_news_item.html">
+
+                                            <i class="icon-bell"></i>
+
+                                            News View</a>
+
+                                    </li>
+
+                                    <li>
+
+                                        <a href="page_about.html">
+
+                                            <i class="icon-group"></i>
+
+                                            About Us</a>
+
+                                    </li>
+
+                                    <li>
+
+                                        <a href="page_contact.html">
+
+                                            <i class="icon-envelope-alt"></i>
+
+                                            Contact Us</a>
+
+                                    </li>
+
+                                    <li class="active">
+
+                                        <a href="page_calendar.html">
+
+                                            <i class="icon-calendar"></i>
+
+                                            Calendar</a>
+
+                                    </li>
+
+                                </ul>
+
+                            </li>
+
+                            <li class="">
+
+                                <a href="javascript:;">
+
+                                    <i class="icon-gift"></i>
+
+                                    <span class="title">Extra</span>
+
+                                    <span class="arrow "></span>
+
+                                </a>
+
+                                <ul class="sub-menu">
+
+                                    <li>
+
+                                        <a href="extra_profile.html">
+
+                                            User Profile</a>
+
+                                    </li>
+
+                                    <li>
+
+                                        <a href="extra_lock.html">
+
+                                            Lock Screen</a>
+
+                                    </li>
+
+                                    <li>
+
+                                        <a href="extra_faq.html">
+
+                                            FAQ</a>
+
+                                    </li>
+
+                                    <li>
+
+                                        <a href="inbox.html">
+
+                                            Inbox</a>
+
+                                    </li>
+
+                                    <li>
+
+                                        <a href="extra_search.html">
+
+                                            Search Results</a>
+
+                                    </li>
+
+                                    <li>
+
+                                        <a href="extra_invoice.html">
+
+                                            Invoice</a>
+
+                                    </li>
+
+                                    <li>
+
+                                        <a href="extra_pricing_table.html">
+
+                                            Pricing Tables</a>
+
+                                    </li>
+
+                                    <li>
+
+                                        <a href="extra_image_manager.html">
+
+                                            Image Manager</a>
+
+                                    </li>
+
+                                    <li>
+
+                                        <a href="extra_404_option1.html">
+
+                                            404 Page Option 1</a>
+
+                                    </li>
+
+                                    <li>
+
+                                        <a href="extra_404_option2.html">
+
+                                            404 Page Option 2</a>
+
+                                    </li>
+
+                                    <li>
+
+                                        <a href="extra_404_option3.html">
+
+                                            404 Page Option 3</a>
+
+                                    </li>
+
+                                    <li>
+
+                                        <a href="extra_500_option1.html">
+
+                                            500 Page Option 1</a>
+
+                                    </li>
+
+                                    <li>
+
+                                        <a href="extra_500_option2.html">
+
+                                            500 Page Option 2</a>
+
+                                    </li>
 
                                 </ul>
 
@@ -643,63 +639,13 @@
 
                             <li>
 
-                                <a href="javascript:;">
+                                <a class="active" href="javascript:;">
 
-                                    Item 1
+                                    <i class="icon-sitemap"></i>
 
-                                    <span class="arrow"></span>
+                                    <span class="title">3 Level Menu</span>
 
-                                </a>
-
-                                <ul class="sub-menu">
-
-                                    <li><a href="#">Sample Link 1</a></li>
-
-                                    <li><a href="#">Sample Link 1</a></li>
-
-                                    <li><a href="#">Sample Link 1</a></li>
-
-                                </ul>
-
-                            </li>
-
-                            <li>
-
-                                <a href="#">
-
-                                    Item 3
-
-                                </a>
-
-                            </li>
-
-                        </ul>
-
-                    </li>
-
-                    <li>
-
-                        <a href="javascript:;">
-
-                            <i class="icon-folder-open"></i>
-
-                            <span class="title">4 Level Menu</span>
-
-                            <span class="arrow "></span>
-
-                        </a>
-
-                        <ul class="sub-menu">
-
-                            <li>
-
-                                <a href="javascript:;">
-
-                                    <i class="icon-cogs"></i>
-
-                                    Item 1
-
-                                    <span class="arrow"></span>
+                                    <span class="arrow "></span>
 
                                 </a>
 
@@ -709,9 +655,7 @@
 
                                         <a href="javascript:;">
 
-                                            <i class="icon-user"></i>
-
-                                            Sample Link 1
+                                            Item 1
 
                                             <span class="arrow"></span>
 
@@ -719,21 +663,47 @@
 
                                         <ul class="sub-menu">
 
-                                            <li><a href="#"><i class="icon-remove"></i> Sample Link 1</a></li>
+                                            <li><a href="#">Sample Link 1</a></li>
 
-                                            <li><a href="#"><i class="icon-pencil"></i> Sample Link 1</a></li>
+                                            <li><a href="#">Sample Link 2</a></li>
 
-                                            <li><a href="#"><i class="icon-edit"></i> Sample Link 1</a></li>
+                                            <li><a href="#">Sample Link 3</a></li>
 
                                         </ul>
 
                                     </li>
 
-                                    <li><a href="#"><i class="icon-user"></i> Sample Link 1</a></li>
+                                    <li>
 
-                                    <li><a href="#"><i class="icon-external-link"></i> Sample Link 2</a></li>
+                                        <a href="javascript:;">
 
-                                    <li><a href="#"><i class="icon-bell"></i> Sample Link 3</a></li>
+                                            Item 1
+
+                                            <span class="arrow"></span>
+
+                                        </a>
+
+                                        <ul class="sub-menu">
+
+                                            <li><a href="#">Sample Link 1</a></li>
+
+                                            <li><a href="#">Sample Link 1</a></li>
+
+                                            <li><a href="#">Sample Link 1</a></li>
+
+                                        </ul>
+
+                                    </li>
+
+                                    <li>
+
+                                        <a href="#">
+
+                                            Item 3
+
+                                        </a>
+
+                                    </li>
 
                                 </ul>
 
@@ -743,33 +713,271 @@
 
                                 <a href="javascript:;">
 
-                                    <i class="icon-globe"></i>
+                                    <i class="icon-folder-open"></i>
 
-                                    Item 2
+                                    <span class="title">4 Level Menu</span>
 
-                                    <span class="arrow"></span>
+                                    <span class="arrow "></span>
 
                                 </a>
 
                                 <ul class="sub-menu">
 
-                                    <li><a href="#"><i class="icon-user"></i> Sample Link 1</a></li>
+                                    <li>
 
-                                    <li><a href="#"><i class="icon-external-link"></i> Sample Link 1</a></li>
+                                        <a href="javascript:;">
 
-                                    <li><a href="#"><i class="icon-bell"></i> Sample Link 1</a></li>
+                                            <i class="icon-cogs"></i>
+
+                                            Item 1
+
+                                            <span class="arrow"></span>
+
+                                        </a>
+
+                                        <ul class="sub-menu">
+
+                                            <li>
+
+                                                <a href="javascript:;">
+
+                                                    <i class="icon-user"></i>
+
+                                                    Sample Link 1
+
+                                                    <span class="arrow"></span>
+
+                                                </a>
+
+                                                <ul class="sub-menu">
+
+                                                    <li><a href="#"><i class="icon-remove"></i> Sample Link 1</a></li>
+
+                                                    <li><a href="#"><i class="icon-pencil"></i> Sample Link 1</a></li>
+
+                                                    <li><a href="#"><i class="icon-edit"></i> Sample Link 1</a></li>
+
+                                                </ul>
+
+                                            </li>
+
+                                            <li><a href="#"><i class="icon-user"></i> Sample Link 1</a></li>
+
+                                            <li><a href="#"><i class="icon-external-link"></i> Sample Link 2</a></li>
+
+                                            <li><a href="#"><i class="icon-bell"></i> Sample Link 3</a></li>
+
+                                        </ul>
+
+                                    </li>
+
+                                    <li>
+
+                                        <a href="javascript:;">
+
+                                            <i class="icon-globe"></i>
+
+                                            Item 2
+
+                                            <span class="arrow"></span>
+
+                                        </a>
+
+                                        <ul class="sub-menu">
+
+                                            <li><a href="#"><i class="icon-user"></i> Sample Link 1</a></li>
+
+                                            <li><a href="#"><i class="icon-external-link"></i> Sample Link 1</a></li>
+
+                                            <li><a href="#"><i class="icon-bell"></i> Sample Link 1</a></li>
+
+                                        </ul>
+
+                                    </li>
+
+                                    <li>
+
+                                        <a href="#">
+
+                                            <i class="icon-folder-open"></i>
+
+                                            Item 3
+
+                                        </a>
+
+                                    </li>
 
                                 </ul>
 
                             </li>
 
-                            <li>
+                            <li class="">
 
-                                <a href="#">
+                                <a href="javascript:;">
 
-                                    <i class="icon-folder-open"></i>
+                                    <i class="icon-user"></i>
 
-                                    Item 3
+                                    <span class="title">Login Options</span>
+
+                                    <span class="arrow "></span>
+
+                                </a>
+
+                                <ul class="sub-menu">
+
+                                    <li>
+
+                                        <a href="login.html">
+
+                                            Login Form 1</a>
+
+                                    </li>
+
+                                    <li>
+
+                                        <a href="login_soft.html">
+
+                                            Login Form 2</a>
+
+                                    </li>
+
+                                </ul>
+
+                            </li>
+
+                            <li class="">
+
+                                <a href="javascript:;">
+
+                                    <i class="icon-th"></i>
+
+                                    <span class="title">Data Tables</span>
+
+                                    <span class="arrow "></span>
+
+                                </a>
+
+                                <ul class="sub-menu">
+
+                                    <li>
+
+                                        <a href="table_basic.html">
+
+                                            Basic Tables</a>
+
+                                    </li>
+
+                                    <li>
+
+                                        <a href="table_responsive.html">
+
+                                            Responsive Tables</a>
+
+                                    </li>
+
+                                    <li>
+
+                                        <a href="table_managed.html">
+
+                                            Managed Tables</a>
+
+                                    </li>
+
+                                    <li>
+
+                                        <a href="table_editable.html">
+
+                                            Editable Tables</a>
+
+                                    </li>
+
+                                    <li>
+
+                                        <a href="table_advanced.html">
+
+                                            Advanced Tables</a>
+
+                                    </li>
+
+                                </ul>
+
+                            </li>
+
+                            <li class="">
+
+                                <a href="javascript:;">
+
+                                    <i class="icon-file-text"></i>
+
+                                    <span class="title">Portlets</span>
+
+                                    <span class="arrow "></span>
+
+                                </a>
+
+                                <ul class="sub-menu">
+
+                                    <li>
+
+                                        <a href="portlet_general.html">
+
+                                            General Portlets</a>
+
+                                    </li>
+
+                                    <li>
+
+                                        <a href="portlet_draggable.html">
+
+                                            Create new Event</a>
+
+                                    </li>
+
+                                </ul>
+
+                            </li>
+
+                            <li class="">
+
+                                <a href="javascript:;">
+
+                                    <i class="icon-map-marker"></i>
+
+                                    <span class="title">Maps</span>
+
+                                    <span class="arrow "></span>
+
+                                </a>
+
+                                <ul class="sub-menu">
+
+                                    <li>
+
+                                        <a href="maps_google.html">
+
+                                            Google Maps</a>
+
+                                    </li>
+
+                                    <li>
+
+                                        <a href="maps_vector.html">
+
+                                            Vector Maps</a>
+
+                                    </li>
+
+                                </ul>
+
+                            </li>
+
+                            <li class="last ">
+
+                                <a href="charts.html">
+
+                                    <i class="icon-bar-chart"></i>
+
+                                    <span class="title">Visual Charts</span>
 
                                 </a>
 
@@ -777,438 +985,266 @@
 
                         </ul>
 
-                    </li>
-
-                    <li class="">
-
-                        <a href="javascript:;">
-
-                            <i class="icon-user"></i>
-
-                            <span class="title">Login Options</span>
-
-                            <span class="arrow "></span>
-
-                        </a>
-
-                        <ul class="sub-menu">
-
-                            <li>
-
-                                <a href="login.html">
-
-                                    Login Form 1</a>
-
-                            </li>
-
-                            <li>
-
-                                <a href="login_soft.html">
-
-                                    Login Form 2</a>
-
-                            </li>
-
-                        </ul>
-
-                    </li>
-
-                    <li class="">
-
-                        <a href="javascript:;">
-
-                            <i class="icon-th"></i>
-
-                            <span class="title">Data Tables</span>
-
-                            <span class="arrow "></span>
-
-                        </a>
-
-                        <ul class="sub-menu">
-
-                            <li>
-
-                                <a href="table_basic.html">
-
-                                    Basic Tables</a>
-
-                            </li>
-
-                            <li>
-
-                                <a href="table_responsive.html">
-
-                                    Responsive Tables</a>
-
-                            </li>
-
-                            <li>
-
-                                <a href="table_managed.html">
-
-                                    Managed Tables</a>
-
-                            </li>
-
-                            <li>
-
-                                <a href="table_editable.html">
-
-                                    Editable Tables</a>
-
-                            </li>
-
-                            <li>
-
-                                <a href="table_advanced.html">
-
-                                    Advanced Tables</a>
-
-                            </li>
-
-                        </ul>
-
-                    </li>
-
-                    <li class="">
-
-                        <a href="javascript:;">
-
-                            <i class="icon-file-text"></i>
-
-                            <span class="title">Portlets</span>
-
-                            <span class="arrow "></span>
-
-                        </a>
-
-                        <ul class="sub-menu">
-
-                            <li>
-
-                                <a href="portlet_general.html">
-
-                                    General Portlets</a>
-
-                            </li>
-
-                            <li>
-
-                                <a href="portlet_draggable.html">
-
-                                    Create new Event</a>
-
-                            </li>
-
-                        </ul>
-
-                    </li>
-
-                    <li class="">
-
-                        <a href="javascript:;">
-
-                            <i class="icon-map-marker"></i>
-
-                            <span class="title">Maps</span>
-
-                            <span class="arrow "></span>
-
-                        </a>
-
-                        <ul class="sub-menu">
-
-                            <li>
-
-                                <a href="maps_google.html">
-
-                                    Google Maps</a>
-
-                            </li>
-
-                            <li>
-
-                                <a href="maps_vector.html">
-
-                                    Vector Maps</a>
-
-                            </li>
-
-                        </ul>
-
-                    </li>
-
-                    <li class="last ">
-
-                        <a href="charts.html">
-
-                            <i class="icon-bar-chart"></i>
-
-                            <span class="title">Visual Charts</span>
-
-                        </a>
-
-                    </li>
-
-                </ul>
-
-                <!-- END SIDEBAR MENU -->
-
-            </div>
-
-            <!-- END SIDEBAR -->
-
-            <!-- BEGIN PAGE -->
-
-            <div class="page-content">
-
-                <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
-
-                <div id="portlet-config" class="modal hide">
-
-                    <div class="modal-header">
-
-                        <button data-dismiss="modal" class="close" type="button"></button>
-
-                        <h3>portlet Settings</h3>
+                        <!-- END SIDEBAR MENU -->
 
                     </div>
 
-                    <div class="modal-body">
+                    <!-- END SIDEBAR -->
 
-                        <p>Here will be a configuration form</p>
+                    <!-- BEGIN PAGE -->
 
-                    </div>
+                    <div class="page-content">
 
-                </div>
+                        <!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
 
-                <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+                        <div id="portlet-config" class="modal hide">
 
-                <!-- BEGIN PAGE CONTAINER-->
+                            <div class="modal-header">
 
-                <div class="container-fluid">
+                                <button data-dismiss="modal" class="close" type="button"></button>
 
-                    <!-- BEGIN PAGE HEADER-->
-
-                    <div class="row-fluid">
-
-                        <div class="span12">
-
-                            <!-- BEGIN STYLE CUSTOMIZER -->
-
-                            <div class="color-panel hidden-phone">
-
-                                <div class="color-mode-icons icon-color"></div>
-
-                                <div class="color-mode-icons icon-color-close"></div>
-
-                                <div class="color-mode">
-
-                                    <p>THEME COLOR</p>
-
-                                    <ul class="inline">
-
-                                        <li class="color-black current color-default" data-style="default"></li>
-
-                                        <li class="color-blue" data-style="blue"></li>
-
-                                        <li class="color-brown" data-style="brown"></li>
-
-                                        <li class="color-purple" data-style="purple"></li>
-
-                                        <li class="color-grey" data-style="grey"></li>
-
-                                        <li class="color-white color-light" data-style="light"></li>
-
-                                    </ul>
-
-                                    <label>
-
-                                        <span>Layout</span>
-
-                                        <select class="layout-option m-wrap small">
-
-                                            <option value="fluid" selected>Fluid</option>
-
-                                            <option value="boxed">Boxed</option>
-
-                                        </select>
-
-                                    </label>
-
-                                    <label>
-
-                                        <span>Header</span>
-
-                                        <select class="header-option m-wrap small">
-
-                                            <option value="fixed" selected>Fixed</option>
-
-                                            <option value="default">Default</option>
-
-                                        </select>
-
-                                    </label>
-
-                                    <label>
-
-                                        <span>Sidebar</span>
-
-                                        <select class="sidebar-option m-wrap small">
-
-                                            <option value="fixed">Fixed</option>
-
-                                            <option value="default" selected>Default</option>
-
-                                        </select>
-
-                                    </label>
-
-                                    <label>
-
-                                        <span>Footer</span>
-
-                                        <select class="footer-option m-wrap small">
-
-                                            <option value="fixed">Fixed</option>
-
-                                            <option value="default" selected>Default</option>
-
-                                        </select>
-
-                                    </label>
-
-                                </div>
+                                <h3>portlet Settings</h3>
 
                             </div>
 
-                            <!-- END BEGIN STYLE CUSTOMIZER -->
+                            <div class="modal-body">
 
-                            <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+                                <p>Here will be a configuration form</p>
 
-                            <h3 class="page-title">
-
-                                Calendar <small>calendar page</small>
-
-                            </h3>
-
-                            <ul class="breadcrumb">
-
-                                <li>
-
-                                    <i class="icon-home"></i>
-
-                                    <a href="index.html">Home</a>
-
-                                    <i class="icon-angle-right"></i>
-
-                                </li>
-
-                                <li>
-
-                                    <a href="#">Pages</a>
-
-                                    <i class="icon-angle-right"></i>
-
-                                </li>
-
-                                <li><a href="#">Calendar</a></li>
-
-                            </ul>
-
-                            <!-- END PAGE TITLE & BREADCRUMB-->
+                            </div>
 
                         </div>
 
-                    </div>
+                        <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
 
-                    <!-- END PAGE HEADER-->
+                        <!-- BEGIN PAGE CONTAINER-->
 
-                    <!-- BEGIN PAGE CONTENT-->
+                        <div class="container-fluid" style="width: 100%">
 
-                    <div class="row-fluid">
+                            <!-- BEGIN PAGE HEADER-->
 
-                        <div class="portlet box blue calendar">
+                            <div class="row-fluid">
 
-                            <div class="portlet-title">
+                                <div class="span12">
 
-                                <div class="caption"><i class="icon-reorder"></i>Calendar</div>
+                                    <!-- BEGIN STYLE CUSTOMIZER -->
 
-                            </div>
+                                    <div class="color-panel hidden-phone">
 
-                            <div class="portlet-body light-grey">
+                                        <div class="color-mode-icons icon-color"></div>
 
-                                <div class="row-fluid">
+                                        <div class="color-mode-icons icon-color-close"></div>
 
-                                    <div class="span3 responsive" data-tablet="span12 fix-margin" data-desktop="span8">
+                                        <div class="color-mode">
 
-                                        <!-- BEGIN DRAGGABLE EVENTS PORTLET-->
+                                            <p>THEME COLOR</p>
 
-                                        <h3 class="event-form-title">Draggable Events</h3>
+                                            <ul class="inline">
 
-                                        <div id="external-events">
+                                                <li class="color-black current color-default" data-style="default"></li>
 
-                                            <form class="inline-form">
+                                                <li class="color-blue" data-style="blue"></li>
 
-                                                <input type="text" value="" class="m-wrap span12"
-                                                       placeholder="Event Title..."
-                                                       id="event_title"/><br/>
+                                                <li class="color-brown" data-style="brown"></li>
 
-                                                <a href="javascript:;" id="event_add" class="btn green">Add Event</a>
+                                                <li class="color-purple" data-style="purple"></li>
 
-                                            </form>
+                                                <li class="color-grey" data-style="grey"></li>
 
-                                            <hr/>
+                                                <li class="color-white color-light" data-style="light"></li>
 
-                                            <div id="event_box">
+                                            </ul>
 
-                                            </div>
+                                            <label>
 
-                                            <label for="drop-remove">
+                                                <span>Layout</span>
 
-                                                <input type="checkbox" id="drop-remove"/>remove after drop
+                                                <select class="layout-option m-wrap small">
+
+                                                    <option value="fluid" selected>Fluid</option>
+
+                                                    <option value="boxed">Boxed</option>
+
+                                                </select>
 
                                             </label>
 
-                                            <hr class="visible-phone"/>
+                                            <label>
+
+                                                <span>Header</span>
+
+                                                <select class="header-option m-wrap small">
+
+                                                    <option value="fixed" selected>Fixed</option>
+
+                                                    <option value="default">Default</option>
+
+                                                </select>
+
+                                            </label>
+
+                                            <label>
+
+                                                <span>Sidebar</span>
+
+                                                <select class="sidebar-option m-wrap small">
+
+                                                    <option value="fixed">Fixed</option>
+
+                                                    <option value="default" selected>Default</option>
+
+                                                </select>
+
+                                            </label>
+
+                                            <label>
+
+                                                <span>Footer</span>
+
+                                                <select class="footer-option m-wrap small">
+
+                                                    <option value="fixed">Fixed</option>
+
+                                                    <option value="default" selected>Default</option>
+
+                                                </select>
+
+                                            </label>
 
                                         </div>
 
-                                        <!-- END DRAGGABLE EVENTS PORTLET-->
+                                    </div>
+
+                                    <!-- END BEGIN STYLE CUSTOMIZER -->
+
+                                    <!-- BEGIN PAGE TITLE & BREADCRUMB-->
+
+                                    <h3 class="page-title">
+
+                                        Calendar <small>calendar page</small>
+
+                                    </h3>
+
+                                    <ul class="breadcrumb">
+
+                                        <li>
+
+                                            <i class="icon-home"></i>
+
+                                            <a href="index.html">Home</a>
+
+                                            <i class="icon-angle-right"></i>
+
+                                        </li>
+
+                                        <li>
+
+                                            <a href="#">Pages</a>
+
+                                            <i class="icon-angle-right"></i>
+
+                                        </li>
+
+                                        <li><a href="#">Calendar</a></li>
+
+                                    </ul>
+
+                                    <!-- END PAGE TITLE & BREADCRUMB-->
+
+                                </div>
+
+                            </div>
+
+                            <!-- END PAGE HEADER-->
+
+                            <!-- BEGIN PAGE CONTENT-->
+
+                            <div class="row-fluid">
+
+                                <div class="portlet box blue calendar">
+
+                                    <div class="portlet-title">
+
+                                        <div class="caption"><i class="icon-reorder"></i>Calendar</div>
 
                                     </div>
 
-                                    <div class="span9">
+                                    <div class="portlet-body light-grey">
 
-                                        <div id="calendar" class="has-toolbar"></div>
+                                        <div class="row-fluid">
+
+                                            <div class="span3 responsive" data-tablet="span12 fix-margin"
+                                                 data-desktop="span8">
+
+                                                <!-- BEGIN DRAGGABLE EVENTS PORTLET-->
+
+                                                <h3 class="event-form-title">Draggable Events</h3>
+
+                                                <div id="external-events">
+
+                                                    <form class="inline-form">
+
+                                                        <input type="text" value="" class="m-wrap span12"
+                                                               placeholder="Event Title..."
+                                                               id="event_title"/><br/>
+
+                                                        <a href="javascript:;" id="event_add" class="btn green">Add
+                                                            Event</a>
+
+                                                    </form>
+
+                                                    <hr/>
+
+                                                    <div id="event_box">
+
+                                                    </div>
+
+                                                    <label for="drop-remove">
+
+                                                        <input type="checkbox" id="drop-remove"/>remove after drop
+
+                                                    </label>
+
+                                                    <hr class="visible-phone"/>
+
+                                                </div>
+
+                                                <!-- END DRAGGABLE EVENTS PORTLET-->
+
+                                            </div>
+
+                                            <div class="span9">
+
+                                                <div id="calendar" class="has-toolbar"></div>
+
+                                            </div>
+
+                                        </div>
+
+                                        <!-- END CALENDAR PORTLET-->
 
                                     </div>
 
                                 </div>
 
-                                <!-- END CALENDAR PORTLET-->
-
                             </div>
+
+                            <!-- END PAGE CONTENT-->
 
                         </div>
 
+                        <!-- END PAGE CONTAINER-->
+
                     </div>
 
-                    <!-- END PAGE CONTENT-->
+                    <!-- END PAGE -->
 
                 </div>
-
-                <!-- END PAGE CONTAINER-->
-
             </div>
 
-            <!-- END PAGE -->
 
         </div>
     </div>
-
-
 </div>
 
 
