@@ -31,7 +31,6 @@
     $(document).ready(function () {
         $("#top_menu").load("../SubTemplate/top_menu_sign_in.html");
         $("#side_menu").load("../SubTemplate/side_menu.html");
-        $("#profile_header").load("../SubTemplate/profileHeader.html");
     });
 
     <!-- checkbox-->
@@ -82,11 +81,33 @@
 <div>
     <div id="top_menu"></div>
     <div class="row col-xs-12 col-md-12">
-        <div class="col-xs-3 col-md-3 border">
-            <div id="side_menu"></div>
+        <div class="col-xs-2 col-md-2 " style="margin-left: 5%">
+            <div style="height: 15%"></div>
+            <div id="side_menu"  style="width: 100%"></div>
         </div>
-        <div class="col-xs-8 col-md-8 ">
-            <div id='profile_header'></div>
+        <div class="col-xs-8 col-md-8" style="margin-left: 5%">
+            <div id="profile_photo" class="container align-items-center justify-content-center">
+                <div class="row">
+                    <div class="col-xs-2 col-md-2 text-left ">
+                        <div style="height: 100%; width: 100%">
+                            <img class="img-rounded rounded-circle mh-100" src="../../static/IMAGES/jackie50x50.jpg" >
+                        </div>
+                    </div>
+                    <div class="col-xs-7 col-md-7 text-left ">
+                        <div class="media h-100">
+                            <div class="align-self-center text-left">
+                                <h3 class="text-left align-middle" align="left"> Welcome, {{ tradie.name }}</h3>
+                                <h5 class="text-left align-middle" align="left">{{ company.name }}</h5>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-xs-2 col-md-2 text-center">
+                        <div></div>
+                    </div>
+                </div>
+
+            </div>
             <div id="search" class="row" style="height: 70px;">
                 <div class="col-xs-2 col-md-2 text-center "></div>
                 <div class="col-xs-8 col-md-8 text-left ">
@@ -95,7 +116,7 @@
                 </div>
             </div>
             <div id="checkBoxList" class="row" style="height: 35px">
-                <div class="col-xs-3 col-md-3 text-left" style="margin-left: 3%;">
+                <div class="col-xs-4 col-md-4 text-left" style="margin-left: 3%;">
                     <label style="width: 30%; height: 30px" class="text-left">
                         <input type="checkbox" name="wz" value="Accepted" class="unchecked">Accepted
                     </label>
@@ -110,7 +131,7 @@
                         <input type="hidden" id="wei" name="wei" style="dispaly:none"/>
                     </div>
                 </div>
-                <div class="row col-xs-2 col-md-2 text-left " style="margin-left: 35%">
+                <div class="row col-xs-2 col-md-2 text-left " style="margin-left: 25%">
                     <div class="col-xs-4 col-md-4">From</div>
                     <div class="col-xs-6 col-md-6">
                         <input data-date-format="dd/mm/yyyy" id="datepicker1" style="width: 100px">
@@ -813,7 +834,7 @@
                     </table>
                 </div>
             </div>
-            <div class="col-xs-2 col-md-2 border"></div>
+            <div class="col-xs-2 col-md-2"></div>
         </div>
     </div>
 </div>
