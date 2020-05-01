@@ -66,6 +66,8 @@ class MyUser(AbstractBaseUser):
         default='Customer'
     )
 
+    user_hp = models.ImageField(upload_to='user_hp', default='default_hp.png')
+
     objects = MyUserManager()
 
     USERNAME_FIELD = 'email'
