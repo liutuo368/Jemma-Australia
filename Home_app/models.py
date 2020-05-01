@@ -40,7 +40,8 @@ class MyUserManager(BaseUserManager):
         """
         user = self.create_user(email,
             password = password,
-            date_of_birth = date_of_birth
+            date_of_birth = date_of_birth,
+            user_type='SuperUser'
         )
         user.is_admin = True
         user.save(using=self._db)
