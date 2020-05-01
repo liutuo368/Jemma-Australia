@@ -80,7 +80,8 @@
                 <!-- Modal body -->
                 <div class="modal-body">
                     <!--form for login-->
-                    <form action="/">
+                    <form action="/login" method="post">
+                         {% csrf_token %}
                         <div class="form-group">
                             <label for="email">Email address:</label>
                             <input type="email" class="form-control" placeholder="Enter email" id="email" name="uname"
