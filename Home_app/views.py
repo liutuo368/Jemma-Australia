@@ -53,7 +53,16 @@ def top_menu_without_sign_in(request):
 
 
 def top_menu_sign_in(request):
+
     return render(request, "SubTemplate/top_menu_sign_in.html")
+
+def footer(request):
+
+    return render(request, "SubTemplate/footer.html")
+
+def side_menu(request):
+
+    return render(request, "SubTemplate/side_menu.html")
 
 def updatehp(request):
     return HttpResponse()

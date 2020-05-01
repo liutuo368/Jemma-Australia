@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Home Page</title>
+
     <link rel="stylesheet" type="text/css" href="../../static/CSS/home.css">
 
     <!-- Latest compiled and minified CSS -->
@@ -30,15 +33,14 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $("#menu").load("top_menu_without_sign_in");
+            $("#footer").load("footer");
         });
     </script>
-
-
-    <title>Home Page</title>
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
 <div id='menu'></div>
-<div class="container">
+
+<div class="container wrapper flex-grow-1">
 
     <div class="row">
         <div class="col-md-6"></div>
@@ -144,10 +146,12 @@
             <p>To be filled</p>
         </div>
     </div>
+</div>
 
-    <script>
+<div class="row-fluid col-xs-12 col-md-12 col-lg-12" id="footer"></div>
+
+<script>
         $('.selectpicker').selectpicker();
     </script>
-</div>
 </body>
 </html>

@@ -8,6 +8,8 @@ urlpatterns = [
     path('login', views.login),
     path('top_menu_without_sign_in', views.top_menu_without_sign_in),
     path('top_menu_sign_in', views.top_menu_sign_in),
+    path('footer', views.footer),
+    path('side_menu', views.side_menu),
     path('tradie', views.tradie_profile),
     path('tradie_profile', views.tradie_profile),
     path('tradie_current_job', views.tradie_current_job),

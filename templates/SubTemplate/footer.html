@@ -4,17 +4,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="icon" href="../../../../favicon.ico">
 
-       <!-- Latest compiled and minified CSS -->
+    <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style type="text/css">
         .fa {
-          font-size: 15px;
+            font-size: 15px;
             width: 15px;
-          text-align: center;
-          text-decoration: none;
-          margin: 5px 2px;
+            text-align: center;
+            text-decoration: none;
+            margin: 5px 2px;
         }
 
         .fa:hover {
@@ -22,24 +22,26 @@
         }
 
         .fa-facebook {
-          background: #3B5998;
-          color: white;
+            background: #3B5998;
+            color: white;
         }
 
         .fa-twitter {
-          background: #55ACEE;
-          color: white;
+            background: #55ACEE;
+            color: white;
         }
 
-        .footer {
-              padding: 0.6rem 0;
-              color: #999;
-              background-color: #c8f693;
+        .page-footer {
+            color: #999;
+            background-color: #c8f693;
         }
 
-        .footer > .container {
-            padding-right: 15px;
-            padding-left: 15px;
+        .apple {
+            max-height: 25px;
+        }
+
+        .google {
+            max-width: 95px;
         }
 
     </style>
@@ -48,33 +50,41 @@
 <body>
 
 <!-- Footer -->
-<footer class="footer">
+<footer class="page-footer p-3">
 
-    <div class="container" style="text-align: center"> Follow us on
-
-        <!-- Add font awesome icons -->
-        <a href="#" class="fa fa-facebook"></a>
-        <a href="#" class="fa fa-twitter"></a>
-         <!-- Grid row-->
-    <hr class="rgba-white-light">
+    <div class="container-fluid text-center">
+        <p>Follow us on
+            <!-- Add font awesome icons -->
+            &nbsp;
+            <a href="#" class="fa fa-facebook"></a>
+            &nbsp;
+            <a href="#" class="fa fa-twitter"></a>
+        </p>
     </div>
+
+    <hr class="rgba-white-light">
 
     <div class="container">
         <div class="row">
-            <div class="col-lg-3">
+            <div class="col-md-3">
                 <p></p>
             </div>
 
-            <div class="col-lg-6">
+            <div class="col-md-6 footer-copyright text-center">
                 <p style="text-align: center">Jemma Australia©2020 Copyright ·
                     <a href="#">Privacy · </a>
                     <a href="#">T&C</a>
                 </p>
             </div>
 
-            <div class="col-lg-3">
-                <p><a style="text-align: right" class="" href="#"><img src="../static/IMAGES/apple.png"></a>
-            <a href="#"><img src="../static/IMAGES/Google_play.png"></a></p>
+            <div class="col-md-3">
+                <p>
+                    <a style="text-align: right" class="" href="#"><img class="apple"
+                                                                        src="../../static/IMAGES/apple-store-badge.png"
+                                                                        alt="apple app store"></a>
+                    <a href="#"><img class="google" src="../../static/IMAGES/google-play-badge.png"
+                                     alt="google play shop"></a>
+                </p>
             </div>
         </div>
     </div>
