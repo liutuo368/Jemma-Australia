@@ -20,13 +20,14 @@
 
     <!-- CSS -->
     <style type="text/css">
-            .nav-pills .nav-link.active {
-                background-color: #c8f693;
-            }
+        .nav-pills .nav-link.active {
+            background-color: #c8f693 !important;
+        }
 
-            .nav-pills .nav-link {
-                text-align: center;
-            }
+        .nav-pills .nav-link {
+            text-align: center;
+            color: #222222;
+        }
     </style>
 
     <title>Dashboard for tradie</title>
@@ -34,49 +35,45 @@
 </head>
 <body>
 
-<div class="container-fluid">
-    <div class="row">
-
-        <!--Side bar -->
-        <nav class="d-none d-md-block sidebar nav nav-pills" style="width: 100%">
-            <div class="sidebar-sticky">
-                <ul class="nav flex-column">
-                    <li class="nav-item-4">
-                        <a class="nav-link active" data-toggle="pill" href="#" style="color: #222222">
-                            <span data-feather="user"></span>
-                            Profile <span class="sr-only">(current)</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="pill" href="#" style="color: #222222">
-                            <span data-feather="file"></span>
-                            Current Job
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="pill" href="#" style="color: #222222">
-                            <span data-feather="activity"></span>
-                            Job History
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="pill" href="#" style="color: #222222">
-                            <span data-feather="database"></span>
-                            Statistics
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-toggle="pill" href="#" style="color: #222222">
-                            <span data-feather="calendar"></span>
-                            Calender
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-
-    </div>
-</div>
+<nav class="d-flex flex-column flex-md-row align-items-center p-0 px-md-4 mb-3 bg-white">
+    <!--Side bar -->
+    <nav class="d-none d-md-block sidebar nav nav-pills" style="width: 100%">
+        <div class="sidebar-sticky">
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link p-2 active" href="tradie_profile">
+                        <i class="fa fa-home"></i>
+                        <strong>Profile</strong>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="tradie_current_job">
+                        <i class="fa fa-list"></i>
+                        <strong>Current Job</strong>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="tradie_history">
+                        <i class="fa fa-folder"></i>
+                        <strong>Job History</strong>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="fa fa-calculator"></i>
+                        <strong>Statistics</strong>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="tradie_calendar">
+                        <i class="fa fa-calendar"></i>
+                        <strong>Calender</strong>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</nav>
 
 <!-- Bootstrap core JavaScript
 ================================================== -->

@@ -14,6 +14,7 @@ urlpatterns = [
     path('tradie_profile', views.tradie_profile),
     path('tradie_current_job', views.tradie_current_job),
     path('tradie_history', views.tradie_history),
+    path('tradie_calendar', views.tradie_calendar),
     path('about_us', views.about_us),
     path('contact', views.contact),
     path('updatehp/', views.updatehp),

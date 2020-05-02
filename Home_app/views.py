@@ -47,6 +47,11 @@ def tradie_current_job(request):
     return render(request, "Tradie/tradie_current_job.html")
 
 
+def tradie_calendar(request):
+
+    return render(request, "Tradie/tradie_calendar.html")
+
+
 def top_menu_without_sign_in(request):
 
     return render(request, "SubTemplate/top_menu_without_sign_in.html")
