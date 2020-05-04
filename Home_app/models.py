@@ -105,8 +105,9 @@ class MyUser(AbstractBaseUser):
 
 class Tradie(models.Model):
     myUser = models.OneToOneField(MyUser, on_delete=models.CASCADE, primary_key=True)
-    firstName = models.CharField(max_length=20)
-    lastName = models.CharField(max_length=20)
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
+    description = models.CharField(max_length=200)
     phone = models.CharField(max_length=10)
     address1 = models.CharField(max_length=100)
     address2 = models.CharField(max_length=100, blank=True, null=True)
@@ -124,8 +125,8 @@ class Tradie(models.Model):
 
 class Customer(models.Model):
     myUser = models.OneToOneField(MyUser, on_delete=models.CASCADE, primary_key=True)
-    firstName = models.CharField(max_length=20)
-    lastName = models.CharField(max_length=20)
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
     phone = models.CharField(max_length=10)
     address1 = models.CharField(max_length=100)
     address2 = models.CharField(max_length=100, blank=True, null=True)

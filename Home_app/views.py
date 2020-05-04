@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.contrib import auth
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, Http404
+from Home_app.models import Tradie
+from Home_app.models import Customer
 
 # Create your views here.
 
@@ -13,13 +15,26 @@ def index(request):
 def login(request):
     username = request.POST["uname"]
     password = request.POST["pswd"]
+    user_type = request.POST["optionsRadiosinline"]
     user = auth.authenticate(username=username, password=password)
 
     if user is not None:
-        auth.login(request, user)
-        return HttpResponseRedirect("tradie")
+        if user_type == "tradie":
+            try:
+                Tradie.objects.get(myUser=user)
+                auth.login(request, user)
+                return HttpResponseRedirect("tradie")
+            except Tradie.DoesNotExist:
+                raise Http404("Tradie does not exist")
+        elif user_type == "customer":
+            try:
+                Customer.objects.get(myUser=user)
+                auth.login(request, user)
+                return HttpResponseRedirect("index")
+            except Customer.DoesNotExist:
+                raise Http404("Customer does not exist")
     else:
-        return HttpResponseRedirect("index")
+        raise Http404("User does not exist")
 
 
 def about_us(request):
@@ -38,8 +53,23 @@ def terms_and_conditions(request):
 
 
 def tradie_profile(request):
-
-    return render(request, "Tradie/tradie_profile.html")
+    print(request)
+    try:
+        tradie = Tradie.objects.get(myUser=request.user)
+    except Tradie.DoesNotExist:
+        raise Http404("Tradie does not exist")
+    context = {
+        "description": tradie.description,
+        "fullname": tradie.first_name + " " + tradie.last_name,
+        "address": tradie.address1 + " " + tradie.suburb + " " + tradie.state + " " + tradie.postcode,
+        "phone": tradie.phone,
+        "company": tradie.company,
+        "ABN": tradie.ABN,
+        "BSB": tradie.BSB,
+        "accountNo": tradie.accountNo,
+        "accountName": tradie.accountName
+    }
+    return render(request, "Tradie/tradie_profile.html", context)
 
 
 def tradie_history(request):
