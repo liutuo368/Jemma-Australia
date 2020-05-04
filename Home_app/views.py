@@ -53,7 +53,6 @@ def terms_and_conditions(request):
 
 
 def tradie_profile(request):
-    print(request)
     try:
         tradie = Tradie.objects.get(myUser=request.user)
     except Tradie.DoesNotExist:
