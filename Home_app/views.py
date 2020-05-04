@@ -32,6 +32,11 @@ def contact(request):
     return render(request, "Home/contact.html")
 
 
+def terms_and_conditions(request):
+
+    return render(request, "Home/terms_and_conditions.html")
+
+
 def tradie_profile(request):
 
     return render(request, "Tradie/tradie_profile.html")
