@@ -29,6 +29,7 @@
     <link rel="stylesheet" href="../../static/CSS/DT_bootstrap.css"/>
 
     <script type="text/javascript">
+        var current_jobs = {{ current_jobs|safe }};
         $(document).ready(function () {
             $("#top_menu").load("top_menu_sign_in");
             $("#side_menu").load("side_menu");

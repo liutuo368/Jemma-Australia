@@ -3,13 +3,17 @@ from django.contrib import auth
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from Home_app.models import Tradie
 from Home_app.models import Customer
+from Home_app.models import Order
+import json
 
 # Create your views here.
 
 
 def index(request):
-
-    return render(request, "Home/home.html")
+    context = {
+        "login_status": json.dumps(request.user.is_authenticated)
+    }
+    return render(request, "Home/home.html", context)
 
 
 def login(request):
@@ -53,32 +57,61 @@ def terms_and_conditions(request):
 
 
 def tradie_profile(request):
-    try:
-        tradie = Tradie.objects.get(myUser=request.user)
-    except Tradie.DoesNotExist:
-        raise Http404("Tradie does not exist")
-    context = {
-        "description": tradie.description,
-        "fullname": tradie.first_name + " " + tradie.last_name,
-        "address": tradie.address1 + " " + tradie.suburb + " " + tradie.state + " " + tradie.postcode,
-        "phone": tradie.phone,
-        "company": tradie.company,
-        "ABN": tradie.ABN,
-        "BSB": tradie.BSB,
-        "accountNo": tradie.accountNo,
-        "accountName": tradie.accountName
-    }
-    return render(request, "Tradie/tradie_profile.html", context)
+    if request.user.is_authenticated:
+        try:
+            tradie = Tradie.objects.get(myUser=request.user)
+        except Tradie.DoesNotExist:
+            raise Http404("Tradie does not exist")
+        context = {
+            "login_status": json.dumps(True),
+            "description": tradie.description,
+            "fullname": tradie.first_name + " " + tradie.last_name,
+            "address": tradie.address1 + " " + tradie.suburb + " " + tradie.state + " " + tradie.postcode,
+            "phone": tradie.phone,
+            "company": tradie.company,
+            "ABN": tradie.ABN,
+            "BSB": tradie.BSB,
+            "accountNo": tradie.accountNo,
+            "accountName": tradie.accountName
+        }
+        return render(request, "Tradie/tradie_profile.html", context)
+    else:
+        raise Http404("Haven't logged in")
+
 
 
 def tradie_history(request):
-
-    return render(request, "Tradie/tradie_history.html")
+    if request.user.is_authenticated:
+        try:
+            tradie = Tradie.objects.get(myUser=request.user)
+        except Tradie.DoesNotExist:
+            raise Http404("Tradie does not exist")
+        job_history = list(Order.objects.filter(tradie=tradie, orderStatus="Completed"))
+        context = {
+            "login_status": json.dumps(True),
+            "job_history": json.dumps(job_history)
+        }
+        return render(request, "Tradie/tradie_history.html", context)
+    else:
+        raise Http404("Haven't logged in")
 
 
 def tradie_current_job(request):
+    if request.user.is_authenticated:
+        try:
+            tradie = Tradie.objects.get(myUser=request.user)
+        except Tradie.DoesNotExist:
+            raise Http404("Tradie does not exist")
+        current_jobs = list(Order.objects.filter(tradie=tradie, orderStatus="pending"))
+        current_jobs.extend(list(Order.objects.filter(tradie=tradie, orderStatus="accepted")))
+        context = {
+            "login_status": json.dumps(True),
+            "current_jobs": json.dumps(current_jobs)
+        }
+        return render(request, "Tradie/tradie_current_job.html", context)
+    else:
+        raise Http404("Haven't logged in")
 
-    return render(request, "Tradie/tradie_current_job.html")
 
 
 def tradie_calendar(request):
