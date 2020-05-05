@@ -42,18 +42,24 @@ def login(request):
 
 
 def about_us(request):
-
-    return render(request, "Home/about_us.html")
+    context = {
+        "login_status": json.dumps(request.user.is_authenticated)
+    }
+    return render(request, "Home/about_us.html", context)
 
 
 def contact(request):
-
-    return render(request, "Home/contact.html")
+    context = {
+        "login_status": json.dumps(request.user.is_authenticated)
+    }
+    return render(request, "Home/contact.html", context)
 
 
 def terms_and_conditions(request):
-
-    return render(request, "Home/terms_and_conditions.html")
+    context = {
+        "login_status": json.dumps(request.user.is_authenticated)
+    }
+    return render(request, "Home/terms_and_conditions.html", context)
 
 
 def tradie_profile(request):

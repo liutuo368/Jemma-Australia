@@ -32,7 +32,11 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
-            $("#top_menu").load("top_menu_without_sign_in");
+            if({{ login_status|safe }}) {
+                $("#menu").load("top_menu_sign_in");
+            } else {
+                $("#menu").load("top_menu_without_sign_in");
+            }
             $("#footer").load("footer");
         });
     </script>
@@ -40,7 +44,7 @@
 
 <body class="d-flex flex-column min-vh-100">
 
-<div id="top_menu"></div>
+<div id="menu"></div>
 
 <div class="container flex-grow-1 text-left row-fluid">
 
