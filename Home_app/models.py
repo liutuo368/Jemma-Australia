@@ -10,6 +10,12 @@ class UserTypeChoice(Enum):
     Tradie = "Tradie"
     Customer = "Customer"
 
+class OrderStatusTypeChoice(Enum):
+    Accepted = "Accepted"
+    Pending = "Pending"
+    Rejected ="Rejected"
+    Completed ="Completed"
+
 
 ### BEGIN DEFINE MYUSER ###
 
@@ -140,7 +146,11 @@ class Customer(models.Model):
 
 
 class Order(models.Model):
-    orderStatus = models.CharField(max_length=15)
+    orderStatus = models.CharField(
+        null=True,
+        max_length=15,
+        choices=[(_type.name, _type.value) for _type in OrderStatusTypeChoice],
+        default='Pending')
     category = models.CharField(max_length=20)
     tradie = models.ForeignKey("Tradie", on_delete=models.CASCADE)
     customer = models.ForeignKey("Customer", on_delete=models.CASCADE)

@@ -93,6 +93,7 @@ def tradie_history(request):
         except Tradie.DoesNotExist:
             raise Http404("Tradie does not exist")
         job_history = list(Order.objects.filter(tradie=tradie, orderStatus="Completed"))
+        job_history.extend(list(Order.objects.filter(tradie=tradie, orderStatus="Rejected")))
         context = {
             "login_status": json.dumps(True),
             "job_history": json.dumps(job_history)
@@ -108,8 +109,8 @@ def tradie_current_job(request):
             tradie = Tradie.objects.get(myUser=request.user)
         except Tradie.DoesNotExist:
             raise Http404("Tradie does not exist")
-        current_jobs = list(Order.objects.filter(tradie=tradie, orderStatus="pending"))
-        current_jobs.extend(list(Order.objects.filter(tradie=tradie, orderStatus="accepted")))
+        current_jobs = list(Order.objects.filter(tradie=tradie, orderStatus="Pending"))
+        current_jobs.extend(list(Order.objects.filter(tradie=tradie, orderStatus="Accepted")))
         context = {
             "login_status": json.dumps(True),
             "current_jobs": json.dumps(current_jobs)
