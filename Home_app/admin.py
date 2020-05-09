@@ -51,7 +51,7 @@ class UserChangeForm(forms.ModelForm):
 
     class Meta:
         model = MyUser
-        fields = ('email', 'password', 'date_of_birth', 'is_active', 'is_admin')
+        fields = ('email', 'password', 'date_of_birth', 'is_active', 'is_admin',)
 
     def clean_password(self):
         # Regardless of what the user provides, return the initial value.
@@ -68,19 +68,20 @@ class MyUserAdmin(UserAdmin):
     # The fields to be used in displaying the User model.
     # These override the definitions on the base UserAdmin
     # that reference specific fields on auth.User.
-    list_display = ('email', 'date_of_birth', 'is_admin', 'user_type')
+    list_display = ('email', 'date_of_birth', 'is_admin', 'user_type', 'user_hp')
     list_filter = ('is_admin',)
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
         ('Personal info', {'fields': ('date_of_birth',)}),
         ('Permissions', {'fields': ('is_admin',)}),
+        ('Head portrait', {'fields': ('user_hp',)}),
     )
     # add_fieldsets is not a standard ModelAdmin attribute. UserAdmin
     # overrides get_fieldsets to use this attribute when creating a user.
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('email', 'date_of_birth', 'password1', 'password2', 'user_type')}
+            'fields': ('email', 'date_of_birth', 'password1', 'password2', 'user_type','user_hp')}
         ),
     )
     search_fields = ('email',)
