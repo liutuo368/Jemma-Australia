@@ -1,0 +1,26 @@
+.navbar-expand-sm .navbar-nav li a {
+    font-weight: bold;
+}
+
+.scaled-img {
+    max-width: 100%;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    padding: 48px 0 0;
+}
+
+.sidebar-sticky {
+    position: sticky;
+}
+
+.checkboxList {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

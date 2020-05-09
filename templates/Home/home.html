@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Home Page</title>
+
+    <link rel="stylesheet" type="text/css" href="../../static/CSS/home.css">
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.16/dist/css/bootstrap-select.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.16/dist/js/bootstrap-select.min.js"></script>
+
+    <!-- (Optional) Latest compiled and minified JavaScript translation files -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.16/dist/js/i18n/defaults-*.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            if({{ login_status|safe }}) {
+                $("#menu").load("top_menu_sign_in");
+            } else {
+                $("#menu").load("top_menu_without_sign_in");
+            }
+            $("#footer").load("footer");
+        });
+    </script>
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+
+<div id='menu'></div>
+
+<div class="container wrapper flex-grow-1">
+
+    <div class="row">
+        <div class="col-md"></div>
+        <div class="col-md">
+            <img class="scaled-img" src="../../static/IMAGES/unsplash.jpg" alt="unsplash image">
+        </div>
+    </div>
+
+    <div class="row mt-3 text-center mb-5 justify-content-center">
+        <a><i class="fa fa-search p-1"></i></a>
+
+        <div class="col-md-5">
+            <select id="tradie-selection" class="selectpicker" data-live-search="true" data-width="100%">
+                <option value="" disabled selected>Job keywords</option>
+                <optgroup label="A">
+                    <option value="1">Aircon Mechanic</option>
+                </optgroup>
+                <optgroup label="B">
+                    <option value="2">Brick Layer</option>
+                </optgroup>
+                <optgroup label="C">
+                    <option value="3">Carpenter</option>
+                    <option value="4">Carpet Layer</option>
+                </optgroup>
+                <optgroup label="D">
+                    <option>Decking</option>
+                </optgroup>
+                <optgroup label="E">
+                    <option>Electrician</option>
+                </optgroup>
+                <optgroup label="F">
+                    <option>Fencing</option>
+                </optgroup>
+                <optgroup label="G">
+                    <option>Gas Plumber</option>
+                    <option>Glazier</option>
+                </optgroup>
+                <optgroup label="H">
+                    <option>Hair and Makeup</option>
+                    <option>Home Renovation</option>
+                </optgroup>
+                <optgroup label="I">
+                    <option>Insulation</option>
+                </optgroup>
+            </select>
+        </div>
+
+        <a><i class="fa fa-location-arrow p-1" aria-hidden="true"></i></a>
+        <div class="col-md-5">
+            <select id="tradie-selection" class="selectpicker" data-live-search="true" data-width="100%">
+                <option value="" disabled selected>Locations</option>
+                <optgroup label="A">
+                    <option>Acton</option>
+                    <option>Aranda</option>
+                </optgroup>
+                <optgroup label="B">
+                    <option>Belconnen</option>
+                    <option>Bonner</option>
+                    <option>Braddon</option>
+                </optgroup>
+                <optgroup label="C">
+                    <option value="3">Calwell</option>
+                    <option value="3">Canberra</option>
+                    <option value="4">Charnwood</option>
+                    <option value="4">Crace</option>
+                </optgroup>
+                <optgroup label="D">
+                    <option>Dickson</option>
+                    <option>Deakin</option>
+                    <option>Downer</option>
+                </optgroup>
+                <optgroup label="E">
+                    <option>Evatt</option>
+                </optgroup>
+                <optgroup label="F">
+                    <option>Florey</option>
+                    <option>Forde</option>
+                    <option>Forrest</option>
+                    <option>Franklin</option>
+                    <option>Fyshwick</option>
+                </optgroup>
+                <optgroup label="G">
+                    <option>Garran</option>
+                    <option>Greenway</option>
+                    <option>Griffith</option>
+                    <option>Gungahlin</option>
+                </optgroup>
+                <optgroup label="H">
+                    <option>Harrison</option>
+                    <option>Hawker</option>
+                    <option>Holt</option>
+                </optgroup>
+                <optgroup label="I">
+                    <option>Isabella Plains</option>
+                </optgroup>
+                <optgroup label="J">
+                    <option>Jacka</option>
+                </optgroup>
+                <optgroup label="K">
+                    <option>Kaleen</option>
+                    <option>Kambah</option>
+                    <option>Kingsrib</option>
+                </optgroup>
+                <optgroup label="L">
+                    <option>Latham</option>
+                    <option>Lyneham</option>
+                </optgroup>
+            </select>
+        </div>
+        <div class="col-md-1">
+            <button type="button" class="btn btn-dark btn-round">
+                Search
+            </button>
+        </div>
+    </div>
+
+    <div id="whyJemma" name="whyJemma" class="mt-3 mb-5 strong text-center">
+        <div class="mb-3">
+            <h2>Why Jemma</h2>
+        </div>
+        <div>
+            <p>Jemma Australia is an all in one solution that provides services to facilitate a smooth relationship
+                between tradies and customers.</p>
+        </div>
+    </div>
+
+    <div id="howItWorks" name="howItWorks" class="mt-3 text-left container">
+        <div class="text-center mb-3">
+            <h2>How it works?</h2>
+        </div>
+        <div class="btn-toolbar justify-content-center mb-3">
+            <button type="button" class="btn btn-success">Tradie</button>
+            <button type="button" class="btn btn-secondary">Customer</button>
+        </div>
+        <div class="mb-3">
+            <h3 class="text-center mb-3">What we do for tradies...</h3>
+
+            <br>
+
+            <p><strong>Publically listed profile to showcase your qualifications and experience.</strong></p>
+            <p> You're great on the tools, we know that. Let us help you with the online stuff, which is what we're
+                great at.
+                <br><br>
+                More people every day want to easily find and order services online. With your brand and
+                experience freely available to the public we'll give you more exposure for your business through a
+                professionally designed, easy to read profile, ensuring customers know how great you are,
+                without having to contact you and interrupt the job you're on.
+            </p>
+
+            <br><br>
+
+            <p><strong>Ratings and reviews</strong></p>
+            <p> Customers are relying on ratings and reviews increasingly every day. Whether it be for food,
+                entertainment, electronics, mostly everything. They are quickly becoming a deciding factor on
+                who and what people choose to use and purchase.
+                <br><br>
+                This is your opportunity to let people know how good you are and we want to give you that
+                opportunity by letting the customers tell everyone else why they should hire you.
+            </p>
+
+            <br><br>
+
+            <p><strong>Public calendar to enable customers to see when you're available.</strong></p>
+            <p> How many phone calls do you take each day asking you when you're available?
+                How many times do you answer the same questions each day and have to check your calendar?
+                <br><br>
+                Your profile will feature your calendar which will show customers when you're available.
+                To ensure confidentiality only the times and dates will be visible to the public, however as a
+                member of Jemma this is your tool to see the details of upcoming and previous work.
+                Only you can see those details in case you need to check what you're doing later.
+                You can also block out dates and times for those times when you need a holiday, or something.
+                <br><br>
+                Just let us know when you're available and we'll do the rest.</p>
+
+            <br><br>
+
+        </div>
+    </div>
+</div>
+
+<div id="footer"></div>
+
+<script>
+    $('.selectpicker').selectpicker();
+</script>
+</body>
+</html>
