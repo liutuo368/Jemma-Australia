@@ -78,8 +78,22 @@
         </ul>
     </nav>
     <nav class="my-2 my-md-0 mr-md-3 navbar navbar-expand-sm bg-white navbar-light justify-content-center">
-        <img class="img-rounded rounded-circle" src="{{ user.user_hp.url }}" alt="profile_picture"
-             style="width:50px;">
+        <ul class="nav">
+            <li class="nav-item">
+                <img class="img-rounded rounded-circle" src="{{ user.user_hp.url }}" alt="profile_picture"
+                     style="width:50px;">
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                   aria-expanded="false"></a>
+                <div class="dropdown-menu dropdown-menu-right">
+                    <a class="dropdown-item" href="#">
+                        <i class="fa fa-sign-out"></i>
+                        Sign out
+                    </a>
+                </div>
+            </li>
+        </ul>
     </nav>
 </nav>
 <!-- Bootstrap core JavaScript
