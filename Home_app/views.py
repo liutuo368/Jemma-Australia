@@ -4,6 +4,7 @@ from django.http import HttpResponse, HttpResponseRedirect, Http404
 from Home_app.models import Tradie
 from Home_app.models import Customer
 from Home_app.models import Order
+from django.db.models import Q
 import json
 
 def index(request):
@@ -88,7 +89,7 @@ def tradie_history(request):
             tradie = Tradie.objects.get(myUser=request.user)
         except Tradie.DoesNotExist:
             raise Http404("Tradie does not exist")
-        job_history = Order.objects.filter(tradie=tradie, orderStatus="Rejected" or "Completed")
+        job_history = Order.objects.filter(Q(tradie=tradie), Q(orderStatus="Rejected") | Q(orderStatus="Completed"))
         context = {
             "login_status": json.dumps(True),
             "job_history": job_history
@@ -104,7 +105,7 @@ def tradie_current_job(request):
             tradie = Tradie.objects.get(myUser=request.user)
         except Tradie.DoesNotExist:
             raise Http404("Tradie does not exist")
-        current_jobs = Order.objects.filter(tradie=tradie, orderStatus="Pending" or "Accepted")
+        current_jobs = Order.objects.filter(Q(tradie=tradie), Q(orderStatus="Pending") | Q(orderStatus="Accepted"))
         context = {
             "login_status": json.dumps(True),
             "current_jobs": current_jobs
