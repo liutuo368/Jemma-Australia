@@ -6,9 +6,6 @@ from Home_app.models import Customer
 from Home_app.models import Order
 import json
 
-# Create your views here.
-
-
 def index(request):
     context = {
         "login_status": json.dumps(request.user.is_authenticated)
@@ -85,18 +82,16 @@ def tradie_profile(request):
         raise Http404("Haven't logged in")
 
 
-
 def tradie_history(request):
     if request.user.is_authenticated:
         try:
             tradie = Tradie.objects.get(myUser=request.user)
         except Tradie.DoesNotExist:
             raise Http404("Tradie does not exist")
-        job_history = list(Order.objects.filter(tradie=tradie, orderStatus="Completed"))
-        job_history.extend(list(Order.objects.filter(tradie=tradie, orderStatus="Rejected")))
+        job_history = Order.objects.filter(tradie=tradie, orderStatus="Rejected" and "Completed")
         context = {
             "login_status": json.dumps(True),
-            "job_history": json.dumps(job_history)
+            "job_history": job_history
         }
         return render(request, "Tradie/tradie_history.html", context)
     else:
@@ -109,16 +104,14 @@ def tradie_current_job(request):
             tradie = Tradie.objects.get(myUser=request.user)
         except Tradie.DoesNotExist:
             raise Http404("Tradie does not exist")
-        current_jobs = list(Order.objects.filter(tradie=tradie, orderStatus="Pending"))
-        current_jobs.extend(list(Order.objects.filter(tradie=tradie, orderStatus="Accepted")))
+        current_jobs = Order.objects.filter(tradie=tradie, orderStatus="Pending" and "Accepted")
         context = {
             "login_status": json.dumps(True),
-            "current_jobs": json.dumps(current_jobs)
+            "current_jobs": current_jobs
         }
         return render(request, "Tradie/tradie_current_job.html", context)
     else:
         raise Http404("Haven't logged in")
-
 
 
 def tradie_calendar(request):
@@ -135,13 +128,16 @@ def top_menu_sign_in(request):
 
     return render(request, "SubTemplate/top_menu_sign_in.html")
 
+
 def footer(request):
 
     return render(request, "SubTemplate/footer.html")
 
+
 def side_menu(request):
 
     return render(request, "SubTemplate/side_menu.html")
+
 
 def updatehp(request):
     return HttpResponse()

@@ -30,10 +30,6 @@
     <link rel="stylesheet" href="../../static/CSS/DT_bootstrap.css"/>
 
     <script type="text/javascript">
-
-        $(document).ready(function () {
-            var current_jobs ={{ job_history|safe }}
-        });
         $(document).ready(function () {
             $("#top_menu").load("top_menu_sign_in");
             $("#side_menu").load("side_menu");
@@ -137,11 +133,11 @@
                     </thead>
 
                     <tbody>
-                     {% for job  in current_jobs %}
+                     {% for job in job_history %}
                     <tr>
                         <td class="hidden-480">{{ job.category }}</td>
-                         <td class="hidden-480">{{ job.myUser }}</td>
-                         <td class="hidden-480">{{ job.address1 }}</td>
+                         <td class="hidden-480">{{ job.category }}</td>
+                         <td class="hidden-480">{{ job.customer.last_name }}</td>
                          <td class="hidden-480">{{ job.orderDate }}</td>
                          <td class="hidden-480">{{ job.orderStatus }}</td>
                     </tr>
