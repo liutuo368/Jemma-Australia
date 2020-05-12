@@ -98,28 +98,23 @@
             </div>
 
             <!-- Check list for current jobs -->
-            <div id="checkBoxList" class="row checkboxList align-items-center justify-content-center">
+            <div id="checkBoxList" class="row checkboxList">
 
-                <div class="col-md-8 text-left">
+                <div class="col-md-5 text-left">
                     <label class="mr-3">
                         <input type="checkbox" name="wz" value="Accepted" class="unchecked">&nbsp;Accepted
                     </label>
                     <label class="mr-3">
                         <input type="checkbox" name="wz" value="Pending" class="unchecked">&nbsp;Pending
                     </label>
-                    <label class="mr-3">
-                        <input type="checkbox" name="wz" value="Rejected" class="unchecked">&nbsp;Rejected
-                    </label>
-                    <label class="mr-3">
-                        <input type="checkbox" name="wz" value="Completed" class="unchecked">&nbsp;Completed
-                    </label>
+
                     <div class="left ml10" style="display: none">
                         <input type="submit" id="submitBtn" class="btn btn-default" value="Search"/>
                         <input type="hidden" id="wei" name="wei" style="dispaly:none"/>
                     </div>
                 </div>
 
-                <div class="col-md-2 text-left">
+                <div class="col-md-3 text-left">
                     <label>From
                         <input data-date-format="dd/mm/yyyy" id="datepicker1" style="width: 100px">
                     </label>
