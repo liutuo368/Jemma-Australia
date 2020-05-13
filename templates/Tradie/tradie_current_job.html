@@ -55,6 +55,11 @@
             });
         });
     </script>
+    <style>
+        .row-fluid .span6 {
+            text-align: left;
+        }
+    </style>
 </head>
 
 <body>
@@ -76,7 +81,7 @@
             <div id="profile_header" class="container align-items-center justify-content-center mb-3">
                 <div class="row">
                     <div class="col-md-2 text-center">
-                        <img class="img-rounded rounded-circle"
+                        <img class="img-rounded rounded-circle "
                              src="{{ user.user_hp.url }}"
                              alt="user_profile_picture"
                              style="height: 100px;">
@@ -89,46 +94,7 @@
                 </div>
             </div>
 
-            <!-- self-build page search bar -->
-            <div id="search_all" class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Search.." style="height: 39px;">
-                <div>
-                    <button class="btn btn-success" type="submit"><i class="fa fa-search"></i></button>
-                </div>
-            </div>
-
-            <!-- Check list for current jobs -->
-            <div id="checkBoxList" class="row checkboxList">
-
-                <div class="col-md-5 text-left">
-                    <label class="mr-3">
-                        <input type="checkbox" name="wz" value="Accepted" class="unchecked">&nbsp;Accepted
-                    </label>
-                    <label class="mr-3">
-                        <input type="checkbox" name="wz" value="Pending" class="unchecked">&nbsp;Pending
-                    </label>
-
-                    <div class="left ml10" style="display: none">
-                        <input type="submit" id="submitBtn" class="btn btn-default" value="Search"/>
-                        <input type="hidden" id="wei" name="wei" style="dispaly:none"/>
-                    </div>
-                </div>
-
-                <div class="col-md-3 text-left">
-                    <label>From
-                        <input data-date-format="dd/mm/yyyy" id="datepicker1" style="width: 100px">
-                    </label>
-                </div>
-
-                <div class="col-md-2 text-left">
-                    <label>To
-                        <input data-date-format="dd/mm/yyyy" id="datepicker2" style="width: 100px">
-                    </label>
-                </div>
-            </div>
-
             <br>
-
             <!-- Table for current jobs -->
             <div id="jobList" class="row col-xs-12 col-md-12 text-center">
                 <table class="table table-striped table-bordered table-hover table-full-width" id="sample_2">
@@ -143,14 +109,14 @@
                     </thead>
 
                     <tbody>
-                     {% for job in current_jobs %}
-                    <tr>
-                        <td class="hidden-480">{{ job.id }}</td>
-                         <td class="hidden-480">{{ job.category }}</td>
-                         <td class="hidden-480">{{ job.customer.last_name }}</td>
-                         <td class="hidden-480">{{ job.orderDate }}</td>
-                         <td class="hidden-480">{{ job.orderStatus }}</td>
-                    </tr>
+                    {% for job in current_jobs %}
+                        <tr>
+                            <td class="hidden-480">{{ job.id }}</td>
+                            <td class="hidden-480">{{ job.category }}</td>
+                            <td class="hidden-480">{{ job.customer.last_name }}</td>
+                            <td class="hidden-480">{{ job.orderDate }}</td>
+                            <td class="hidden-480">{{ job.orderStatus }}</td>
+                        </tr>
                     {% endfor %}
                     </tbody>
                 </table>
