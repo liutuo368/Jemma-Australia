@@ -32,7 +32,7 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
-            if({{ login_status|safe }}) {
+            if ({{ login_status|safe }}) {
                 $("#menu").load("top_menu_sign_in");
             } else {
                 $("#menu").load("top_menu_without_sign_in");
@@ -40,6 +40,51 @@
             $("#footer").load("footer");
         });
     </script>
+    <style>
+        .nav-pills .nav-link:not(.active) {
+            background-color: rgba(193, 243, 143, 0.5);
+            color: grey !important;
+            font-weight: bold;
+            width: 150px;
+            text-align: center;
+        }
+
+        .nav-pills .nav-link:hover {
+            background-color: rgba(193, 243, 143, 0.8);
+            color: dimgrey !important;
+            font-weight: bold;
+            width: 150px;
+            text-align: center;
+
+        }
+
+        .nav-pills .nav-link.active {
+            background-color: rgb(193, 243, 143) !important;
+            color: rgba(000, 0, 0, 0.9) !important;
+            font-weight: bold;
+            width: 150px;
+            text-align: center;
+
+        }
+
+        .carousel {
+            margin: 1.5rem;
+        }
+
+        .carousel-inner {
+            height: auto;
+        }
+
+        .carousel-control-prev-icon {
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E") !important;
+            margin-left: -200px;
+        }
+
+        .carousel-control-next-icon {
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
+            margin-right: -200px;
+        }
+    </style>
 </head>
 
 <body class="d-flex flex-column min-vh-100">
@@ -165,7 +210,7 @@
 
     <div id="whyJemma" name="whyJemma" class="mt-3 mb-5 strong text-center">
         <div class="mb-3">
-            <h2>Why Jemma</h2>
+            <h1 class="display-4">Why Jemma</h1>
         </div>
         <div>
             <p>Jemma Australia is an all in one solution that provides services to facilitate a smooth relationship
@@ -173,56 +218,365 @@
         </div>
     </div>
 
-    <div id="howItWorks" name="howItWorks" class="mt-3 text-left container">
-        <div class="text-center mb-3">
-            <h2>How it works?</h2>
+    <div id="howItWorks" name="howItWorks" class="mt-5 mb-5 text-left">
+        <div class="text-center mb-5">
+            <h1 class="display-4">How it works?</h1>
         </div>
-        <div class="btn-toolbar justify-content-center mb-3">
-            <button type="button" class="btn btn-success">Tradie</button>
-            <button type="button" class="btn btn-secondary">Customer</button>
+
+        <div class="nav nav-pills justify-content-center" role="tablist">
+            <a class="nav-link active" id="Tradie-tab" data-toggle="tab" href="#tradie-hiw" role="tab"
+               aria-controls="Tradie"
+               aria-selected="true">
+                Tradie
+            </a>
+            <a class="nav-link" id="Customer-tab" data-toggle="tab" href="#customer-hiw" role="tab"
+               aria-controls="Customer"
+               aria-selected="false">
+                Customer
+            </a>
         </div>
-        <div class="mb-3">
-            <h3 class="text-center mb-3">What we do for tradies...</h3>
 
-            <br>
+        <div>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade single-member active show"
+                     id="tradie-hiw"
+                     role="tabpanel"
+                     aria-labelledby="Tradie-tab">
 
-            <p><strong>Publically listed profile to showcase your qualifications and experience.</strong></p>
-            <p> You're great on the tools, we know that. Let us help you with the online stuff, which is what we're
-                great at.
-                <br><br>
-                More people every day want to easily find and order services online. With your brand and
-                experience freely available to the public we'll give you more exposure for your business through a
-                professionally designed, easy to read profile, ensuring customers know how great you are,
-                without having to contact you and interrupt the job you're on.
-            </p>
+                    <div id="myCarousel" class="carousel slide" data-ride="carousel">
 
-            <br><br>
+                        <!-- The slide show -->
+                        <div class="carousel-inner container">
 
-            <p><strong>Ratings and reviews</strong></p>
-            <p> Customers are relying on ratings and reviews increasingly every day. Whether it be for food,
-                entertainment, electronics, mostly everything. They are quickly becoming a deciding factor on
-                who and what people choose to use and purchase.
-                <br><br>
-                This is your opportunity to let people know how good you are and we want to give you that
-                opportunity by letting the customers tell everyone else why they should hire you.
-            </p>
+                            <div class="carousel-item active">
+                                <div class="row mt-5 text-center">
+                                    <div class="col-md-4">
+                                        <img class="mb-5" src="../../static/IMAGES/hiw-list.png"
+                                             alt="checklist" style="height: 200px;">
+                                        <p><strong>Publicly listed profile to showcase your qualifications and
+                                            experience.</strong></p>
+                                        <p class="text-left"> You're great on the tools, we know that. Let us help you
+                                            with the online
+                                            stuff,
+                                            which is what we're
+                                            great at.
+                                            <br><br>
+                                            More people every day want to easily find and order services online. With
+                                            your
+                                            brand
+                                            and
+                                            experience freely available to the public we'll give you more exposure for
+                                            your
+                                            business through a
+                                            professionally designed, easy to read profile, ensuring customers know how
+                                            great
+                                            you
+                                            are,
+                                            without having to contact you and interrupt the job you're on.
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <img class="mb-5" src="../../static/IMAGES/hiw-rating.png"
+                                             alt="rating" style="height: 200px;">
+                                        <p><strong>Ratings and reviews</strong></p>
+                                        <p class="text-left"> Customers are relying on ratings and reviews increasingly
+                                            every day. Whether
+                                            it
+                                            be
+                                            for
+                                            food,
+                                            entertainment, electronics, mostly everything. They are quickly becoming a
+                                            deciding
+                                            factor on
+                                            who and what people choose to use and purchase.
+                                            <br><br>
+                                            This is your opportunity to let people know how good you are and we want to
+                                            give
+                                            you
+                                            that
+                                            opportunity by letting the customers tell everyone else why they should hire
+                                            you.
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <img class="mb-5" src="../../static/IMAGES/hiw-calendar.png"
+                                             alt="calendar" style="height: 200px;">
+                                        <p><strong>Public calendar to enable customers to see when you're
+                                            available.</strong>
+                                        </p>
+                                        <p class="text-left"> How many phone calls do you take each day asking you when
+                                            you're available?
+                                            How many times do you answer the same questions each day and have to check
+                                            your
+                                            calendar?
+                                            <br><br>
+                                            Your profile will feature your calendar which will show customers when
+                                            you're
+                                            available.
+                                            To ensure confidentiality only the times and dates will be visible to the
+                                            public,
+                                            however as a
+                                            member of Jemma this is your tool to see the details of upcoming and
+                                            previous
+                                            work.
+                                            Only you can see those details in case you need to check what you're doing
+                                            later.
+                                            You can also block out dates and times for those times when you need a
+                                            holiday,
+                                            or
+                                            something.
+                                            <br><br>
+                                            Just let us know when you're available and we'll do the rest.</p>
+                                    </div>
+                                </div>
+                            </div>
 
-            <br><br>
+                            <div class="carousel-item">
+                                <div class="row mt-5 text-center">
+                                    <div class="col-md-4">
+                                        <img class="mb-5" src="../../static/IMAGES/hiw-picture.png"
+                                             alt="calendar" style="height: 200px;">
+                                        <p><strong>Pictures of your work for you to showcase your skills.</strong></p>
+                                        <p class="text-left"> If your trade involves custom designs and fabrication then
+                                            you'll have the
+                                            opportunity
+                                            to upload pictures of your previous completions. Whether it be a fence,
+                                            landscaping
+                                            or
+                                            any job
+                                            you'd like to showcase, Jemma will give you the freedom to not only show off
+                                            your
+                                            work
+                                            but also give
+                                            the customer some ideas as to what they want you to do for them.
+                                            <br><br>
+                                            A customer needs a fence but doesn't know what they want? Just wait until
+                                            they
+                                            see
+                                            your
+                                            portfolio! </p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <img class="mb-5" src="../../static/IMAGES/hiw-payment.png"
+                                             alt="calendar" style="height: 200px;">
+                                        <p><strong>Financial security through escrow payments.</strong></p>
+                                        <p class="text-left">
+                                            Most people pay what they owe however we're also aware that some don't.
+                                            <br><br>
+                                            Even though this is only a small percentage of commissioned work, it's still
+                                            a
+                                            lot
+                                            of
+                                            time and money spent chasing up invoices. You don't need that hassle so
+                                            Jemma
+                                            provides
+                                            an escrow
+                                            service where the agreed upon amount for commissioned work is held upfront
+                                            in a
+                                            trust
+                                            account until the works are completed.
+                                            <br><br>
+                                            Put simply, the customer books you in, you both agree on a set amount and
+                                            estimated
+                                            timeframe
+                                            for the job and the customer deposits that amount in the trust account. This
+                                            money
+                                            is
+                                            held while you complete the job, giving you the confidence that as long as
+                                            the
+                                            job
+                                            is
+                                            completed
+                                            satisfactorily, you'll get paid.
+                                            <br><br>
+                                            Once both parties are happy then the customer signs off through the
+                                            website/app
+                                            and
+                                            the
+                                            amount owed is released to you and an invoice is issued to both parties.
+                                            <br><br>
+                                            No more chasing up invoices, you've got more important things to do.</p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <img class="mb-5" src="../../static/IMAGES/hiw-instant-pay.png"
+                                             alt="calendar" style="height: 200px;">
+                                        <p><strong>Instant payments upon completion.</strong></p>
+                                        <p class="text-left"> Payment cycles are a pain, we get it. You did the job so
+                                            why should you have
+                                            to
+                                            wait
+                                            a
+                                            few weeks to be paid for it? It's a hassle to keep track of and it makes
+                                            your
+                                            bookkeeping
+                                            more stressful than it should be.
+                                            <br><br>
+                                            With Jemma's escrow and instant sign-off features you'll get paid now
+                                            because
+                                            that's
+                                            when you deserve to get paid.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="row mt-5 text-center">
+                                    <div class="col-md-4">
+                                        <img class="mb-5"
+                                             src="../../static/IMAGES/hiw-off-phone.png"
+                                             alt="calendar"
+                                             style="height: 200px;">
+                                        <p><strong>No more interruptions.</strong></p>
+                                        <p class="text-left"> Say goodbye to those random phone calls every day while
+                                            trying to finish
+                                            work
+                                            for
+                                            someone else. When the public has access to your profile, qualifications and
+                                            skillset,
+                                            you won't need
+                                            to answer those questions.
+                                            <br><br>
+                                            With access to your calendar customers can see when you're available and
+                                            book
+                                            you
+                                            within
+                                            minutes. No more phone calls interrupting you while you work, meaning jobs
+                                            are
+                                            completed
+                                            earlier and you're not answering the same questions over and over and over
+                                            and...
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <img class="mb-5"
+                                             src="../../static/IMAGES/hiw-balance.png"
+                                             alt="calendar"
+                                             style="height: 200px;">
+                                        <p><strong>Work/life balance.</strong></p>
+                                        <p class="text-left">
+                                            Our research indicates that tradies spend too much time filling out
+                                            paperwork,
+                                            invoicing
+                                            and other admin related duties.
+                                            <br><br>
+                                            If you're wondering "why has this not been automated yet?", it has. You're
+                                            looking
+                                            at
+                                            it.
+                                            <br><br>
+                                            Jemma was specifically designed to take the burden from you. Admin, taxes
+                                            and
+                                            other
+                                            paperwork
+                                            are a hassle that you don't need, but they're necessary for your business to
+                                            survive. So
+                                            let us do
+                                            the hard work for you because that's what we do.
+                                            <br><br>
+                                            You're great with the tools and we're great with the computery stuff.
+                                            <br><br>
+                                            Meanwhile, take that extra time you'll have to spend time with your family,
+                                            or
+                                            playing
+                                            sport, or taking on extra work, either way it's more time for you.
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <img class="mb-5"
+                                             src="../../static/IMAGES/hiw-question.png"
+                                             alt="calendar"
+                                             style="height: 200px;">
+                                        <p><strong>What's in it for Jemma though?</strong></p>
+                                        <p class="text-left"> What we offer is a system that will alleviate a lot of
+                                            issues that the
+                                            current
+                                            business
+                                            model suffers from. Our research indicates that everyone from both sides has
+                                            some
+                                            complaints about the
+                                            current relationship between customers and tradies, and I'm sure you have a
+                                            few
+                                            tales to
+                                            tell too.
+                                            <br><br>
+                                            However to put it bluntly, you're not a charity and neither are we. To
+                                            continue
+                                            to
+                                            provide a service that we feel benefits everyone we still need to make a
+                                            profit.
+                                            <br><br>
+                                            With that being said we aren't in this business to take advantage of anyone,
+                                            our
+                                            business model is specifically designed to make life easier and fairer for
+                                            everyone
+                                            involved and we feel
+                                            that our pricing model reflects value and compromise on all sides.
+                                            <br><br>
+                                            We don't charge monthly or annual fees, meaning that you only pay for what
+                                            you
+                                            use.
+                                            That's right,
+                                            you don't pay unless you get booked for a job which means that your profile,
+                                            with
+                                            qualifications,
+                                            portfolio, ratings & reviews are still there for the world to see, without
+                                            paying
+                                            anything.
+                                            <br><br>
+                                            To start with, the base level package offers:
+                                            - Automated scheduling
+                                            - Online profile
+                                            - Ratings & reviews
+                                            - Escrow & instant payment service
+                                            - Portfolio pictures on your profile
+                                            Cost - 5% of each job booked through Jemma
+                                            <br><br>
+                                            If you choose the Admin package you get all the features above plus:
+                                            - License renewal reminders
+                                            - Uploading of materials receipts for easier cost analysis
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
-            <p><strong>Public calendar to enable customers to see when you're available.</strong></p>
-            <p> How many phone calls do you take each day asking you when you're available?
-                How many times do you answer the same questions each day and have to check your calendar?
-                <br><br>
-                Your profile will feature your calendar which will show customers when you're available.
-                To ensure confidentiality only the times and dates will be visible to the public, however as a
-                member of Jemma this is your tool to see the details of upcoming and previous work.
-                Only you can see those details in case you need to check what you're doing later.
-                You can also block out dates and times for those times when you need a holiday, or something.
-                <br><br>
-                Just let us know when you're available and we'll do the rest.</p>
 
-            <br><br>
+                        <!-- Left and right controls -->
+                        <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true">
+                            </span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true">
+                            </span>
+                            <span class="sr-only">Next</span>
+                        </a>
 
+                    </div>
+                </div>
+
+                <div class="tab-pane fade single-member" id="customer-hiw" role="tabpanel"
+                     aria-labelledby="Customer-tab">
+                    <div class="row">
+                        <div class="col-sm-4 col-lg-4">
+                            <div class>
+
+                            </div>
+                        </div>
+                        <div class="col-sm-4 col-lg-4">
+                            <div class>
+
+                            </div>
+                        </div>
+                        <div class="col-sm-4 col-lg-4">
+                            <div class>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
