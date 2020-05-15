@@ -92,16 +92,18 @@
                             <div class="panel panel-default">
                                 <div class="panel-body">
                                     <form class="form-horizontal">
-                                        <label class="panel-title pull-left">Personal Description</label>
-                                        <input class="form-control" rows="3" placeholder="Fill me out"
-                                               value="{{ description }}">
+                                        <h5 class="panel-title pull-left">Personal Description:</h5><br><br>
+                                        <label class="panel-title pull-left">{{ description }}</label>
+                                    <br><br>
                                     </form>
                                 </div>
                             </div>
                             <hr class="rgba-white-light">
+
                             <div class="panel panel-default">
                                 <div class="panel-body">
-                                    <label class="panel-title pull-left">Licenses &amp; Qualifications&nbsp;</label>
+
+                                    <h5 class="panel-title pull-left">Licenses &amp; Qualifications:</h5>
                                     <br><br>
                                     <img class="img-thumbnail img-responsive align-left"
                                          src="../../static/IMAGES/certification.png"
@@ -116,46 +118,32 @@
                                     <h5 class="panel-title pull-left"><strong>Personal detail</strong></h5>
                                     <br><br>
                                     <form class="form-horizontal">
-                                        <label for="Your_location">Full Name&nbsp;</label>
-                                        <input type="text" class="form-control" id="Your_location"
-                                               placeholder="Fill me out" value="{{ fullname }}">
+
+                                        <label for="Your_location">Full Name:&nbsp; {{ fullname }}&nbsp;</label>
+                                        <hr class="rgba-white-light">
+
                                         <br>
-                                        <label for="Your_gender">Address&nbsp;</label>
-                                        <input type="text" class="form-control" id="Your_gender"
-                                               placeholder="Fill me out" value="{{ address }}">
+                                        <label for="Your_gender">Address&nbsp:&nbsp;{{ address }}</label>
+                                        <hr class="rgba-white-light">
                                         <br>
-                                        <label for="Your_gender">Contact Number&nbsp;</label>
-                                        <input type="text" class="form-control" id="Your_gender"
-                                               placeholder="Fill me out" value="{{ phone }}">
+                                        <label for="Your_gender">Contact Number:&nbsp;{{ phone }}&nbsp;</label>
+                                        <hr class="rgba-white-light">
                                         <br>
-                                        <label for="Your_gender">Company Name&nbsp;</label>
-                                        <input type="text" class="form-control" id="Your_gender"
-                                               placeholder="Fill me out" value="{{ company }}">
+                                        <label for="Your_gender">Company Name:&nbsp;{{ company }}</label>
+                                        <hr class="rgba-white-light">
                                         <br>
-                                        <label for="Your_gender">Company ABN&nbsp;</label>
-                                        <input type="text" class="form-control" id="Your_gender"
-                                               placeholder="Fill me out" value="{{ ABN }}">
+                                        <label for="Your_gender">Company ABN:&nbsp;{{ ABN }}&nbsp;</label>
+                                        <hr class="rgba-white-light">
                                         <br>
-                                        <label for="Your_gender">Bank BSB&nbsp;</label>
-                                        <input type="text" class="form-control" id="Your_gender"
-                                               placeholder="Fill me out" value="{{ BSB }}">
+                                        <label for="Your_gender">Bank BSB:&nbsp;{{ BSB }}</label>
+                                        <hr class="rgba-white-light">
                                         <br>
-                                        <label for="Your_gender">Bank Account Number&nbsp;</label>
-                                        <input type="text" class="form-control" id="Your_gender"
-                                               placeholder="Fill me out" value="{{ accountNo }}">
+                                        <label for="Your_gender">Bank Account Number&nbsp:&nbsp;{{ accountNo }}</label>
+                                        <hr class="rgba-white-light">
                                         <br>
-                                        <label for="Your_gender">Bank Account Name&nbsp;</label>
-                                        <input type="text" class="form-control" id="Your_gender"
-                                               placeholder="Fill me out" value="{{ accountName }}">
+                                        <label for="Your_gender">Bank Account Name:&nbsp;{{ accountName }}</label>
+
                                         <br>
-                                        <button class="btn btn-primary" type="submit">
-                                            <i class="fa fa-fw fa-check" aria-hidden="true"></i>
-                                            Update
-                                        </button>
-                                        <button class="btn btn-secondary" type="reset">
-                                            <i class="fa fa-fw fa-times" aria-hidden="true"></i>
-                                            Cancel
-                                        </button>
                                     </form>
                                 </div>
                             </div>
@@ -169,11 +157,11 @@
                             <div class="panel panel-default">
                                 <div class="panel-body">
                                     <form class="form-horizontal">
-                                        <label class="panel-title pull-left">Personal Description</label>
+                                        <h5 class="panel-title pull-left">Personal Description</h5>
                                         <input class="form-control" rows="3" placeholder="Fill me out"
                                                value="{{ description }}">
                                         <br>
-                                        <label class="panel-title pull-left">Licenses & Qualifications </label>
+                                        <h5 class="panel-title pull-left">Licenses & Qualifications </h5>
                                         <input class="form-control" type="file" rows="3" placeholder="Fill me out"
                                                value="{{ description }}">
                                     </form>
@@ -182,6 +170,8 @@
                             <hr class="rgba-white-light">
                             <div class="panel-body">
                                 <form class="form-horizontal">
+                                    <h5 class="panel-title pull-left"><strong>Personal detail</strong></h5>
+                                    <br><br>
                                     <label for="Your_location">Full Name&nbsp;</label>
                                     <input type="text" class="form-control" id="Your_location" placeholder="Fill me out"
                                            value="{{ fullname }}">
