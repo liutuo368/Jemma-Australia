@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from django.contrib import auth
 from django.http import HttpResponse, HttpResponseRedirect, Http404
+from django.template import RequestContext
+from django.template.context_processors import csrf
+
 from Home_app.models import Tradie
 from Home_app.models import Customer
 from Home_app.models import Order
@@ -70,7 +73,7 @@ def tradie_profile(request):
             "login_status": json.dumps(True),
             "description": tradie.description,
             "fullname": tradie.first_name + " " + tradie.last_name,
-            "address": tradie.address1 + " " + tradie.suburb + " " + tradie.state + " " + tradie.postcode,
+            "address": str(tradie.address1 + " " + tradie.suburb + " " + tradie.state + " " + tradie.postcode),
             "phone": tradie.phone,
             "company": tradie.company,
             "ABN": tradie.ABN,
@@ -139,6 +142,42 @@ def side_menu(request):
 
     return render(request, "SubTemplate/side_menu.html")
 
+def update_profile(request):
+
+    tradie = Tradie.objects.get(myUser=request.user)
+    Your_Description = request.POST["Your_Description"]
+    tradie.description=Your_Description
+    Your_FullName = request.POST["Your_FullName"]
+    FirstName=Your_FullName.split(" ", 1)[0]
+    LastName=Your_FullName.split(" ", 1)[-1]
+    tradie.first_name=FirstName
+    tradie.last_name=LastName
+
+    Your_Address = request.POST["Your_Address"]
+
+    Address= Your_Address.split()
+    tradie.suburb=Address[-3]
+    tradie.state=Address[-2]
+    tradie.postcode=Address[-1]
+    str = ' '
+    tradie.address1=str.join(Address[0:-3])
+    Your_Number = request.POST["Your_Number"]
+    tradie.phone=Your_Number
+
+    Your_CompanyName = request.POST["Your_CompanyName"]
+    tradie.company=Your_CompanyName
+
+    Your_BSB = request.POST["Your_BSB"]
+    tradie.BSB=Your_BSB
+
+    Your_BankNumber = request.POST["Your_BankNumber"]
+    tradie.accountNo=Your_BankNumber
+
+    Your_BankName = request.POST["Your_BankName"]
+    tradie.accountName=Your_BankName
+
+    tradie.save()
+    return HttpResponseRedirect ("tradie_profile")
 
 def updatehp(request):
     return HttpResponse()

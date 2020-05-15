@@ -20,7 +20,7 @@ urlpatterns = [
     path('tradie_calendar', views.tradie_calendar),
     path('about_us', views.about_us),
     path('contact', views.contact),
-    path('updatehp/', views.updatehp),
+    path('update_profile', views.update_profile),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
