@@ -27,6 +27,10 @@
             color: #222222 !important;
         }
 
+        .nav-pills .side-nav:hover .nav-link {
+            background-color: #e8e8e8 !important;
+        }
+
         .nav-pills .nav-link {
             text-align: center;
             color: #222222;
@@ -40,34 +44,34 @@
     <nav class="d-none d-md-block sidebar nav nav-pills" style="width: 100%">
         <div class="sidebar-sticky">
             <ul class="nav flex-column">
-                <li class="nav-item">
-                    <a class="nav-link active" href="tradie_profile">
+                <li class="nav-item side-nav">
+                    <a class="nav-link" href="tradie_profile" id="side-nav-profile">
                         <i class="fa fa-home"></i>
                         <strong>Profile</strong>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="tradie_current_job">
+                <li class="nav-item side-nav">
+                    <a class="nav-link" href="tradie_current_job" id="side-nav-current">
                         <i class="fa fa-list"></i>
                         <strong>Current Job</strong>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="tradie_history">
+                <li class="nav-item side-nav">
+                    <a class="nav-link" href="tradie_history" id="side-nav-history">
                         <i class="fa fa-folder"></i>
                         <strong>Job History</strong>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
+                <li class="nav-item side-nav">
+                    <a class="nav-link" href="#" id="side-nav-statistics">
                         <i class="fa fa-calculator"></i>
                         <strong>Statistics</strong>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="tradie_calendar">
+                <li class="nav-item side-nav">
+                    <a class="nav-link" href="tradie_calendar" id="side-nav-calendar">
                         <i class="fa fa-calendar"></i>
-                        <strong>Calender</strong>
+                        <strong>Calendar</strong>
                     </a>
                 </li>
             </ul>
