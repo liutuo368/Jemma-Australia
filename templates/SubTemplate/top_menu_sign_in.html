@@ -25,11 +25,12 @@
     <style type="text/css">
 
         .nav-link {
-            color: #47525E;
+            color: grey;
         }
 
-        .nav-item:hover .nav-link {
-            color: #c8f693;
+        .home-nav:hover .nav-link {
+            font-weight: bold;
+            color: dimgrey;
         }
 
     </style>
@@ -45,17 +46,17 @@
             <img src="../../static/IMAGES/JemmaLogo.png" alt="Jemma_logo" style="width:80px;">
         </a>
         <ul class="nav">
-            <li class="nav-item">
+            <li class="nav-item home-nav">
                 <a class="p-2 nav-link" href="index">
                     <strong>&nbsp; &nbsp; &nbsp;&nbsp; &nbsp;Home</strong>
                 </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item home-nav">
                 <a class=" my-0 mr-md-0 p-2 nav-link" href="index#whyJemma">
                     <strong>Why Jemma</strong>
                 </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item home-nav">
                 <a class=" my-0 mr-md-auto p-2 nav-link" href="index#howItWorks">
                     <strong>How it works</strong>
                 </a>
@@ -65,12 +66,12 @@
 
     <nav class="my-2 my-md-0 mr-md-3 navbar navbar-expand-sm bg-white navbar-light justify-content-center">
         <ul class="nav">
-            <li class="nav-item">
+            <li class="nav-item home-nav">
                 <a class="p-2 nav-link" href="about_us">
                     <strong>About us</strong>
                 </a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item home-nav">
                 <a class="p-2 nav-link" href="contact">
                     <strong>Contact</strong>
                 </a>
@@ -79,11 +80,11 @@
     </nav>
     <nav class="my-2 my-md-0 mr-md-3 navbar navbar-expand-sm bg-white navbar-light justify-content-center">
         <ul class="nav">
-            <li class="nav-item">
+            <li class="nav-item home-nav">
                 <img class="img-rounded rounded-circle" src="{{ user.user_hp.url }}" alt="profile_picture"
                      style="width:50px;">
             </li>
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown home-nav">
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                    aria-expanded="false"></a>
                 <div class="dropdown-menu dropdown-menu-right">
