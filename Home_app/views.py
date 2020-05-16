@@ -42,6 +42,11 @@ def login(request):
         raise Http404("User does not exist")
 
 
+def user_logout(request):
+    auth.logout(request)
+    return HttpResponseRedirect("index")
+
+
 def about_us(request):
     context = {
         "login_status": json.dumps(request.user.is_authenticated)
