@@ -98,12 +98,7 @@ var Calendar = function () {
 
             //predefined events
             $('#event_box').html("");
-            addEvent("My Event 1");
-            addEvent("My Event 2");
-            addEvent("My Event 3");
-            addEvent("My Event 4");
-            addEvent("My Event 5");
-            addEvent("My Event 6");
+            addEvent("Temporary Event");
 
             $('#calendar').fullCalendar('destroy'); // destroy the calendar
             $('#calendar').fullCalendar({ //re-initialize the calendar
@@ -134,42 +129,37 @@ var Calendar = function () {
                     }
                 },
                 events: [{
-                        title: 'All Day Event',                        
+                        title: 'Chris\'s order',
                         start: new Date(y, m, 1),
-                        backgroundColor: App.getLayoutColorCode('yellow')
-                    }, {
-                        title: 'Long Event',
-                        start: new Date(y, m, d - 5),
-                        end: new Date(y, m, d - 2),
                         backgroundColor: App.getLayoutColorCode('green')
                     }, {
-                        title: 'Repeating Event',
+                        title: 'Edward\'s order' ,
+                        start: new Date(y, m, d - 5),
+                        end: new Date(y, m, d - 2),
+                        backgroundColor: App.getLayoutColorCode('yellow')
+                    }, {
+                        title: 'Kevin\'s order',
                         start: new Date(y, m, d - 3, 16, 0),
                         allDay: false,
-                        backgroundColor: App.getLayoutColorCode('red')
+                        backgroundColor: App.getLayoutColorCode('green')
                     }, {
-                        title: 'Repeating Event',
+                        title: 'Jay\'s order',
                         start: new Date(y, m, d + 4, 16, 0),
                         allDay: false,
                         backgroundColor: App.getLayoutColorCode('green')
                     }, {
-                        title: 'Meeting',
+                        title: 'Emily\'s order',
                         start: new Date(y, m, d, 10, 30),
+                        backgroundColor: App.getLayoutColorCode('green'),
                         allDay: false,
                     }, {
-                        title: 'Lunch',
+                        title: 'Tom\'s order',
                         start: new Date(y, m, d, 12, 0),
                         end: new Date(y, m, d, 14, 0),
-                        backgroundColor: App.getLayoutColorCode('grey'),
+                        backgroundColor: App.getLayoutColorCode('green'),
                         allDay: false,
                     }, {
-                        title: 'Birthday Party',
-                        start: new Date(y, m, d + 1, 19, 0),
-                        end: new Date(y, m, d + 1, 22, 30),
-                        backgroundColor: App.getLayoutColorCode('purple'),
-                        allDay: false,
-                    }, {
-                        title: 'Click for Google',
+                        title: 'Adam\'s order',
                         start: new Date(y, m, 28),
                         end: new Date(y, m, 29),
                         backgroundColor: App.getLayoutColorCode('yellow'),
