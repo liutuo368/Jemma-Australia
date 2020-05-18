@@ -35,25 +35,6 @@
             $("#footer").load("footer");
         });
 
-        <!-- checkbox-->
-        $(document).ready(function () {
-            //init val
-            var initwei = $('#wei').val();
-            $("input[name='wz']").each(function (i) {
-                if (initwei.indexOf($(this).val()) != -1) {
-                    $(this).prop('checked', true);
-                }
-            });
-
-            $('#submitBtn').on('click', function () {
-                //set val
-                var wzstr = '';
-                $("input[name='wz']:checked").each(function (i) {
-                    wzstr = wzstr + $(this).val() + ',';
-                });
-                $('#wei').val(wzstr);
-            });
-        });
     </script>
     <style>
         .row-fluid .span6 {
@@ -126,43 +107,6 @@
 </div>
 
 <div id="footer"></div>
-
-<script type="text/javascript">
-    <!--date picker-->
-    function DatePicker(beginSelector, endSelector) {
-        $(beginSelector).datepicker(
-            {
-                format: 'dd/mm/yyyy',
-                weekStart: 1,
-                autoclose: true,
-                todayHighlight: true,
-            }).on('changeDate', function (ev) {
-            if (ev.date) {
-                $(endSelector).datepicker('setStartDate', new Date(ev.date.valueOf()))
-            } else {
-                $(endSelector).datepicker('setStartDate', null);
-            }
-        })
-
-        $(endSelector).datepicker(
-            {
-                format: 'dd/mm/yyyy',
-                weekStart: 1,
-                autoclose: true,
-                todayHighlight: true,
-            }).on('changeDate', function (ev) {
-            if (ev.date) {
-                $(beginSelector).datepicker('setEndDate', new Date(ev.date.valueOf()))
-            } else {
-                $(beginSelector).datepicker('setEndDate', new Date());
-            }
-
-        })
-    }
-
-    DatePicker("#datepicker1", "#datepicker2");
-
-</script>
 <!-- Pagination-->
 <script src="../../static/JS/jquery-1.10.1.min.js" type="text/javascript"></script>
 <script src="../../static/JS/bootstrap.min.js" type="text/javascript"></script>
