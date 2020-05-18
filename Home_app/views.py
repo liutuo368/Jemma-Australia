@@ -172,6 +172,9 @@ def update_profile(request):
     Your_CompanyName = request.POST["Your_CompanyName"]
     tradie.company=Your_CompanyName
 
+    Your_CompanyABN= request.POST["Your_CompanyABN"]
+    tradie.ABN=Your_CompanyABN
+
     Your_BSB = request.POST["Your_BSB"]
     tradie.BSB=Your_BSB
 
