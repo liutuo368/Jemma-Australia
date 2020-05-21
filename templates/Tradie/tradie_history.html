@@ -111,14 +111,14 @@
                     </thead>
 
                     <tbody>
-                     {% for job in job_history %}
-                    <tr>
-                        <td class="hidden-480">{{ job.id }}</td>
-                         <td class="hidden-480">{{ job.category }}</td>
-                         <td class="hidden-480">{{ job.customer.last_name }}</td>
-                         <td class="hidden-480">{{ job.orderDate }}</td>
-                         <td class="hidden-480">{{ job.orderStatus }}</td>
-                    </tr>
+                    {% for job in job_history %}
+                        <tr>
+                            <td class="hidden-480">{{ job.id }}</td>
+                            <td class="hidden-480">{{ job.category }}</td>
+                            <td class="hidden-480">{{ job.customer.last_name }}</td>
+                            <td class="hidden-480">{{ job.orderDate }}</td>
+                            <td class="hidden-480">{{ job.orderStatus }}</td>
+                        </tr>
                     {% endfor %}
                     </tbody>
                 </table>
