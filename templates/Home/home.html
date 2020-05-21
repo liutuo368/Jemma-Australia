@@ -75,33 +75,36 @@
 
         .carousel-control-prev-icon {
             background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E") !important;
-            margin-left: -200px;
+            margin-left: -5px;
         }
 
         .carousel-control-next-icon {
             background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
-            margin-right: -200px;
+            margin-right: -5px;
         }
     </style>
 </head>
 
-<body class="d-flex flex-column min-vh-100">
+<body>
 
 <div id='menu'></div>
 
-<div class="container wrapper flex-grow-1">
+<div class="wrapper text-center justify-content-center h-100">
 
-    <div class="row">
-        <div class="col-md"></div>
-        <div class="col-md">
+    <div class="row text-center justify-content-center">
+        <div class="col-md-7 banner">
+            <br><br><br><br><br><br><br><br>
+            <h1 style="font-family: 'Bangla MN';">"Jemma makes everyone’s life <br><br> just that bit easier."</h1>
+        </div>
+        <div class="col-md-5">
             <img class="scaled-img" src="../../static/IMAGES/unsplash.jpg" alt="unsplash image">
         </div>
     </div>
 
-    <div class="row mt-3 text-center mb-5 justify-content-center">
+    <div class="row mt-3 text-center mb-5 justify-content-center align-items-center" style="height: 50px;">
+        <div class="col-md-1"></div>
         <a><i class="fa fa-search p-1"></i></a>
-
-        <div class="col-md-5">
+        <div class="col-md-4">
             <select id="tradie-selection" class="selectpicker" data-live-search="true" data-width="100%">
                 <option value="" disabled selected>Job keywords</option>
                 <optgroup label="A">
@@ -138,7 +141,7 @@
         </div>
 
         <a><i class="fa fa-location-arrow p-1" aria-hidden="true"></i></a>
-        <div class="col-md-5">
+        <div class="col-md-4">
             <select id="tradie-selection" class="selectpicker" data-live-search="true" data-width="100%">
                 <option value="" disabled selected>Locations</option>
                 <optgroup label="A">
@@ -206,17 +209,24 @@
         </div>
     </div>
 
-    <div id="whyJemma" name="whyJemma" class="mt-3 mb-5 strong text-center">
-        <div class="mb-3">
+    <div id="whyJemma" name="whyJemma" class="mt-3 mb-5">
+        <br><br>
+        <div class="mb-3 text-center">
             <h1 class="display-4">Why Jemma</h1>
         </div>
+        <br><br>
         <div>
-            <p>Jemma Australia is an all in one solution that provides services to facilitate a smooth relationship
-                between tradies and customers.</p>
+            <p>Jemma Australia is the first online service that connects customers and tradies while also offering
+                financial protection, better work/life balance, automated scheduling and much more.
+                <br><br><br>
+                We’ve heard the problems from both sides and it’s about time someone fixed them. We’re here to help make
+                everyone’s lives easier.
+            </p>
         </div>
+        <br><br>
     </div>
 
-    <div id="howItWorks" name="howItWorks" class="mt-5 mb-5 text-left">
+    <div id="howItWorks" name="howItWorks" class="mt-5 mb-5 text-left" style="height: 1500px;">
         <div class="text-center mb-5">
             <h1 class="display-4">How it works?</h1>
         </div>
@@ -556,22 +566,245 @@
 
                 <div class="tab-pane fade single-member" id="customer-hiw" role="tabpanel"
                      aria-labelledby="Customer-tab">
-                    <div class="row">
-                        <div class="col-sm-4 col-lg-4">
-                            <div class>
 
+                    <div id="myCarousel2" class="carousel slide" data-ride="carousel">
+
+                        <!-- The slide show -->
+                        <div class="carousel-inner container">
+
+                            <div class="carousel-item active">
+                                <div class="row mt-5 text-center">
+                                    <div class="col-md-4">
+                                        <img class="mb-5" src="../../static/IMAGES/hiw-profile.png"
+                                             alt="profile" style="height: 200px;">
+                                        <p><strong>Publicly listed profiles</strong></p>
+                                        <p class="text-left"> For most of us we don’t know who to call when we need
+                                            something fixed or built so we usually go with whoever we can find, which
+                                            means calling around and asking the same questions. With our transparent
+                                            profile section you can easily browse the list of tradespeople in your area
+                                            without having to do anything else.
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <img class="mb-5" src="../../static/IMAGES/hiw-rating.png"
+                                             alt="rating" style="height: 200px;">
+                                        <p><strong>Ratings and reviews</strong></p>
+                                        <p class="text-left"> Many small businesses rely on ratings and reviews to
+                                            survive and it’s important to us to include this feature. Our service gives
+                                            you the opportunity to let everyone else know what a great job was done for
+                                            you.
+                                            <br><br>
+                                            To ensure that all reviews are legitimate, only the account holder can leave
+                                            a review for the job they booked, that way you know we don’t have fake
+                                            reviews leaving you dissatisfied.
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <img class="mb-5" src="../../static/IMAGES/hiw-picture.png"
+                                             alt="calendar" style="height: 200px;">
+                                        <p><strong>Portfolio pictures</strong>
+                                        </p>
+                                        <p class="text-left"> Have you ever needed something like a fence but you don’t
+                                            know what you want? Do you even know whether the tradie could build
+                                            something you’ve seen before?
+                                            <br>
+                                            This is why we included a portfolio feature, so now you know.
+                                            <br><br>
+                                            With Jemma you have the opportunity to view examples of other people’s work
+                                            to get ideas and you can also upload your own pictures so everyone can see
+                                            what a good job they did, helping everyone.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="carousel-item">
+                                <div class="row mt-5 text-center">
+                                    <div class="col-md-4">
+                                        <img class="mb-5" src="../../static/IMAGES/hiw-calendar.png"
+                                             alt="calendar" style="height: 200px;">
+                                        <p><strong>Public calendar</strong></p>
+                                        <p class="text-left"> How many people do you have to call just to get someone to
+                                            fix something for you? Why do you need to call that many people?
+                                            <br>
+                                            Now you don’t.
+                                            <br>
+                                            With each tradesperson’s calendar available on their profile you can easily
+                                            see who is available so you can easily fit it around your busy schedule.
+                                            Combined with the ratings & reviews, portfolio, and profiles of the tradies,
+                                            it all comes together to make your life easier and less stressful.
+                                            <br><br>
+                                            To ensure privacy for everyone you won’t be able to see who they’re working
+                                            for (unless it’s you) however at least you won’t be ringing around anymore.
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <img class="mb-5" src="../../static/IMAGES/hiw-remind.png"
+                                             alt="calendar" style="height: 200px;">
+                                        <p><strong>Lock in a date and time</strong></p>
+                                        <p class="text-left">Have you ever had someone turn up to build something for
+                                            you and leave halfway through making you wonder when it’s going to be
+                                            finished?
+                                            <br><br>
+                                            Many people have, and that’s why we’ve implemented the calendar system. That
+                                            way you know when they’ll arrive and leave, so you can relax. It’s time
+                                            things changed so we no longer have to guess.
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <img class="mb-5" src="../../static/IMAGES/hiw-app.png"
+                                             alt="calendar" style="height: 200px;">
+                                        <p><strong>Simplified app experience</strong></p>
+                                        <p class="text-left"> No-one likes complications. Our aim at Jemma is to provide
+                                            an experience where anyone could tap a few buttons and get what they want.
+                                            It works for a lot of other things we order online so why not tradies?
+                                            <br><br>
+                                            From browsing to find the right one, to booking and then confirming the job
+                                            was done and paying for it, you can do it all through the website or app.
+                                            If you or the tradesperson has any questions or changes our notifications
+                                            and messaging system can handle the communications for you.
+                                            <br><br>
+                                            That way you can organise everything when you’re in that meeting while
+                                            you’re supposed to be taking notes, and no-one will ever know!
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="row mt-5 text-center">
+                                    <div class="col-md-4">
+                                        <img class="mb-5"
+                                             src="../../static/IMAGES/hiw-security.png"
+                                             alt="calendar"
+                                             style="height: 200px;">
+                                        <p><strong>Financial security through escrow</strong></p>
+                                        <p class="text-left">
+                                            Let’s be honest, one major complaint we hear is not knowing that they can
+                                            trust someone with their money, and renovations can be expensive.
+                                            <br><br>
+                                            Jemma provides an escrow style system where the agreed upon amount is
+                                            deposited into a trust account held by us. Once the job is completed
+                                            satisfactorily and you sign off through the service, the tradesperson gets
+                                            their money. It’s that simple.
+                                            <br>
+                                            If they don’t turn up then we return your money, free of charge. No small
+                                            print. That’s it.
+                                            <br><br>
+                                            I’m sure you’ve heard the horror stories, but they’re about to be tales from
+                                            the past.
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <img class="mb-5"
+                                             src="../../static/IMAGES/hiw-mid.png"
+                                             alt="calendar"
+                                             style="height: 200px;">
+                                        <p><strong>Mediation if needed</strong></p>
+                                        <p class="text-left">Sometimes we don’t all get along and as much as we try hard
+                                            to ensure everyone has a great experience, unfortunately there will be the
+                                            occasional problem or miscommunication.
+                                            <br>
+                                            We’re here to help with that. If this does arise we can intervene and
+                                            mediate which removes the customer from any conflict.
+                                            <br>
+                                            We don’t want you to feel intimidated into paying for something you aren’t
+                                            satisfied with so let us handle it for you.
+                                            <br>
+                                            We’re on no-one’s side, we just want everyone to be happy.
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <img class="mb-5"
+                                             src="../../static/IMAGES/hiw-quote.png"
+                                             alt="calendar"
+                                             style="height: 200px;">
+                                        <p><strong>Itemised quotes, invoices and more</strong></p>
+                                        <p class="text-left"> Everyone needs receipts, even better if they list what you
+                                            paid for each part of the service.
+                                            When you book through Jemma you’ll get just that so your records are clean
+                                            and you can access them again through your profile in case you forget who
+                                            you hired last time or you deleted that email we sent you.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="row mt-5 text-center">
+                                    <div class="col-md-4">
+                                        <img class="mb-5"
+                                             src="../../static/IMAGES/hiw-consumer.png"
+                                             alt="calendar"
+                                             style="height: 200px;">
+                                        <p><strong>Consumer rights</strong></p>
+                                        <p class="text-left"> Our research indicates that a lot of customers do not know
+                                            their consumer rights and that’s something we want to help fix.
+                                            <br><br>
+                                            By providing customers with access to their rights it gives you the
+                                            confidence that the job will get done to the standard expected in Australia,
+                                            because that’s what you deserve.
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <img class="mb-5"
+                                             src="../../static/IMAGES/hiw-legal.png"
+                                             alt="calendar"
+                                             style="height: 200px;">
+                                        <p><strong>No more legalese!</strong></p>
+                                        <p class="text-left"> When was the last time you read one of those customer
+                                            agreements? You know the ones, long, boring, and hard to understand.
+                                            <br>
+                                            You just want to sign up and start using the service, we get it.
+                                            <br><br>
+                                            This is why we give you the option of a simplified version that’s quick and
+                                            easy to read but still informs you of the important stuff, just without the
+                                            jargon.
+                                            <br>
+                                            If you’re a lawyer or just someone who needs something to read then that
+                                            option is available too, your choice.
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <img class="mb-5"
+                                             src="../../static/IMAGES/hiw-confidence.png"
+                                             alt="calendar"
+                                             style="height: 200px;">
+                                        <p><strong>Confidence</strong></p>
+                                        <p class="text-left"> It’s not easy these days to see how qualified tradespeople
+                                            are so you know you’re getting the best person for the job. With Jemma you
+                                            can see their licenses, qualifications such as Master Builders, etc.
+                                            <br><br>
+                                            This way you can be confident when perusing their profiles, knowing that
+                                            we’ve verified all details for you.
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-sm-4 col-lg-4">
-                            <div class>
 
-                            </div>
-                        </div>
-                        <div class="col-sm-4 col-lg-4">
-                            <div class>
+                        <!-- Left and right controls -->
+                        <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true">
+                            </span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true">
+                            </span>
+                            <span class="sr-only">Next</span>
+                        </a>
 
-                            </div>
-                        </div>
+                        <!-- Left and right controls -->
+                        <a class="carousel-control-prev" href="#myCarousel2" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true">
+                            </span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#myCarousel2" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true">
+                            </span>
+                            <span class="sr-only">Next</span>
+                        </a>
+
                     </div>
                 </div>
             </div>

@@ -10,3 +10,7 @@
 body {
     background-color: rgb(235, 345, 236) !important;
 }
+
+.banner{
+    background-image: url('../IMAGES/banner.png');
+}
