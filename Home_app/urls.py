@@ -22,6 +22,7 @@ urlpatterns = [
     path('about_us', views.about_us),
     path('contact', views.contact),
     path('update_profile', views.update_profile),
+    path('customer_search_result', views.customer_search_result)
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

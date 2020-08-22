@@ -123,6 +123,10 @@ def tradie_current_job(request):
         raise Http404("Haven't logged in")
 
 
+def customer_search_result(request):
+    return render(request, "Customer/customer_search_result.html")
+
+
 def tradie_calendar(request):
 
     return render(request, "Tradie/tradie_calendar.html")

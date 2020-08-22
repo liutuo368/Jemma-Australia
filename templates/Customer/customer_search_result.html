@@ -2,9 +2,161 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Search results</title>
+
+    <link rel="stylesheet" type="text/css" href="../../static/CSS/home.css">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.16/dist/css/bootstrap-select.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.16/dist/js/bootstrap-select.min.js"></script>
+
+    <!-- (Optional) Latest compiled and minified JavaScript translation files -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.16/dist/js/i18n/defaults-*.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#menu").load("top_menu_without_sign_in");
+            $("#footer").load("footer");
+        });
+    </script>
 </head>
+
 <body>
 
+<div id='menu'></div>
+
+    <div class="row mt-3 text-center mb-5 justify-content-center align-items-center" style="height: 50px;">
+        <div class="col-md-1"></div>
+        <a><i class="fa fa-search p-1"></i></a>
+        <div class="col-md-3">
+            <select id="tradie-selection" class="selectpicker" data-live-search="true" data-width="100%">
+                <option value="" disabled selected>Job keywords</option>
+                <optgroup label="A">
+                    <option value="1">Aircon Mechanic</option>
+                </optgroup>
+                <optgroup label="B">
+                    <option value="2">Brick Layer</option>
+                </optgroup>
+                <optgroup label="C">
+                    <option value="3">Carpenter</option>
+                    <option value="4">Carpet Layer</option>
+                </optgroup>
+                <optgroup label="D">
+                    <option>Decking</option>
+                </optgroup>
+                <optgroup label="E">
+                    <option>Electrician</option>
+                </optgroup>
+                <optgroup label="F">
+                    <option>Fencing</option>
+                </optgroup>
+                <optgroup label="G">
+                    <option>Gas Plumber</option>
+                    <option>Glazier</option>
+                </optgroup>
+                <optgroup label="H">
+                    <option>Hair and Makeup</option>
+                    <option>Home Renovation</option>
+                </optgroup>
+                <optgroup label="I">
+                    <option>Insulation</option>
+                </optgroup>
+            </select>
+        </div>
+
+        <a><i class="fa fa-location-arrow p-1" aria-hidden="true"></i></a>
+        <div class="col-md-3">
+            <select id="tradie-selection" class="selectpicker" data-live-search="true" data-width="100%">
+                <option value="" disabled selected>Locations</option>
+                <optgroup label="A">
+                    <option>Acton</option>
+                    <option>Aranda</option>
+                </optgroup>
+                <optgroup label="B">
+                    <option>Belconnen</option>
+                    <option>Bonner</option>
+                    <option>Braddon</option>
+                </optgroup>
+                <optgroup label="C">
+                    <option value="3">Calwell</option>
+                    <option value="3">Canberra</option>
+                    <option value="4">Charnwood</option>
+                    <option value="4">Crace</option>
+                </optgroup>
+                <optgroup label="D">
+                    <option>Dickson</option>
+                    <option>Deakin</option>
+                    <option>Downer</option>
+                </optgroup>
+                <optgroup label="E">
+                    <option>Evatt</option>
+                </optgroup>
+                <optgroup label="F">
+                    <option>Florey</option>
+                    <option>Forde</option>
+                    <option>Forrest</option>
+                    <option>Franklin</option>
+                    <option>Fyshwick</option>
+                </optgroup>
+                <optgroup label="G">
+                    <option>Garran</option>
+                    <option>Greenway</option>
+                    <option>Griffith</option>
+                    <option>Gungahlin</option>
+                </optgroup>
+                <optgroup label="H">
+                    <option>Harrison</option>
+                    <option>Hawker</option>
+                    <option>Holt</option>
+                </optgroup>
+                <optgroup label="I">
+                    <option>Isabella Plains</option>
+                </optgroup>
+                <optgroup label="J">
+                    <option>Jacka</option>
+                </optgroup>
+                <optgroup label="K">
+                    <option>Kaleen</option>
+                    <option>Kambah</option>
+                    <option>Kingsrib</option>
+                </optgroup>
+                <optgroup label="L">
+                    <option>Latham</option>
+                    <option>Lyneham</option>
+                </optgroup>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <button type="button" class="btn btn-dark btn-round" onclick="window.location ='customer_search_result'">
+                Search
+            </button>
+        </div>
+    </div>
+
+
+<div>
+</div>
+
+<div id="footer" class="page-footer"></div>
+
+<script>
+    $('.selectpicker').selectpicker();
+</script>
 </body>
 </html>
