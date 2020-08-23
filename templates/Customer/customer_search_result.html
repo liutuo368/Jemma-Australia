@@ -112,20 +112,6 @@
             height: 146px;
             padding-right: 10px;
         }
-
-        .load_more {
-            padding: 20px 0;
-            font-size: 20px;
-            color: #999;
-        }
-
-        .load_more a {
-            color: #999;
-        }
-
-        .load_more a:hover {
-            color: #F00;
-        }
     </style>
 </head>
 
@@ -248,9 +234,9 @@
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-4">
-            <table class="table table-striped table-bordered table-hover table-full-width">
-                <tr class="tradie-card">
-                    <td class="row1 border" onClick="onclick_tradie1()">
+            <table class="table table-hover">
+                <tr class="tradie-card" onClick="onclick_tradie1()">
+                    <td class="row1">
                         <img class="art-img" src="../../static/IMAGES/tradie1.jpg" alt="user picture">
                         <div class="user-information-box">
                             <div class="row">
@@ -268,18 +254,81 @@
                 </tr>
 
                 <tr class="tradie-card" onClick="onclick_tradie2()">
-                    <td class="row1 border">Tradie_1</td>
+                    <td class="row1">
+                        <img class="art-img" src="../../static/IMAGES/tradie2.jpg" alt="user picture">
+                        <div class="user-information-box">
+                            <div class="row">
+                                <p class="username col-md pl-0">John</p>
+                                <p class="hour-rate col-md">$35/hour</p>
+                            </div>
+                            <p class="user-location">Braddon, ACT</p>
+                            <p class="join-time">Joined since 2017</p>
+                            <div class="row review">
+                                <p class="col-md pl-0">132 Reviews</p>
+                                <p class="col-md">4/5</p>
+                            </div>
+                        </div>
+                    </td>
                 </tr>
 
                 <tr class="tradie-card" onClick="onclick_tradie3()">
-                    <td class="row1 border">Tradie_3</td>
+                    <td class="row1">
+                        <img class="art-img" src="../../static/IMAGES/tradie3.jpg" alt="user picture">
+                        <div class="user-information-box">
+                            <div class="row">
+                                <p class="username col-md pl-0">Mike</p>
+                                <p class="hour-rate col-md">$40/hour</p>
+                            </div>
+                            <p class="user-location">Tuggeranong, ACT</p>
+                            <p class="join-time">Joined since 2020</p>
+                            <div class="row review">
+                                <p class="col-md pl-0">13 Reviews</p>
+                                <p class="col-md">5/5</p>
+                            </div>
+                        </div>
+                    </td>
                 </tr>
 
+                <tr class="tradie-card">
+                    <td class="row1">
+                        <img class="art-img" src="../../static/IMAGES/tradie4.jpg" alt="user picture">
+                        <div class="user-information-box">
+                            <div class="row">
+                                <p class="username col-md pl-0">Ben</p>
+                                <p class="hour-rate col-md">$45/hour</p>
+                            </div>
+                            <p class="user-location">Acton, ACT</p>
+                            <p class="join-time">Joined since 2019</p>
+                            <div class="row review">
+                                <p class="col-md pl-0">30 Reviews</p>
+                                <p class="col-md">3.5/5</p>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr class="tradie-card">
+                    <td class="row1">
+                        <img class="art-img" src="../../static/IMAGES/tradie5.jpg" alt="user picture">
+                        <div class="user-information-box">
+                            <div class="row">
+                                <p class="username col-md pl-0">Chris</p>
+                                <p class="hour-rate col-md">$42/hour</p>
+                            </div>
+                            <p class="user-location">Dickson, ACT</p>
+                            <p class="join-time">Joined since 2018</p>
+                            <div class="row review">
+                                <p class="col-md pl-0">90 Reviews</p>
+                                <p class="col-md">3.7/5</p>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
             </table>
         </div>
 
-        <div class="col-md-4 border" style="height: 600px;">
-            <iframe id="tradie_iframe" src="tradie_detail1" frameborder="0" col = "10" row = "10"></iframe>
+        <div class="col-md-4 border" style="height: 862px;">
+            <iframe id="tradie_iframe" src="tradie_detail1" frameborder="0" col="10" row="10"></iframe>
         </div>
 
         <div class="col-md-2"></div>
