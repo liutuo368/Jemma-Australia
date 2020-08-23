@@ -35,18 +35,46 @@
             $("#footer").load("footer");
         });
     </script>
+
+    <style>
+        * {
+            margin: 0;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        .page-wrap {
+            min-height: 100%;
+            /* equal to footer height */
+            margin-bottom: -142px;
+        }
+
+        .page-wrap:after {
+            content: "";
+            display: block;
+        }
+
+        .page-footer, .page-wrap:after {
+            height: 142px;
+        }
+    </style>
 </head>
 
 <body>
 
 <div id='menu'></div>
 
+<div class="page-wrap">
+    <!--Search bar-->
     <div class="row mt-3 text-center mb-5 justify-content-center align-items-center" style="height: 50px;">
         <div class="col-md-1"></div>
         <a><i class="fa fa-search p-1"></i></a>
         <div class="col-md-3">
-            <select id="tradie-selection" class="selectpicker" data-live-search="true" data-width="100%">
-                <option value="" disabled selected>Job keywords</option>
+            <select id="job-keyword-selection" class="selectpicker" multiple
+                    data-max-options="1" title="Job keywords" data-dropup-auto="false"
+                    data-live-search="true" data-width="100%" data-container=".div">
                 <optgroup label="A">
                     <option value="1">Aircon Mechanic</option>
                 </optgroup>
@@ -82,8 +110,9 @@
 
         <a><i class="fa fa-location-arrow p-1" aria-hidden="true"></i></a>
         <div class="col-md-3">
-            <select id="tradie-selection" class="selectpicker" data-live-search="true" data-width="100%">
-                <option value="" disabled selected>Locations</option>
+            <select id="location-selection" class="selectpicker" multiple
+                    data-max-options="2" title="Locations" data-dropup-auto="false"
+                    data-live-search="true" data-width="100%" data-container=".div">
                 <optgroup label="A">
                     <option>Acton</option>
                     <option>Aranda</option>
@@ -148,9 +177,8 @@
             </button>
         </div>
     </div>
+    <!--Search results section-->
 
-
-<div>
 </div>
 
 <div id="footer" class="page-footer"></div>
