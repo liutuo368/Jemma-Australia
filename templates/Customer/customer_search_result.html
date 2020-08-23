@@ -34,6 +34,20 @@
             $("#menu").load("top_menu_without_sign_in");
             $("#footer").load("footer");
         });
+
+        var something = document.getElementById('something');
+
+        something.style.cursor = 'pointer';
+        something.onclick = function () {
+            // do something...
+        };
+
+        function tradie1_click() {
+            pathn = "tradie_Info.html";
+            $("#content").load(pathn); //加载相对应的内容
+            $(".userMenu li").eq(i).addClass("current").siblings().removeClass("current"); //当前列表高亮
+        }
+
     </script>
 
     <style>
@@ -178,6 +192,25 @@
         </div>
     </div>
     <!--Search results section-->
+    <div class="row col-md-12">
+        <div class="col-md-6" style="height:450px">
+            <table class="table table-striped table-bordered table-hover table-full-width">
+                <tr>
+                    <td class="row1 border margin-top-20" style="height: 150px" onClick="tradie1_click()">Tradie_1</td>
+                </tr>
+                <tr>
+                    <td class="row1 border margin-top-20" style="height: 150px">Tradie_1</td>
+                </tr>
+                <tr>
+                    <td class="row1 border margin-top-20" style="height: 150px">Tradie_3</td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-6 border" style="height:450px">
+            Tradie information
+        </div>
+    </div>
+
 
 </div>
 
