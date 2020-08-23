@@ -105,8 +105,9 @@
         <div class="col-md-1"></div>
         <a><i class="fa fa-search p-1"></i></a>
         <div class="col-md-3">
-            <select id="tradie-selection" class="selectpicker" data-live-search="true" data-width="100%">
-                <option value="" disabled selected>Job keywords</option>
+            <select id="job-keyword-selection" class="selectpicker" multiple
+                    data-max-options="1" title="Job keywords" data-dropup-auto="false"
+                    data-live-search="true" data-width="100%" data-container=".div">
                 <optgroup label="A">
                     <option value="1">Aircon Mechanic</option>
                 </optgroup>
@@ -142,8 +143,9 @@
 
         <a><i class="fa fa-location-arrow p-1" aria-hidden="true"></i></a>
         <div class="col-md-3">
-            <select id="tradie-selection" class="selectpicker" data-live-search="true" data-width="100%">
-                <option value="" disabled selected>Locations</option>
+            <select id="location-selection" class="selectpicker" multiple
+                    data-max-options="2" title="Locations" data-dropup-auto="false"
+                    data-live-search="true" data-width="100%" data-container=".div">
                 <optgroup label="A">
                     <option>Acton</option>
                     <option>Aranda</option>
@@ -815,7 +817,9 @@
 <div id="footer" class="navbar-fixed-bottom"></div>
 
 <script>
-    $('.selectpicker').selectpicker();
+    $(function () {
+        $('select').selectpicker();
+    });
 </script>
 </body>
 </html>
