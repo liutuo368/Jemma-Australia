@@ -35,17 +35,16 @@
             $("#footer").load("footer");
         });
 
-        var something = document.getElementById('something');
+        function onclick_tradie1() {
+            tradie_iframe.src = "tradie_detail1.html";
+        }
 
-        something.style.cursor = 'pointer';
-        something.onclick = function () {
-            // do something...
-        };
+        function onclick_tradie2() {
+            tradie_iframe.src = "tradie_detail2.html";
+        }
 
-        function tradie1_click() {
-            pathn = "tradie_Info.html";
-            $("#content").load(pathn); //加载相对应的内容
-            $(".userMenu li").eq(i).addClass("current").siblings().removeClass("current"); //当前列表高亮
+        function onclick_tradie3() {
+            tradie_iframe.src = "tradie_detail3.html";
         }
 
     </script>
@@ -253,7 +252,7 @@
         <div class="col-md-4">
             <table class="table table-striped table-bordered table-hover table-full-width">
                 <tr class="tradie-card">
-                    <td class="row1 border" onClick="tradie1_click()">
+                    <td class="row1 border" onClick="onclick_tradie1()">
                         <img class="art-img" src="../../static/IMAGES/tradie1.jpg" alt="user picture">
                         <div class="user-information-box">
                             <div class="row">
@@ -270,11 +269,11 @@
                     </td>
                 </tr>
 
-                <tr class="tradie-card">
+                <tr class="tradie-card" onClick="onclick_tradie2()">
                     <td class="row1 border">Tradie_1</td>
                 </tr>
 
-                <tr class="tradie-card">
+                <tr class="tradie-card" onClick="onclick_tradie3()">
                     <td class="row1 border">Tradie_3</td>
                 </tr>
 
@@ -282,7 +281,7 @@
         </div>
 
         <div class="col-md-4 border" style="height: 600px;">
-            Tradie information
+            <iframe id="tradie_iframe" src="tradie_Info.html" frameborder="0" col = "10" row = "10"></iframe>
         </div>
 
         <div class="col-md-2"></div>
