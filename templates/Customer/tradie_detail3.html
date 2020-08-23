@@ -1,35 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
-
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../../static/CSS/home.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
 
 <div class="container">
 
-    <div class="row" style="margin: auto">
+    <div class="row" style="display: flex;">
       <div class="col-sm-2">
-
-          <img class="img-responsive" src="../../static/IMAGES/tradie1.jpg" alt="user picture">
-          <br>
+          <img src="../../static/IMAGES/tradie3.jpg" alt="user picture" style="width: 150px;">
           <p style="color: lightgrey">Online 6 hours ago</p>
       </div>
-      <div class="col-sm-8">
-          <br>
-          <h5>James</h5>
-          <p>Turner, ACT</p>
-          <p>Joined since 2019</p>
-          <p>License No: ABC0000000</p>
-          <br>
-
-          <p><b>50 Reviews</b>     3/5  </p>
+      <div class="col-sm-8" style="margin-left: 0;">
+          <h5>Mike</h5>
+          <p>uggeranong, ACT</p>
+          <p>Joined since 2020</p>
+          <p>License No: ABC0000003</p>
+          <p><b>50 Reviews</b>     4/5  </p>
       </div>
 
         <div class="col-sm-2">
@@ -37,48 +31,57 @@
             <button type="button" class="btn btn-success">Get a quote</button>
         </div>
     </div>
-  <ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" href="#about">ABOUT US</a></li>
-    <li><a data-toggle="tab" href="#reviews">REVIEWS</a></li>
-    <li><a data-toggle="tab" href="#services">SERVICES</a></li>
-    <li><a data-toggle="tab" href="#calendar">CALENDAR</a></li>
-  </ul>
 
-  <div class="tab-content">
-      <br>
-    <div  id="reviews" class="tab-pane fade">
+    <ul class="nav nav-tabs">
+        <li class="active"><a data-toggle="tab" href="#about">ABOUT US</a></li>
+        <li><a data-toggle="tab" href="#reviews">REVIEWS</a></li>
+        <li><a data-toggle="tab" href="#services">SERVICES</a></li>
+        <li><a data-toggle="tab" href="#calendar">CALENDAR</a></li>
+    </ul>
 
-        <div class="panel panel-default">
-            <h5>&nbsp&nbsp&nbsp&nbsp Sean  3/5</h5>
-            <p>&nbsp&nbsp Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    <div class="tab-content">
+        <br>
+        <div id="reviews" class="tab-pane fade">
+
+            <div class="panel panel-default">
+                <h5>&nbsp&nbsp&nbsp&nbsp Sean 3/5</h5>
+                <p>&nbsp&nbsp Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
+                    ut labore et dolore magna aliqua.</p>
+            </div>
+
+            <div class="panel panel-default">
+                <h5>&nbsp&nbsp&nbsp&nbsp Michael 3/5</h5>
+                <p>&nbsp&nbsp Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
+                    ut labore et dolore magna aliqua.</p>
+            </div>
+
+            <div class="panel panel-default">
+                <h5>&nbsp&nbsp&nbsp&nbsp Andrew 3/5</h5>
+                <p>&nbsp&nbsp Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
+                    ut labore et dolore magna aliqua.</p>
+            </div>
+
         </div>
 
-        <div class="panel panel-default">
-            <h5>&nbsp&nbsp&nbsp&nbsp Michael  3/5</h5>
-            <p>&nbsp&nbsp Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        <div id="about" class="tab-pane fade in active">
+            <p>&nbsp&nbsp Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                commodo consequat.</p>
+            <p>&nbsp&nbsp Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                commodo consequat.</p>
+            <p>&nbsp&nbsp Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                commodo consequat.</p>
+            <p>&nbsp&nbsp Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                commodo consequat.</p>
+            <p>&nbsp&nbsp Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                commodo consequat.</p>
+
         </div>
+        <div id="services" class="tab-pane fade">
 
-        <div class="panel panel-default">
-            <h5>&nbsp&nbsp&nbsp&nbsp Andrew  3/5</h5>
-            <p>&nbsp&nbsp Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
         </div>
-
+        <div id="calendar" class="tab-pane fade">
+        </div>
     </div>
-
-    <div id="about" class="tab-pane fade in active">
-      <p>&nbsp&nbsp Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        <p>&nbsp&nbsp Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-      <p>&nbsp&nbsp Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-      <p>&nbsp&nbsp Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-      <p>&nbsp&nbsp Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-
-    </div>
-    <div id="services" class="tab-pane fade">
-
-    </div>
-    <div id="calendar" class="tab-pane fade">
-    </div>
-  </div>
 </div>
 
 </body>
