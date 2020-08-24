@@ -129,12 +129,13 @@ def customer_search_result(request):
     job_type = request.GET["job_type"]
     location = request.GET["location"]
     job_type_list = TradieJobType.objects.filter(jobType=job_type)
-    tradie_list = []
+    job_list = []
     for var in job_type_list:
         if var.tradie.suburb == location:
-            tradie_list.append(var.tradie)
+            job_list.append(var)
+
     context = {
-        "tradie_list": tradie_list
+        "job_list": job_list
     }
     return render(request, "Customer/customer_search_result.html", context)
 

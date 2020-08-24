@@ -23,6 +23,7 @@ urlpatterns = [
     path('contact', views.contact),
     path('update_profile', views.update_profile),
     path('customer_search_result', views.customer_search_result),
+    path('tradie_detail', views.tradie_detail),
     path('tradie_detail1', views.tradie_detail1),
     path('tradie_detail2', views.tradie_detail2),
     path('tradie_detail3', views.tradie_detail3)

@@ -200,7 +200,6 @@ class Certificate(models.Model):
     certificateName = models.CharField(max_length=50)
     certificateStatus = models.CharField(max_length=10)
     expireDate = models.DateField()
-    price = models.DecimalField(max_digits=4, decimal_places=2)
 
     class Meta:
         unique_together = ("tradie", "certificateName")
@@ -214,6 +213,7 @@ class JobType(models.Model):
 class TradieJobType(models.Model):
     tradie = models.ForeignKey("Tradie", on_delete=models.CASCADE)
     jobType = models.ForeignKey("JobType", on_delete=models.CASCADE)
+    price = models.FloatField(default=0)
 
 
 class Rating(models.Model):
