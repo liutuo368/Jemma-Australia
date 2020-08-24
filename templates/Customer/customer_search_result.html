@@ -35,16 +35,8 @@
             $("#footer").load("footer");
         });
 
-        function onclick_tradie1() {
-            tradie_iframe.src = "tradie_detail1";
-        }
-
-        function onclick_tradie2() {
-            tradie_iframe.src = "tradie_detail2";
-        }
-
-        function onclick_tradie3() {
-            tradie_iframe.src = "tradie_detail3";
+        function onclick_tradie() {
+            tradie_iframe.src = "";
         }
 
     </script>
@@ -121,11 +113,13 @@
 
 <div class="page-wrap">
     <!--Search bar-->
+    <form action="/customer_search_result" method="get">
+        {% csrf_token %}
     <div class="row mt-3 text-center mb-5 justify-content-center align-items-center" style="height: 50px;">
         <div class="col-md-1"></div>
         <a><i class="fa fa-search p-1"></i></a>
         <div class="col-md-3">
-            <select id="job-keyword-selection" class="selectpicker" multiple
+            <select name="job_type" id="job-keyword-selection" class="selectpicker" multiple
                     data-max-options="1" title="Job keywords" data-dropup-auto="false"
                     data-live-search="true" data-width="100%" data-container=".div">
                 <optgroup label="A">
@@ -163,7 +157,7 @@
 
         <a><i class="fa fa-location-arrow p-1" aria-hidden="true"></i></a>
         <div class="col-md-3">
-            <select id="location-selection" class="selectpicker" multiple
+            <select name="location" id="location-selection" class="selectpicker" multiple
                     data-max-options="2" title="Locations" data-dropup-auto="false"
                     data-live-search="true" data-width="100%" data-container=".div">
                 <optgroup label="A">
@@ -225,26 +219,28 @@
             </select>
         </div>
         <div class="col-md-2">
-            <button type="button" class="btn btn-dark btn-round" onclick="window.location ='customer_search_result'">
+            <button type="submit" class="btn btn-dark btn-round">
                 Search
             </button>
         </div>
     </div>
+    </form>
     <!--Search results section-->
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-4">
             <table class="table table-hover">
-                <tr class="tradie-card" onClick="onclick_tradie1()">
+                {% for var in job_list %}
+                <tr class="tradie-card" onClick="onclick_tradie()">
                     <td class="row1">
-                        <img class="art-img" src="../../static/IMAGES/tradie1.jpg" alt="user picture">
+                        <img class="art-img" src="{{ var.tradie.myUser.user_hp.url }}" alt="user picture">
                         <div class="user-information-box">
                             <div class="row">
-                                <p class="username col-md pl-0">James</p>
-                                <p class="hour-rate col-md">$50/hour</p>
+                                <p class="username col-md pl-0">{{ var.tradie.first_name }} {{ var.tradie.last_name }}</p>
+                                <p class="hour-rate col-md">${{ var.price }}/hour</p>
                             </div>
-                            <p class="user-location">Turner, ACT</p>
-                            <p class="join-time">Joined since 2019</p>
+                            <p class="user-location">{{ var.tradie.suburb }} {{ var.tradie.state }}</p>
+                            <p class="join-time">Joined since {{ var.tradie.joinDate.year }}</p>
                             <div class="row review">
                                 <p class="col-md pl-0">50 Reviews</p>
                                 <p class="col-md">3/5</p>
@@ -252,78 +248,8 @@
                         </div>
                     </td>
                 </tr>
+                {% endfor %}
 
-                <tr class="tradie-card" onClick="onclick_tradie2()">
-                    <td class="row1">
-                        <img class="art-img" src="../../static/IMAGES/tradie2.jpg" alt="user picture">
-                        <div class="user-information-box">
-                            <div class="row">
-                                <p class="username col-md pl-0">John</p>
-                                <p class="hour-rate col-md">$35/hour</p>
-                            </div>
-                            <p class="user-location">Braddon, ACT</p>
-                            <p class="join-time">Joined since 2017</p>
-                            <div class="row review">
-                                <p class="col-md pl-0">132 Reviews</p>
-                                <p class="col-md">4/5</p>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-
-                <tr class="tradie-card" onClick="onclick_tradie3()">
-                    <td class="row1">
-                        <img class="art-img" src="../../static/IMAGES/tradie3.jpg" alt="user picture">
-                        <div class="user-information-box">
-                            <div class="row">
-                                <p class="username col-md pl-0">Mike</p>
-                                <p class="hour-rate col-md">$40/hour</p>
-                            </div>
-                            <p class="user-location">Tuggeranong, ACT</p>
-                            <p class="join-time">Joined since 2020</p>
-                            <div class="row review">
-                                <p class="col-md pl-0">13 Reviews</p>
-                                <p class="col-md">5/5</p>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-
-                <tr class="tradie-card">
-                    <td class="row1">
-                        <img class="art-img" src="../../static/IMAGES/tradie4.jpg" alt="user picture">
-                        <div class="user-information-box">
-                            <div class="row">
-                                <p class="username col-md pl-0">Ben</p>
-                                <p class="hour-rate col-md">$45/hour</p>
-                            </div>
-                            <p class="user-location">Acton, ACT</p>
-                            <p class="join-time">Joined since 2019</p>
-                            <div class="row review">
-                                <p class="col-md pl-0">30 Reviews</p>
-                                <p class="col-md">3.5/5</p>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-
-                <tr class="tradie-card">
-                    <td class="row1">
-                        <img class="art-img" src="../../static/IMAGES/tradie5.jpg" alt="user picture">
-                        <div class="user-information-box">
-                            <div class="row">
-                                <p class="username col-md pl-0">Chris</p>
-                                <p class="hour-rate col-md">$42/hour</p>
-                            </div>
-                            <p class="user-location">Dickson, ACT</p>
-                            <p class="join-time">Joined since 2018</p>
-                            <div class="row review">
-                                <p class="col-md pl-0">90 Reviews</p>
-                                <p class="col-md">3.7/5</p>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
             </table>
         </div>
 

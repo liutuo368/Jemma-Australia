@@ -100,7 +100,9 @@ register_list = [
     models.Customer,
     models.Order,
     models.Certificate,
-    models.Rating
+    models.Rating,
+    models.JobType,
+    models.TradieJobType,
 ]
 
 admin.site.register(register_list)

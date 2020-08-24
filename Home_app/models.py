@@ -10,11 +10,27 @@ class UserTypeChoice(Enum):
     Tradie = "Tradie"
     Customer = "Customer"
 
+
+class AccountStatus(Enum):
+    Active = "Active"
+    Banned = "Banned"
+
+
 class OrderStatusTypeChoice(Enum):
     Accepted = "Accepted"
     Pending = "Pending"
     Rejected ="Rejected"
     Completed ="Completed"
+
+
+class States(Enum):
+    ACT = "ACT"
+    NSW = "NSW"
+    VIC = "VIC"
+    SA = "SA"
+    WA = "WA"
+    NT = "NT"
+    TAS = "TAS"
 
 
 ### BEGIN DEFINE MYUSER ###
@@ -111,14 +127,20 @@ class MyUser(AbstractBaseUser):
 
 class Tradie(models.Model):
     myUser = models.OneToOneField(MyUser, on_delete=models.CASCADE, primary_key=True)
+    joinDate = models.DateField(auto_now_add=True)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     description = models.CharField(max_length=200)
     phone = models.CharField(max_length=10)
     address1 = models.CharField(max_length=100)
     address2 = models.CharField(max_length=100, blank=True, null=True)
-    suburb = models.CharField(max_length=15)
-    state = models.CharField(max_length=5)
+    suburb = models.CharField(max_length=30)
+    state = models.CharField(
+        null=False,
+        max_length=10,
+        choices=[(_type.name, _type.value) for _type in States],
+        default='ACT'
+    )
     postcode = models.CharField(max_length=5)
     company = models.CharField(max_length=50, null=True, blank=True)
     travelDistance = models.DecimalField(max_digits=4, decimal_places=2)
@@ -126,23 +148,39 @@ class Tradie(models.Model):
     BSB = models.CharField(max_length=10)
     accountNo = models.CharField(max_length=10)
     accountName = models.CharField(max_length=30)
-    accountStatus = models.CharField(max_length=10)
+    accountStatus = models.CharField(
+        null=False,
+        max_length=10,
+        choices=[(_type.name, _type.value) for _type in AccountStatus],
+        default='Active'
+    )
 
 
 class Customer(models.Model):
     myUser = models.OneToOneField(MyUser, on_delete=models.CASCADE, primary_key=True)
+    joinDate = models.DateField(auto_now_add=True)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     phone = models.CharField(max_length=10)
     address1 = models.CharField(max_length=100)
     address2 = models.CharField(max_length=100, blank=True, null=True)
-    suburb = models.CharField(max_length=15)
-    state = models.CharField(max_length=5)
+    suburb = models.CharField(max_length=30)
+    state = models.CharField(
+        null=False,
+        max_length=10,
+        choices=[(_type.name, _type.value) for _type in States],
+        default='ACT'
+    )
     postcode = models.CharField(max_length=5)
     cardHolder = models.CharField(max_length=30)
     cardNo = models.CharField(max_length=30)
     cardValidDate = models.CharField(max_length=5)
-    accountStatus = models.CharField(max_length=10)
+    accountStatus = models.CharField(
+        null=False,
+        max_length=10,
+        choices=[(_type.name, _type.value) for _type in AccountStatus],
+        default='Active'
+    )
 
 
 class Order(models.Model):
@@ -162,10 +200,20 @@ class Certificate(models.Model):
     certificateName = models.CharField(max_length=50)
     certificateStatus = models.CharField(max_length=10)
     expireDate = models.DateField()
-    price = models.DecimalField(max_digits=4, decimal_places=2)
 
     class Meta:
         unique_together = ("tradie", "certificateName")
+
+
+class JobType(models.Model):
+    jobName = models.CharField(max_length=50)
+    needCertification = models.BooleanField(default=False)
+
+
+class TradieJobType(models.Model):
+    tradie = models.ForeignKey("Tradie", on_delete=models.CASCADE)
+    jobType = models.ForeignKey("JobType", on_delete=models.CASCADE)
+    price = models.FloatField(default=0)
 
 
 class Rating(models.Model):
