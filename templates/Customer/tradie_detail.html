@@ -22,8 +22,7 @@
             <h3>{{ tradie.first_name }} {{ tradie.last_name }}</h3>
             <p>{{ tradie.suburb }}, {{ tradie.state }}</p>
             <p>Joined since {{ tradie.joinDate.year }}</p>
-            <p>License No: ABC0000001</p>
-            <p><b>50 Reviews</b> 3/5 </p>
+            <p><b>{{ rating_number }} Reviews</b> {{ rating }}/5 </p>
         </div>
 
         <div class="col-sm-2" style="position: absolute; top: 185px; right:5px;">

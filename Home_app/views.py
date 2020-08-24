@@ -8,6 +8,7 @@ from Home_app.models import Tradie
 from Home_app.models import Customer
 from Home_app.models import Order
 from Home_app.models import TradieJobType
+from Home_app.models import Rating
 from Home_app.models import MyUser
 from django.db.models import Q
 import json
@@ -133,14 +134,21 @@ def customer_search_result(request):
     job_type = request.GET["job_type"]
     location = request.GET["location"]
     job_type_list = TradieJobType.objects.filter(jobType=job_type)
-    job_list = []
+    tradie_list = []
     for var in job_type_list:
         if var.tradie.suburb == location:
-            job_list.append(var)
+            rating_list = Rating.objects.filter(user=var.tradie.myUser)
+            if len(rating_list) > 0:
+                sum_rating = 0
+                for rating in rating_list:
+                    sum_rating += rating.points
+                tradie_list.append((var, round(sum_rating / len(rating_list), 1)))
+            else:
+                tradie_list.append((var, len(rating_list), 5))
 
     context = {
         "login_status": json.dumps(login_status),
-        "job_list": job_list
+        "tradie_list": tradie_list
     }
     return render(request, "Customer/customer_search_result.html", context)
 
@@ -148,8 +156,17 @@ def customer_search_result(request):
 def tradie_detail(request):
     tradie_id = request.GET["tradie_id"]
     tradie = Tradie.objects.get(myUser_id=int(tradie_id))
+    rating_list = Rating.objects.filter(user=tradie.myUser)
+    avg_rating = 5
+    if len(rating_list) > 0:
+        sum_rating = 0
+        for rating in rating_list:
+            sum_rating += rating.points
+        avg_rating = round(sum_rating / len(rating_list), 1)
     context = {
-        "tradie": tradie
+        "tradie": tradie,
+        "rating_number": len(rating_list),
+        "rating": avg_rating
     }
     return render(request, "Customer/tradie_detail.html", context)
 

@@ -43,7 +43,7 @@
             tradie_iframe.src = 'tradie_detail?tradie_id=' + tradie_id;
         }
         window.onload = function() {
-            onclick_tradie({{ job_list.0.tradie.myUser.id }});
+            onclick_tradie({{ tradie_list.0.0.tradie.myUser.id }});
         }
 
     </script>
@@ -237,7 +237,7 @@
         <div class="col-md-2"></div>
         <div class="col-md-4">
             <table class="table table-hover">
-                {% for var in job_list %}
+                {% for var, rating_number, rating in tradie_list %}
                 <tr class="tradie-card" onClick="onclick_tradie('{{ var.tradie.myUser.id }}')">
                     <td class="row1">
                         <img class="art-img" src="{{ var.tradie.myUser.user_hp.url }}" alt="user picture">
@@ -249,8 +249,8 @@
                             <p class="user-location">{{ var.tradie.suburb }} {{ var.tradie.state }}</p>
                             <p class="join-time">Joined since {{ var.tradie.joinDate.year }}</p>
                             <div class="row review">
-                                <p class="col-md pl-0">50 Reviews</p>
-                                <p class="col-md">3/5</p>
+                                <p class="col-md pl-0">{{ rating_number }} Reviews</p>
+                                <p class="col-md">{{ rating }}/5</p>
                             </div>
                         </div>
                     </td>
