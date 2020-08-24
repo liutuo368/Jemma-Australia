@@ -171,17 +171,6 @@ def tradie_detail(request):
     return render(request, "Customer/tradie_detail.html", context)
 
 
-def tradie_detail1(request):
-    return render(request, "Customer/tradie_detail1.html")
-
-
-def tradie_detail2(request):
-    return render(request, "Customer/tradie_detail2.html")
-
-
-def tradie_detail3(request):
-    return render(request, "Customer/tradie_detail3.html")
-
 
 def tradie_calendar(request):
     return render(request, "Tradie/tradie_calendar.html")
