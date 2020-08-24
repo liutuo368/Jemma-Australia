@@ -8,6 +8,7 @@ from Home_app.models import Tradie
 from Home_app.models import Customer
 from Home_app.models import Order
 from Home_app.models import TradieJobType
+from Home_app.models import MyUser
 from django.db.models import Q
 import json
 
@@ -126,6 +127,9 @@ def tradie_current_job(request):
 
 
 def customer_search_result(request):
+    login_status = False
+    if request.user.is_authenticated:
+        login_status = True
     job_type = request.GET["job_type"]
     location = request.GET["location"]
     job_type_list = TradieJobType.objects.filter(jobType=job_type)
@@ -135,6 +139,7 @@ def customer_search_result(request):
             job_list.append(var)
 
     context = {
+        "login_status": json.dumps(login_status),
         "job_list": job_list
     }
     return render(request, "Customer/customer_search_result.html", context)
@@ -142,7 +147,7 @@ def customer_search_result(request):
 
 def tradie_detail(request):
     tradie_id = request.GET["tradie_id"]
-    tradie = Tradie.objects.get(id=int(tradie_id))
+    tradie = Tradie.objects.get(myUser_id=int(tradie_id))
     context = {
         "tradie": tradie
     }

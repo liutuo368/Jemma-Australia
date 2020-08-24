@@ -15,13 +15,13 @@
 
     <div class="row" style="display: flex; padding-top: 15px;">
         <div class="col-sm-2">
-            <img src="../../static/IMAGES/tradie1.jpg" alt="user picture" style="width: 150px;">
+            <img src="{{ tradie.myUser.user_hp.url }}" alt="user picture" style="width: 150px;">
             <p style="color: lightgrey; text-align: center;">Online 6 hours ago</p>
         </div>
         <div class="col-sm-8" style="margin-left: 0;">
-            <h3>James</h3>
-            <p>Turner, ACT</p>
-            <p>Joined since 2019</p>
+            <h3>{{ tradie.first_name }} {{ tradie.last_name }}</h3>
+            <p>{{ tradie.suburb }}, {{ tradie.state }}</p>
+            <p>Joined since {{ tradie.joinDate.year }}</p>
             <p>License No: ABC0000001</p>
             <p><b>50 Reviews</b> 3/5 </p>
         </div>

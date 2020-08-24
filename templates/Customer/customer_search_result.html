@@ -31,12 +31,19 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
-            $("#menu").load("top_menu_without_sign_in");
+            if ({{ login_status|safe }}) {
+                $("#menu").load("top_menu_sign_in");
+            } else {
+                $("#menu").load("top_menu_without_sign_in");
+            }
             $("#footer").load("footer");
         });
 
-        function onclick_tradie() {
-            tradie_iframe.src = "";
+        function onclick_tradie(tradie_id) {
+            tradie_iframe.src = 'tradie_detail?tradie_id=' + tradie_id;
+        }
+        window.onload = function() {
+            onclick_tradie({{ job_list.0.tradie.myUser.id }});
         }
 
     </script>
@@ -231,7 +238,7 @@
         <div class="col-md-4">
             <table class="table table-hover">
                 {% for var in job_list %}
-                <tr class="tradie-card" onClick="onclick_tradie()">
+                <tr class="tradie-card" onClick="onclick_tradie('{{ var.tradie.myUser.id }}')">
                     <td class="row1">
                         <img class="art-img" src="{{ var.tradie.myUser.user_hp.url }}" alt="user picture">
                         <div class="user-information-box">
@@ -254,7 +261,7 @@
         </div>
 
         <div class="col-md-4 border" style="height: 862px; padding: 0; overflow: hidden;">
-            <iframe id="tradie_iframe" src="tradie_detail1" frameborder="0" style="height: 100%; width: 100%" ></iframe>
+            <iframe id="tradie_iframe" frameborder="0" style="height: 100%; width: 100%" ></iframe>
         </div>
 
         <div class="col-md-2"></div>
