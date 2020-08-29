@@ -12,6 +12,7 @@ from Home_app.models import Rating
 from Home_app.models import MyUser
 from django.db.models import Q
 import json
+import Jemma.Encrypt as en
 
 
 def index(request):
@@ -78,6 +79,17 @@ def tradie_profile(request):
             tradie = Tradie.objects.get(myUser=request.user)
         except Tradie.DoesNotExist:
             raise Http404("Tradie does not exist")
+        ABN = tradie.ABN
+        BSB = tradie.BSB
+        accountNo = tradie.accountNo
+        accountName = tradie.accountName
+        if BSB != None and BSB != "":
+            BSB = en.decrypt(BSB)
+        if accountNo != None and accountNo != "":
+            accountNo = en.decrypt(accountNo)
+        if accountName != None and accountName != "":
+            accountName = en.decrypt(accountName)
+
         context = {
             "login_status": json.dumps(True),
             "description": tradie.description,
@@ -85,10 +97,10 @@ def tradie_profile(request):
             "address": str(tradie.address1 + " " + tradie.suburb + " " + tradie.state + " " + tradie.postcode),
             "phone": tradie.phone,
             "company": tradie.company,
-            "ABN": tradie.ABN,
-            "BSB": tradie.BSB,
-            "accountNo": tradie.accountNo,
-            "accountName": tradie.accountName
+            "ABN": ABN,
+            "BSB": BSB,
+            "accountNo": accountNo,
+            "accountName": accountName
         }
         return render(request, "Tradie/tradie_profile.html", context)
     else:
@@ -192,41 +204,40 @@ def side_menu(request):
     return render(request, "SubTemplate/side_menu.html")
 
 
-def update_profile(request):
+def update_tradie_profile(request):
     tradie = Tradie.objects.get(myUser=request.user)
-    Your_Description = request.POST["Your_Description"]
-    tradie.description = Your_Description
-    Your_FullName = request.POST["Your_FullName"]
-    FirstName = Your_FullName.split(" ", 1)[0]
-    LastName = Your_FullName.split(" ", 1)[-1]
-    tradie.first_name = FirstName
-    tradie.last_name = LastName
+    tradie.description = request.POST["description"]
+    full_name = request.POST["fullName"]
+    first_name = full_name.split(" ", 1)[0]
+    last_name = full_name.split(" ", 1)[-1]
+    tradie.first_name =first_name
+    tradie.last_name = last_name
 
-    Your_Address = request.POST["Your_Address"]
+    address = request.POST["address"]
 
-    Address = Your_Address.split()
-    tradie.suburb = Address[-3]
-    tradie.state = Address[-2]
-    tradie.postcode = Address[-1]
+    address = address.split()
+    tradie.suburb = address[-3]
+    tradie.state = address[-2]
+    tradie.postcode = address[-1]
     str = ' '
-    tradie.address1 = str.join(Address[0:-3])
-    Your_Number = request.POST["Your_Number"]
-    tradie.phone = Your_Number
+    tradie.address1 = str.join(address[0:-3])
+    number = request.POST["number"]
+    tradie.phone = number
 
-    Your_CompanyName = request.POST["Your_CompanyName"]
-    tradie.company = Your_CompanyName
+    company_name = request.POST["companyName"]
+    tradie.company = company_name
 
-    Your_CompanyABN = request.POST["Your_CompanyABN"]
-    tradie.ABN = Your_CompanyABN
+    company_ABN = request.POST["companyABN"]
+    tradie.ABN = company_ABN
 
-    Your_BSB = request.POST["Your_BSB"]
-    tradie.BSB = Your_BSB
+    BSB = en.encrypt(request.POST["BSB"])
+    tradie.BSB = BSB
 
-    Your_BankNumber = request.POST["Your_BankNumber"]
-    tradie.accountNo = Your_BankNumber
+    bank_number = en.encrypt(request.POST["bankNumber"])
+    tradie.accountNo = bank_number
 
-    Your_BankName = request.POST["Your_BankName"]
-    tradie.accountName = Your_BankName
+    bank_name = en.encrypt(request.POST["bankName"])
+    tradie.accountName = bank_name
 
     tradie.save()
     return HttpResponseRedirect("tradie_profile")

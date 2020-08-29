@@ -21,7 +21,7 @@ urlpatterns = [
     path('tradie_calendar', views.tradie_calendar),
     path('about_us', views.about_us),
     path('contact', views.contact),
-    path('update_profile', views.update_profile),
+    path('update_tradie_profile', views.update_tradie_profile),
     path('customer_search_result', views.customer_search_result),
     path('tradie_detail', views.tradie_detail)
 ]

@@ -144,10 +144,10 @@ class Tradie(models.Model):
     postcode = models.CharField(max_length=5)
     company = models.CharField(max_length=50, null=True, blank=True)
     travelDistance = models.DecimalField(max_digits=4, decimal_places=2)
-    ABN = models.CharField(max_length=15)
-    BSB = models.CharField(max_length=10)
-    accountNo = models.CharField(max_length=10)
-    accountName = models.CharField(max_length=30)
+    ABN = models.CharField(max_length=100, null=True, blank=True)
+    BSB = models.CharField(max_length=100, null=True, blank=True)
+    accountNo = models.CharField(max_length=100, null=True, blank=True)
+    accountName = models.CharField(max_length=100, null=True, blank=True)
     accountStatus = models.CharField(
         null=False,
         max_length=10,
@@ -172,9 +172,9 @@ class Customer(models.Model):
         default='ACT'
     )
     postcode = models.CharField(max_length=5)
-    cardHolder = models.CharField(max_length=30)
-    cardNo = models.CharField(max_length=30)
-    cardValidDate = models.CharField(max_length=5)
+    cardHolder = models.CharField(max_length=100, null=True, blank=True)
+    cardNo = models.CharField(max_length=100, null=True, blank=True)
+    cardValidDate = models.CharField(max_length=100, null=True, blank=True)
     accountStatus = models.CharField(
         null=False,
         max_length=10,

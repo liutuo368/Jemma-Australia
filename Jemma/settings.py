@@ -81,8 +81,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'Jemma',
-        'USER': cf.get('db', 'MYSQL_USER'),
-        'PASSWORD': cf.get('db', 'MYSQL_PWD'),
+        'USER': cf.get('DATABASE', 'MYSQL_USER'),
+        'PASSWORD': cf.get('DATABASE', 'MYSQL_PWD'),
         'HOST': 'jemmatestdatabase.cfcqlfv4vump.ap-southeast-2.rds.amazonaws.com',
         'PORT': '3306',
     }
