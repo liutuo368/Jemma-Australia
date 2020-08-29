@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import configparser
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -74,12 +75,14 @@ WSGI_APPLICATION = 'Jemma.wsgi.application'
 
 
 # Database
+cf = configparser.ConfigParser()
+cf.read('django_db.conf')
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'Jemma',
-        'USER': 'admin',
-        'PASSWORD': 'ECMDNUeF4zByMv3q',
+        'USER': cf.get('db', 'MYSQL_USER'),
+        'PASSWORD': cf.get('db', 'MYSQL_PWD'),
         'HOST': 'jemmatestdatabase.cfcqlfv4vump.ap-southeast-2.rds.amazonaws.com',
         'PORT': '3306',
     }
