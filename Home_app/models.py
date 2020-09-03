@@ -130,20 +130,21 @@ class Tradie(models.Model):
     joinDate = models.DateField(auto_now_add=True)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
-    description = models.CharField(max_length=200)
-    phone = models.CharField(max_length=10)
-    address1 = models.CharField(max_length=100)
+    description = models.CharField(max_length=200, blank=True)
+    phone = models.CharField(max_length=10, blank=True)
+    address1 = models.CharField(max_length=100, blank=True)
     address2 = models.CharField(max_length=100, blank=True, null=True)
-    suburb = models.CharField(max_length=30)
+    suburb = models.CharField(max_length=30, blank=True)
     state = models.CharField(
         null=False,
         max_length=10,
         choices=[(_type.name, _type.value) for _type in States],
-        default='ACT'
+        default='ACT',
+        blank=True
     )
-    postcode = models.CharField(max_length=5)
+    postcode = models.CharField(max_length=5, blank=True)
     company = models.CharField(max_length=50, null=True, blank=True)
-    travelDistance = models.DecimalField(max_digits=4, decimal_places=2)
+    travelDistance = models.DecimalField(max_digits=4, decimal_places=2, blank=True)
     ABN = models.CharField(max_length=100, null=True, blank=True)
     BSB = models.CharField(max_length=100, null=True, blank=True)
     accountNo = models.CharField(max_length=100, null=True, blank=True)
@@ -161,17 +162,18 @@ class Customer(models.Model):
     joinDate = models.DateField(auto_now_add=True)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
-    phone = models.CharField(max_length=10)
-    address1 = models.CharField(max_length=100)
+    phone = models.CharField(max_length=10, blank=True)
+    address1 = models.CharField(max_length=100, blank=True)
     address2 = models.CharField(max_length=100, blank=True, null=True)
-    suburb = models.CharField(max_length=30)
+    suburb = models.CharField(max_length=30, blank=True)
     state = models.CharField(
         null=False,
+        blank = True,
         max_length=10,
         choices=[(_type.name, _type.value) for _type in States],
         default='ACT'
     )
-    postcode = models.CharField(max_length=5)
+    postcode = models.CharField(max_length=5, blank=True)
     cardHolder = models.CharField(max_length=100, null=True, blank=True)
     cardNo = models.CharField(max_length=100, null=True, blank=True)
     cardValidDate = models.CharField(max_length=100, null=True, blank=True)

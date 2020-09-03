@@ -23,7 +23,8 @@ urlpatterns = [
     path('contact', views.contact),
     path('update_tradie_profile', views.update_tradie_profile),
     path('customer_search_result', views.customer_search_result),
-    path('tradie_detail', views.tradie_detail)
+    path('tradie_detail', views.tradie_detail),
+    path('sign_up', views.sign_up)
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -47,6 +47,31 @@ def login(request):
         raise Http404("User does not exist")
 
 
+def sign_up(request):
+    firstname = request.POST["firstname"]
+    lastname = request.POST["lastname"]
+    email = request.POST["email"]
+    password = request.POST["password"]
+    user_type = request.POST["userOptions"]
+
+    try:
+        MyUser.objects.get(email=email)
+        raise Http404("Email alreay been registered")
+    except MyUser.DoesNotExist:
+        myUser = MyUser(email=email, date_of_birth='2020-1-1', user_type=user_type, password=password)
+        myUser.save()
+        if user_type == "tradie":
+            tradie = Tradie(myUser=myUser, first_name=firstname, last_name=lastname, accountStatus="Active", travelDistance=0)
+            tradie.save()
+            auth.login(request, myUser)
+            return HttpResponseRedirect("tradie")
+        else:
+            customer = Customer(myUser=myUser, first_name=firstname, last_name=lastname, accountStatus="Active")
+            customer.save()
+            auth.login(request, myUser)
+            return HttpResponseRedirect("index")
+
+
 def user_logout(request):
     auth.logout(request)
     return HttpResponseRedirect("index")
@@ -181,7 +206,6 @@ def tradie_detail(request):
         "rating": avg_rating
     }
     return render(request, "Customer/tradie_detail.html", context)
-
 
 
 def tradie_calendar(request):
