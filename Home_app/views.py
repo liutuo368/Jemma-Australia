@@ -27,7 +27,8 @@ def login(request):
     password = request.POST["pswd"]
     user_type = request.POST["optionsRadiosinline"]
     user = auth.authenticate(username=username, password=password)
-
+    if "remember_me" not in request.POST:
+        request.session.set_expiry(0)
     if user is not None:
         if user_type == "tradie":
             try:
@@ -108,11 +109,11 @@ def tradie_profile(request):
         BSB = tradie.BSB
         accountNo = tradie.accountNo
         accountName = tradie.accountName
-        if BSB != None and BSB != "":
+        if BSB is not None and BSB != "":
             BSB = en.decrypt(BSB)
-        if accountNo != None and accountNo != "":
+        if accountNo is not None and accountNo != "":
             accountNo = en.decrypt(accountNo)
-        if accountName != None and accountName != "":
+        if accountName is not None and accountName != "":
             accountName = en.decrypt(accountName)
 
         context = {
@@ -128,6 +129,37 @@ def tradie_profile(request):
             "accountName": accountName
         }
         return render(request, "Tradie/tradie_profile.html", context)
+    else:
+        raise Http404("Haven't logged in")
+
+
+def customer_profile(request):
+    if request.user.is_authenticated:
+        try:
+            customer = Customer.objects.get(myUser=request.user)
+        except Customer.DoesNotExist:
+            raise Http404("Customer does not exist")
+
+        cardHolder = customer.cardHolder
+        cardNo = customer.cardNo
+        cardValidDate = customer.cardValidDate
+        if cardHolder is not None and cardHolder != "":
+            cardHolder = en.decrypt(cardHolder)
+        if cardNo is not None and cardNo != "":
+            cardNo = en.decrypt(cardNo)
+        if cardValidDate is not None and cardValidDate != "":
+            cardValidDate = en.decrypt(cardValidDate)
+
+        context = {
+            "login_status": json.dumps(True),
+            "fullname": customer.first_name + " " + customer.last_name,
+            "address": str(customer.address1 + " " + customer.suburb + " " + customer.state + " " + customer.postcode),
+            "phone": customer.phone,
+            "cardHolder": cardHolder,
+            "cardNo": cardNo,
+            "cardValidDate": cardValidDate
+        }
+        return render(request, "Customer/customer_profile.html", context)
     else:
         raise Http404("Haven't logged in")
 
@@ -265,6 +297,38 @@ def update_tradie_profile(request):
 
     tradie.save()
     return HttpResponseRedirect("tradie_profile")
+
+
+def update_customer_profile(request):
+    customer = Customer.objects.get(myUser=request.user)
+    full_name = request.POST["fullName"]
+    first_name = full_name.split(" ", 1)[0]
+    last_name = full_name.split(" ", 1)[-1]
+    customer.first_name = first_name
+    customer.last_name = last_name
+
+    address = request.POST["address"]
+
+    address = address.split()
+    customer.suburb = address[-3]
+    customer.state = address[-2]
+    customer.postcode = address[-1]
+    str = ' '
+    customer.address1 = str.join(address[0:-3])
+    number = request.POST["number"]
+    customer.phone = number
+
+    cardHolder = request.POST["cardHolder"]
+    customer.cardHolderr = cardHolder
+
+    cardNo = en.encrypt(request.POST["cardNo"])
+    customer.cardNo = cardNo
+
+    cardValidDate = en.encrypt(request.POST["cardValidDate"])
+    customer.accountNo = cardValidDate
+
+    customer.save()
+    return HttpResponseRedirect("customer_profile")
 
 
 def updatehp(request):
