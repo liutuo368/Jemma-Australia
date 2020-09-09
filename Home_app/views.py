@@ -41,7 +41,7 @@ def login(request):
             try:
                 Customer.objects.get(myUser=user)
                 auth.login(request, user)
-                return HttpResponseRedirect("index")
+                return HttpResponseRedirect("customer_profile")
             except Customer.DoesNotExist:
                 raise Http404("Customer does not exist")
     else:
@@ -70,7 +70,7 @@ def sign_up(request):
             customer = Customer(myUser=myUser, first_name=firstname, last_name=lastname, accountStatus="Active")
             customer.save()
             auth.login(request, myUser)
-            return HttpResponseRedirect("index")
+            return HttpResponseRedirect("customer_profile")
 
 
 def user_logout(request):
@@ -254,6 +254,10 @@ def top_menu_sign_in(request):
     return render(request, "SubTemplate/top_menu_sign_in.html")
 
 
+def customer_profile(request):
+    return render(request, "Customer/customer_profile.html")
+
+
 def footer(request):
     return render(request, "SubTemplate/footer.html")
 
@@ -263,6 +267,15 @@ def side_menu(request):
 
 def side_menu_customer(request):
     return render(request, "SubTemplate/side_menu_customer.html")
+
+def customer_quote(request):
+    return render(request, "Customer/customer_quote.html")
+
+def customer_history(request):
+    return render(request, "Customer/customer_history.html")
+
+def customer_current_order(request):
+    return render(request, "Customer/customer_current_order.html")
 
 
 def update_tradie_profile(request):
