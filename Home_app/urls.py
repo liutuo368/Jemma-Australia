@@ -28,9 +28,9 @@ urlpatterns = [
     path('side_menu_customer', views.side_menu_customer),
     path('tradie_quotes', views.tradie_quotes),
     path('customer_profile', views.customer_profile),
-    path('customer_quote', views.customer_quote()),
-    path('customer_history', views.customer_history()),
-    path('customer_current_order', views.customer_current_order())
+    path('customer_quote', views.customer_quote),
+    path('customer_history', views.customer_history),
+    path('customer_current_order', views.customer_current_order)
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
