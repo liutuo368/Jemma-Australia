@@ -268,6 +268,15 @@ def side_menu(request):
 def side_menu_customer(request):
     return render(request, "SubTemplate/side_menu_customer.html")
 
+def customer_quote(request):
+    return render(request, "Customer/customer_quote.html")
+
+def customer_history(request):
+    return render(request, "Customer/customer_history.html")
+
+def customer_current_order(request):
+    return render(request, "Customer/customer_current_order.html")
+
 
 def update_tradie_profile(request):
     tradie = Tradie.objects.get(myUser=request.user)
