@@ -25,7 +25,7 @@ urlpatterns = [
     path('customer_search_result', views.customer_search_result),
     path('tradie_detail', views.tradie_detail),
     path('sign_up', views.sign_up),
-    path('sign_menu_customer', views.side_menu_customer),
+    path('side_menu_customer', views.side_menu_customer),
     path('tradie_quotes', views.tradie_quotes),
     path('customer_profile', views.customer_profile)
 ]
