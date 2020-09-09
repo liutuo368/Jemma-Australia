@@ -259,6 +259,9 @@ def footer(request):
 def side_menu(request):
     return render(request, "SubTemplate/side_menu.html")
 
+def side_menu_customer(request):
+    return render(request, "SubTemplate/side_menu_customer.html")
+
 
 def update_tradie_profile(request):
     tradie = Tradie.objects.get(myUser=request.user)
