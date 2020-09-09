@@ -277,6 +277,9 @@ def customer_history(request):
 def customer_current_order(request):
     return render(request, "Customer/customer_current_order.html")
 
+def tradie_quote_details(request):
+    return render(request, "Tradie/tradie_quote_details.html")
+
 
 def update_tradie_profile(request):
     tradie = Tradie.objects.get(myUser=request.user)
