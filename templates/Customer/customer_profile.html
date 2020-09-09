@@ -39,7 +39,6 @@
         }
 
         .nav-tabs .nav-link.active {
-            background-color: #ddffdd !important;
             color: rgba(000, 0, 0, 0.9) !important;
         }
 
@@ -72,8 +71,7 @@
                     </div>
 
                     <div class="col-md-10 align-self-center">
-                        <h4 class="text-left align-middle" align="left">Welcome, Tradie</h4>
-                        <h5 class="text-left align-middle" align="left">Tradie company</h5>
+                        <h4 class="text-left align-middle" align="left">Welcome, Customer</h4>
                     </div>
                 </div>
             </div>
@@ -82,7 +80,7 @@
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist">
                 <li class="nav-item">
-                    <a class="nav-link active" data-toggle="tab" href="#home">Profile</a>
+                    <a class="nav-link active" data-toggle="tab" href="#home">Personal Details</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="tab" href="#menu1">Edit</a>
@@ -95,50 +93,13 @@
                     <div class="panel panel-default">
                         <div class="panel-body">
                             <form class="form-horizontal">
-                                <h5 class="panel-title pull-left">Personal Description:</h5><br><br>
-                                <label class="panel-title pull-left">{{ description }}</label>
-                                <br><br>
-                            </form>
-                        </div>
-                    </div>
-                    <hr class="rgba-white-light">
-
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-
-                            <h5 class="panel-title pull-left">Licenses &amp; Qualifications:</h5>
-                            <br><br>
-                            <img class="img-thumbnail img-responsive align-left"
-                                 src="../../static/IMAGES/certification.png"
-                                 alt="certification"
-                                 style="width: 100px;">
-                            <br>
-                        </div>
-
-                        <hr class="rgba-white-light">
-
-                        <div class="panel-body">
-                            <h5 class="panel-title pull-left"><strong>Personal detail</strong></h5>
-                            <br><br>
-                            <form class="form-horizontal">
-
                                 <label for="Your_location">Full Name:&nbsp; {{ fullname }}&nbsp;</label>
                                 <hr class="rgba-white-light">
-
                                 <br>
                                 <label for="Your_gender">Address&nbsp:&nbsp;{{ address }}</label>
                                 <hr class="rgba-white-light">
                                 <br>
                                 <label for="Your_gender">Contact Number:&nbsp;{{ phone }}&nbsp;</label>
-                                <hr class="rgba-white-light">
-                                <br>
-                                <label for="Your_gender">Company Name:&nbsp;{{ company }}</label>
-                                <hr class="rgba-white-light">
-                                <br>
-                                <label for="Your_gender">Company ABN:&nbsp;{{ ABN }}&nbsp;</label>
-                                <hr class="rgba-white-light">
-                                <br>
-                                <label for="Your_gender">Bank BSB:&nbsp;{{ BSB }}</label>
                                 <hr class="rgba-white-light">
                                 <br>
                                 <label for="Your_gender">Bank Account Number&nbsp:&nbsp;{{ accountNo }}</label>
@@ -159,18 +120,6 @@
                                 <div class="panel-body">
                                     <form action="update_tradie_profile" class="form-horizontal"
                                           method="post">{% csrf_token %}
-                                        <h5 for="Your_Description" class="panel-title pull-left">Personal
-                                            Description:</h5><br><br>
-                                        <input ctype="text" class="form-control" rows="3" name="description"
-                                               placeholder="Fill me out"
-                                               value="{{ description }}">
-                                        <br>
-                                        <h5 class="panel-title pull-left">Licenses & Qualifications: </h5><br><br>
-                                        <input class="form-control" type="file" rows="3" placeholder="Fill me out">
-                                        <br>
-
-                                        <h5 class="panel-title pull-left"><strong>Personal detail:</strong></h5>
-                                        <br><br>
                                         <label for="Your_FullName">Full Name:</label>
                                         <input type="text" class="form-control" name="fullName"
                                                placeholder="Fill me out"
@@ -186,21 +135,6 @@
                                                placeholder="Fill me out"
                                                value="{{ phone }}">
                                         <br>
-                                        <label for="Your_CompanyName">Company Name:</label>
-                                        <input type="text" class="form-control" name="companyName"
-                                               placeholder="Fill me out"
-                                               value="{{ company }}">
-                                        <br>
-                                        <label for="Your_CompanyABN">Company ABN&nbsp;</label>
-                                        <input type="text" class="form-control" name="companyABN"
-                                               placeholder="Fill me out"
-                                               value="{{ ABN }}">
-                                        <br>
-                                        <label for="Your_BSB">Bank BSB:&nbsp;</label>
-                                        <input type="text" class="form-control" name="BSB"
-                                               placeholder="Fill me out"
-                                               value="{{ BSB }}">
-                                        <br>
                                         <label for="Your_BankNumber">Bank Account Number:&nbsp;</label>
                                         <input type="text" class="form-control" name="bankNumber"
                                                placeholder="Fill me out"
@@ -212,7 +146,6 @@
                                                value="{{ accountName }}">
                                         <br>
                                         <input class="btn btn-primary" type="submit" value="Update">
-
                                         <button class="btn btn-secondary" type="reset">
                                             Reset
                                         </button>
