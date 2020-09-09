@@ -129,6 +129,7 @@
                 </div>
             </div>
         </div>
+
         <div class="modal fade" id="Register_Modal">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -161,14 +162,15 @@
                             </div>
 
                             <div class="form-group">
-                                <input name="password" type="password" class="form-control" placeholder="Enter password" required>
+                                <input name="password" type="password" class="form-control" placeholder="Enter password" id ="password" required>
                                 <div class="valid-feedback">Valid.</div>
                                 <div class="invalid-feedback">Please fill out this field.</div>
                             </div>
 
                             <div class="form-group">
-                                <input name="conpassword" type="password" class="form-control" placeholder="Confirm Password" required>
+                                <input name="conpassword" type="password" class="form-control" placeholder="Confirm Password" id ="confirm_password" required>
                                 <div class="valid-feedback">Valid.</div>
+
                                 <div class="invalid-feedback">Please fill out this field.</div>
                             </div>
 
@@ -218,6 +220,19 @@
 
 <script>
     feather.replace()
+
+    var password = document.getElementById("password"), confirm_password = document.getElementById("confirm_password");
+
+    function validatePassword(){
+      if(password.value != confirm_password.value) {
+        confirm_password.setCustomValidity("Passwords Don't Match");
+      } else {
+        confirm_password.setCustomValidity('');
+      }
+    }
+
+    password.onchange = validatePassword;
+    confirm_password.onkeyup = validatePassword;
 </script>
 
 </body>
