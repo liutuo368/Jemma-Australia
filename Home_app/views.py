@@ -243,6 +243,8 @@ def tradie_detail(request):
 def tradie_calendar(request):
     return render(request, "Tradie/tradie_calendar.html")
 
+def tradie_quotes(request):
+    return render(request, "Tradie/tradie_quotes.html")
 
 def top_menu_without_sign_in(request):
     return render(request, "SubTemplate/top_menu_without_sign_in.html")
