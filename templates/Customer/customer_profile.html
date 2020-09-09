@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Profile</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.16/dist/css/bootstrap-select.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.16/dist/js/bootstrap-select.min.js"></script>
+
+    <!-- (Optional) Latest compiled and minified JavaScript translation files -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.16/dist/js/i18n/defaults-*.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#top_menu").load("top_menu_sign_in");
+            $("#side_menu").load("side_menu");
+            $("#footer").load("footer");
+        });
+    </script>
+    <style>
+        .nav-tabs .nav-link:hover {
+            background-color: #e8e8e8;
+            color: grey !important;
+        }
+
+        .nav-tabs .nav-link.active {
+            background-color: #ddffdd !important;
+            color: rgba(000, 0, 0, 0.9) !important;
+        }
+
+    </style>
+</head>
+<body>
+<div id="top_menu"></div>
+
+<div>
+
+    <div class="row bg-white">
+
+        <div class="col-md-2" style="margin-left: 7%;">
+            <div style="height: 10%"></div>
+            <div id="side_menu" style="width: 100%"></div>
+        </div>
+
+        <div class="col-md-8" style="margin-left: 3%">
+            <div id="profile_header" class="container align-items-center justify-content-center mb-3">
+                <div class="row">
+                    <div class="col-md-2 text-center">
+                        <img class="img-rounded rounded-circle "
+                             src="{{ user.user_hp.url }}"
+                             alt="user_profile_picture"
+                             style="height: 100px;">
+                        <button class="btn btn-sm btn-white mx-auto">
+                            <i class="fa fa-upload"></i>
+                            Update Image
+                        </button>
+                    </div>
+
+                    <div class="col-md-10 align-self-center">
+                        <h4 class="text-left align-middle" align="left">Welcome, Tradie</h4>
+                        <h5 class="text-left align-middle" align="left">Tradie company</h5>
+                    </div>
+                </div>
+            </div>
+            <br>
+
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" data-toggle="tab" href="#home">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#menu1">Edit</a>
+                </li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content" style="border-width: 10px">
+                <div id="home" class="container tab-pane active"><br>
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <form class="form-horizontal">
+                                <h5 class="panel-title pull-left">Personal Description:</h5><br><br>
+                                <label class="panel-title pull-left">{{ description }}</label>
+                                <br><br>
+                            </form>
+                        </div>
+                    </div>
+                    <hr class="rgba-white-light">
+
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+
+                            <h5 class="panel-title pull-left">Licenses &amp; Qualifications:</h5>
+                            <br><br>
+                            <img class="img-thumbnail img-responsive align-left"
+                                 src="../../static/IMAGES/certification.png"
+                                 alt="certification"
+                                 style="width: 100px;">
+                            <br>
+                        </div>
+
+                        <hr class="rgba-white-light">
+
+                        <div class="panel-body">
+                            <h5 class="panel-title pull-left"><strong>Personal detail</strong></h5>
+                            <br><br>
+                            <form class="form-horizontal">
+
+                                <label for="Your_location">Full Name:&nbsp; {{ fullname }}&nbsp;</label>
+                                <hr class="rgba-white-light">
+
+                                <br>
+                                <label for="Your_gender">Address&nbsp:&nbsp;{{ address }}</label>
+                                <hr class="rgba-white-light">
+                                <br>
+                                <label for="Your_gender">Contact Number:&nbsp;{{ phone }}&nbsp;</label>
+                                <hr class="rgba-white-light">
+                                <br>
+                                <label for="Your_gender">Company Name:&nbsp;{{ company }}</label>
+                                <hr class="rgba-white-light">
+                                <br>
+                                <label for="Your_gender">Company ABN:&nbsp;{{ ABN }}&nbsp;</label>
+                                <hr class="rgba-white-light">
+                                <br>
+                                <label for="Your_gender">Bank BSB:&nbsp;{{ BSB }}</label>
+                                <hr class="rgba-white-light">
+                                <br>
+                                <label for="Your_gender">Bank Account Number&nbsp:&nbsp;{{ accountNo }}</label>
+                                <hr class="rgba-white-light">
+                                <br>
+                                <label for="Your_gender">Bank Account Name:&nbsp;{{ accountName }}</label>
+                                <hr class="rgba-white-light">
+                                <br>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="menu1" class="container tab-pane fade"><br>
+                    <div>
+                        <div>
+                            <div class="panel panel-default">
+                                <div class="panel-body">
+                                    <form action="update_tradie_profile" class="form-horizontal"
+                                          method="post">{% csrf_token %}
+                                        <h5 for="Your_Description" class="panel-title pull-left">Personal
+                                            Description:</h5><br><br>
+                                        <input ctype="text" class="form-control" rows="3" name="description"
+                                               placeholder="Fill me out"
+                                               value="{{ description }}">
+                                        <br>
+                                        <h5 class="panel-title pull-left">Licenses & Qualifications: </h5><br><br>
+                                        <input class="form-control" type="file" rows="3" placeholder="Fill me out">
+                                        <br>
+
+                                        <h5 class="panel-title pull-left"><strong>Personal detail:</strong></h5>
+                                        <br><br>
+                                        <label for="Your_FullName">Full Name:</label>
+                                        <input type="text" class="form-control" name="fullName"
+                                               placeholder="Fill me out"
+                                               value="{{ fullname }}">
+                                        <br>
+                                        <label for="Your_Address">Address&nbsp:</label>
+                                        <input type="text" class="form-control" name="address"
+                                               placeholder="Fill me out"
+                                               value="{{ address }}">
+                                        <br>
+                                        <label for="Your_Number">Contact Number:</label>
+                                        <input type="text" class="form-control" name="number"
+                                               placeholder="Fill me out"
+                                               value="{{ phone }}">
+                                        <br>
+                                        <label for="Your_CompanyName">Company Name:</label>
+                                        <input type="text" class="form-control" name="companyName"
+                                               placeholder="Fill me out"
+                                               value="{{ company }}">
+                                        <br>
+                                        <label for="Your_CompanyABN">Company ABN&nbsp;</label>
+                                        <input type="text" class="form-control" name="companyABN"
+                                               placeholder="Fill me out"
+                                               value="{{ ABN }}">
+                                        <br>
+                                        <label for="Your_BSB">Bank BSB:&nbsp;</label>
+                                        <input type="text" class="form-control" name="BSB"
+                                               placeholder="Fill me out"
+                                               value="{{ BSB }}">
+                                        <br>
+                                        <label for="Your_BankNumber">Bank Account Number:&nbsp;</label>
+                                        <input type="text" class="form-control" name="bankNumber"
+                                               placeholder="Fill me out"
+                                               value="{{ accountNo }}">
+                                        <br>
+                                        <label for="Your_BankName">Bank Account Name:&nbsp;</label>
+                                        <input type="text" class="form-control" name="bankName"
+                                               placeholder="Fill me out"
+                                               value="{{ accountName }}">
+                                        <br>
+                                        <input class="btn btn-primary" type="submit" value="Update">
+
+                                        <button class="btn btn-secondary" type="reset">
+                                            Reset
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="footer"></div>
+</body>
+</html>
