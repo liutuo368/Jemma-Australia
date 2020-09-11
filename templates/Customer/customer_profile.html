@@ -70,7 +70,7 @@
                 </div>
 
                 <div class="col-md-10 align-self-center">
-                    <h4 class="text-left align-middle" align="left">Welcome, Customer</h4>
+                    <h4 class="text-left align-middle" align="left">Welcome, {{ fullname }}</h4>
                 </div>
             </div>
         </div>
@@ -92,19 +92,22 @@
                 <div class="panel panel-default">
                     <div class="panel-body">
                         <form class="form-horizontal">
-                            <label for="Your_location">Full Name:&nbsp; {{ fullname }}&nbsp;</label>
+                            <label>Full Name:&nbsp; {{ fullname }}</label>
                             <hr class="rgba-white-light">
                             <br>
-                            <label for="Your_gender">Address&nbsp:&nbsp;{{ address }}</label>
+                            <label>Address&nbsp:&nbsp;{{ address }}</label>
                             <hr class="rgba-white-light">
                             <br>
-                            <label for="Your_gender">Contact Number:&nbsp;{{ phone }}&nbsp;</label>
+                            <label>Contact Number:&nbsp;{{ phone }}&nbsp;</label>
                             <hr class="rgba-white-light">
                             <br>
-                            <label for="Your_gender">Bank Account Number&nbsp:&nbsp;{{ accountNo }}</label>
+                            <label>Card Holder:&nbsp:&nbsp;{{ cardHolder }}</label>
                             <hr class="rgba-white-light">
                             <br>
-                            <label for="Your_gender">Bank Account Name:&nbsp;{{ accountName }}</label>
+                            <label>Card Number:&nbsp;{{ cardNo }}</label>
+                            <hr class="rgba-white-light">
+                            <br>
+                            <label>Card Valid Until:&nbsp;{{ cardValidDate }}</label>
                             <hr class="rgba-white-light">
                             <br>
                         </form>
@@ -115,32 +118,38 @@
             <div id="menu1" class="container tab-pane fade"><br>
                 <div class="panel panel-default">
                     <div class="panel-body">
-                        <form action="update_tradie_profile" class="form-horizontal"
-                              method="post">{% csrf_token %}
-                            <label for="Your_FullName">Full Name:</label>
+                        <form action="update_customer_profile" class="form-horizontal"
+                              method="post">
+                            {% csrf_token %}
+                            <label>Full Name:</label>
                             <input type="text" class="form-control" name="fullName"
                                    placeholder="Fill me out"
                                    value="{{ fullname }}">
                             <br>
-                            <label for="Your_Address">Address&nbsp:</label>
+                            <label>Address&nbsp:</label>
                             <input type="text" class="form-control" name="address"
                                    placeholder="Fill me out"
                                    value="{{ address }}">
                             <br>
-                            <label for="Your_Number">Contact Number:</label>
+                            <label>Contact Number:</label>
                             <input type="text" class="form-control" name="number"
                                    placeholder="Fill me out"
                                    value="{{ phone }}">
                             <br>
-                            <label for="Your_BankNumber">Bank Account Number:&nbsp;</label>
-                            <input type="text" class="form-control" name="bankNumber"
+                            <label>Card Holder:&nbsp;</label>
+                            <input type="text" class="form-control" name="cardHolder"
                                    placeholder="Fill me out"
-                                   value="{{ accountNo }}">
+                                   value="{{ cardHolder }}">
                             <br>
-                            <label for="Your_BankName">Bank Account Name:&nbsp;</label>
-                            <input type="text" class="form-control" name="bankName"
+                            <label>Card Number:&nbsp;</label>
+                            <input type="text" class="form-control" name="cardNumber"
                                    placeholder="Fill me out"
-                                   value="{{ accountName }}">
+                                   value="{{ cardNo }}">
+                            <br>
+                            <label>Card Valid Until:&nbsp;</label>
+                            <input type="text" class="form-control" name="cardValidDate"
+                                   placeholder="Fill me out"
+                                   value="{{ cardValidDate }}">
                             <br>
                             <input class="btn btn-primary" type="submit" value="Update">
                             <button class="btn btn-secondary" type="reset">

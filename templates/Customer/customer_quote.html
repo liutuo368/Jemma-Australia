@@ -96,9 +96,8 @@
                 <table class="table table-striped table-bordered table-hover table-full-width" id="sample_2">
                     <thead>
                     <tr>
-                        <th>JobID</th>
-                        <th>Client Name</th>
-                        <th class="hidden-480">Description</th>
+                        <th>QuoteId</th>
+                        <th>Tradie Name</th>
                         <th class="hidden-480">Location</th>
                         <th class="hidden-480">Date</th>
                         <th class="hidden-480">Status</th>
@@ -106,13 +105,13 @@
                     </thead>
 
                     <tbody>
-                    {% for job in current_jobs %}
+                    {% for quote in current_quotes %}
                         <tr>
-                            <td class="hidden-480">{{ job.id }}</td>
-                            <td class="hidden-480">{{ job.category }}</td>
-                            <td class="hidden-480">{{ job.customer.suburb }}</td>
-                            <td class="hidden-480">{{ job.orderDate }}</td>
-                            <td class="hidden-480">{{ job.orderStatus }}</td>
+                            <td class="hidden-480">{{ quote.id }}</td>
+                            <td class="hidden-480">{{ quote.tradie.first_name }} {{ quote.tradie.last_name }}</td>
+                            <td class="hidden-480">{{ quote.customer.suburb }}</td>
+                            <td class="hidden-480">{{ quote.date }}</td>
+                            <td class="hidden-480">{{ quote.status }}</td>
                         </tr>
                     {% endfor %}
                     </tbody>

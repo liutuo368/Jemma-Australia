@@ -88,7 +88,7 @@
                     </div>
 
                     <div class="col-md-10 align-self-center">
-                        <h4 class="text-left align-middle" align="left">Welcome, Tradie</h4>
+                        <h4 class="text-left align-middle" align="left">Welcome, {{ fullname }}</h4>
                         <h5 class="text-left align-middle" align="left">Tradie company</h5>
                     </div>
                 </div>
@@ -109,13 +109,13 @@
                     </thead>
 
                     <tbody>
-                    {% for job in current_jobs %}
+                    {% for quote in current_quotes %}
                         <tr>
-                            <td class="hidden-480">{{ job.id }}</td>
-                            <td class="hidden-480">{{ job.category }}</td>
-                            <td class="hidden-480">{{ job.customer.suburb }}</td>
-                            <td class="hidden-480">{{ job.orderDate }}</td>
-                            <td class="hidden-480">{{ job.orderStatus }}</td>
+                            <td class="hidden-480">{{ quote.id }}</td>
+                            <td class="hidden-480">{{ quote.customer.first_name }} {{ quote.customer.last_name }}</td>
+                            <td class="hidden-480">{{ quote.customer.suburb }}</td>
+                            <td class="hidden-480">{{ quote.date }}</td>
+                            <td class="hidden-480">{{ quote.status }}</td>
                         </tr>
                     {% endfor %}
                     </tbody>

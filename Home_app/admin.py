@@ -103,6 +103,7 @@ register_list = [
     models.Rating,
     models.JobType,
     models.TradieJobType,
+    models.Quote,
 ]
 
 admin.site.register(register_list)

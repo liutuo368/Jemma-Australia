@@ -91,7 +91,7 @@
                     </div>
 
                     <div class="col-md-10 align-self-center">
-                        <h4 class="text-left align-middle" align="left">Welcome, Customer</h4>
+                        <h4 class="text-left align-middle" align="left">Welcome, {{ fullname }}</h4>
                     </div>
                 </div>
             </div>
@@ -99,21 +99,23 @@
             <div>
                 <div class="quote-metadata custom-border mb-5">
                     <form class="form-horizontal">
-                        <label>Quote ID: 00001</label>
+                        <label>Quote ID: {{ current_quote.id }}</label>
                         <br>
-                        <label>Client Name:&nbsp;James</label>
+                        <label>Client Name:&nbsp;{{ current_quote.customer.first_name }} {{ current_quote.customer.last_name }}</label>
                         <br>
-                        <label>Client Location: Acton</label>
+                        <label>Client Location: {{ current_quote.customer.suburb }}</label>
                         <br>
-                        <label>Date: 2020/09/09</label>
+                        <label>Date: {{ current_quote.date }}</label>
                         <br>
-                        <label>Status: Unread</label>
+                        <label>Status: {{ current_quote.status }}</label>
                         <br>
                     </form>
                 </div>
                 <div class="quote-details">
                     <form class="form-horizontal">
                         <label>Quote Description:</label>
+                        <br>
+                        <p>{{ current_quote.description }}</p>
                         <br>
                         <label>Images/Videos</label>
                         <br>

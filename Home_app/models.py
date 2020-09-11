@@ -23,6 +23,11 @@ class OrderStatusTypeChoice(Enum):
     Completed ="Completed"
 
 
+class QuoteStatusTypeChoice(Enum):
+    Unread = "Unread"
+    AwaitingPayment = "Awaiting Payment"
+
+
 class States(Enum):
     ACT = "ACT"
     NSW = "NSW"
@@ -195,6 +200,18 @@ class Order(models.Model):
     tradie = models.ForeignKey("Tradie", on_delete=models.CASCADE)
     customer = models.ForeignKey("Customer", on_delete=models.CASCADE)
     orderDate = models.DateTimeField(auto_now_add=True)
+
+
+class Quote(models.Model):
+    customer = models.ForeignKey("Customer", on_delete=models.CASCADE)
+    tradie = models.ForeignKey("Tradie", on_delete=models.CASCADE)
+    date = models.DateField(auto_now_add=True)
+    status = models.CharField(
+        max_length=20,
+        choices=[(_type.name, _type.value) for _type in QuoteStatusTypeChoice],
+        default='Unread'
+    )
+    description = models.CharField(null=True, max_length=200)
 
 
 class Certificate(models.Model):

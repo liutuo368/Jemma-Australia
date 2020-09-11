@@ -10,6 +10,7 @@ from Home_app.models import Order
 from Home_app.models import TradieJobType
 from Home_app.models import Rating
 from Home_app.models import MyUser
+from Home_app.models import Quote
 from django.db.models import Q
 import json
 import Jemma.Encrypt as en
@@ -41,7 +42,7 @@ def login(request):
             try:
                 Customer.objects.get(myUser=user)
                 auth.login(request, user)
-                return HttpResponseRedirect("customer_profile")
+                return HttpResponseRedirect("customer")
             except Customer.DoesNotExist:
                 raise Http404("Customer does not exist")
     else:
@@ -105,6 +106,7 @@ def tradie_profile(request):
             tradie = Tradie.objects.get(myUser=request.user)
         except Tradie.DoesNotExist:
             raise Http404("Tradie does not exist")
+
         ABN = tradie.ABN
         BSB = tradie.BSB
         accountNo = tradie.accountNo
@@ -159,6 +161,7 @@ def customer_profile(request):
             "cardNo": cardNo,
             "cardValidDate": cardValidDate
         }
+
         return render(request, "Customer/customer_profile.html", context)
     else:
         raise Http404("Haven't logged in")
@@ -173,7 +176,8 @@ def tradie_history(request):
         job_history = Order.objects.filter(Q(tradie=tradie), Q(orderStatus="Rejected") | Q(orderStatus="Completed"))
         context = {
             "login_status": json.dumps(True),
-            "job_history": job_history
+            "job_history": job_history,
+            "fullname": tradie.first_name + " " + tradie.last_name
         }
         return render(request, "Tradie/tradie_history.html", context)
     else:
@@ -189,7 +193,8 @@ def tradie_current_job(request):
         current_jobs = Order.objects.filter(Q(tradie=tradie), Q(orderStatus="Pending") | Q(orderStatus="Accepted"))
         context = {
             "login_status": json.dumps(True),
-            "current_jobs": current_jobs
+            "current_jobs": current_jobs,
+            "fullname": tradie.first_name + " " + tradie.last_name
         }
         return render(request, "Tradie/tradie_current_job.html", context)
     else:
@@ -244,7 +249,21 @@ def tradie_calendar(request):
     return render(request, "Tradie/tradie_calendar.html")
 
 def tradie_quotes(request):
-    return render(request, "Tradie/tradie_quotes.html")
+    if request.user.is_authenticated:
+        try:
+            tradie = Tradie.objects.get(myUser=request.user)
+        except Tradie.DoesNotExist:
+            raise Http404("Tradie does not exist")
+        current_quotes = Quote.objects.filter(Q(tradie=tradie))
+        context = {
+            "login_status": json.dumps(True),
+            "current_quotes": current_quotes,
+            "fullname": tradie.first_name + " " + tradie.last_name
+        }
+        return render(request, "Tradie/tradie_quotes.html", context)
+    else:
+        raise Http404("Haven't logged in")
+
 
 def top_menu_without_sign_in(request):
     return render(request, "SubTemplate/top_menu_without_sign_in.html")
@@ -252,10 +271,6 @@ def top_menu_without_sign_in(request):
 
 def top_menu_sign_in(request):
     return render(request, "SubTemplate/top_menu_sign_in.html")
-
-
-def customer_profile(request):
-    return render(request, "Customer/customer_profile.html")
 
 
 def footer(request):
@@ -269,16 +284,72 @@ def side_menu_customer(request):
     return render(request, "SubTemplate/side_menu_customer.html")
 
 def customer_quote(request):
-    return render(request, "Customer/customer_quote.html")
+    if request.user.is_authenticated:
+        try:
+            customer = Customer.objects.get(myUser=request.user)
+        except Tradie.DoesNotExist:
+            raise Http404("Customer does not exist")
+        current_quotes = Quote.objects.filter(Q(customer=customer))
+        context = {
+            "login_status": json.dumps(True),
+            "current_quotes": current_quotes,
+            "fullname": customer.first_name + " " + customer.last_name
+        }
+        return render(request, "Customer/customer_quote.html", context)
+    else:
+        raise Http404("Haven't logged in")
+
 
 def customer_history(request):
-    return render(request, "Customer/customer_history.html")
+    if request.user.is_authenticated:
+        try:
+            customer = Customer.objects.get(myUser=request.user)
+        except Customer.DoesNotExist:
+            raise Http404("Customer does not exist")
+        order_history = Order.objects.filter(Q(customer=customer), Q(orderStatus="Rejected") | Q(orderStatus="Completed"))
+        context = {
+            "login_status": json.dumps(True),
+            "order_history": order_history,
+            "fullname": customer.first_name + " " + customer.last_name
+        }
+        return render(request, "Customer/customer_history.html", context)
+    else:
+        raise Http404("Haven't logged in")
+
 
 def customer_current_order(request):
-    return render(request, "Customer/customer_current_order.html")
+    if request.user.is_authenticated:
+        try:
+            customer = Customer.objects.get(myUser=request.user)
+        except Customer.DoesNotExist:
+            raise Http404("Customer does not exist")
+        current_offers = Order.objects.filter(Q(customer=customer), Q(orderStatus="Pending") | Q(orderStatus="Accepted"))
+        context = {
+            "login_status": json.dumps(True),
+            "current_orders": current_offers,
+            "fullname": customer.first_name + " " + customer.last_name
+        }
+        return render(request, "Customer/customer_current_order.html", context)
+    else:
+        raise Http404("Haven't logged in")
+
 
 def tradie_quote_details(request):
-    return render(request, "Tradie/tradie_quote_details.html")
+    if request.user.is_authenticated:
+        try:
+            tradie = Tradie.objects.get(myUser=request.user)
+        except Tradie.DoesNotExist:
+            raise Http404("Tradie does not exist")
+        quote_id = request.GET["quote_id"]
+        current_quote = Quote.objects.get(id=quote_id)
+        context = {
+            "login_status": json.dumps(True),
+            "current_quote": current_quote,
+            "fullname": tradie.first_name + " " + tradie.last_name
+        }
+        return render(request, "Tradie/tradie_quote_details.html", context)
+    else:
+        raise Http404("Haven't logged in")
 
 
 def update_tradie_profile(request):
@@ -339,14 +410,14 @@ def update_customer_profile(request):
     number = request.POST["number"]
     customer.phone = number
 
-    cardHolder = request.POST["cardHolder"]
-    customer.cardHolderr = cardHolder
+    cardHolder = en.encrypt(request.POST["cardHolder"])
+    customer.cardHolder = cardHolder
 
-    cardNo = en.encrypt(request.POST["cardNo"])
+    cardNo = en.encrypt(request.POST["cardNumber"])
     customer.cardNo = cardNo
 
     cardValidDate = en.encrypt(request.POST["cardValidDate"])
-    customer.accountNo = cardValidDate
+    customer.cardValidDate = cardValidDate
 
     customer.save()
     return HttpResponseRedirect("customer_profile")
