@@ -1,8 +1,7 @@
 from django.shortcuts import render
 from django.contrib import auth
 from django.http import HttpResponse, HttpResponseRedirect, Http404
-from django.template import RequestContext
-from django.template.context_processors import csrf
+from django.contrib.auth.hashers import make_password
 
 from Home_app.models import Tradie
 from Home_app.models import Customer
@@ -31,14 +30,14 @@ def login(request):
     if "remember_me" not in request.POST:
         request.session.set_expiry(0)
     if user is not None:
-        if user_type == "tradie":
+        if user_type == "Tradie":
             try:
                 Tradie.objects.get(myUser=user)
                 auth.login(request, user)
                 return HttpResponseRedirect("tradie")
             except Tradie.DoesNotExist:
                 raise Http404("Tradie does not exist")
-        elif user_type == "customer":
+        elif user_type == "Customer":
             try:
                 Customer.objects.get(myUser=user)
                 auth.login(request, user)
@@ -60,9 +59,9 @@ def sign_up(request):
         MyUser.objects.get(email=email)
         raise Http404("Email alreay been registered")
     except MyUser.DoesNotExist:
-        myUser = MyUser(email=email, date_of_birth='2020-1-1', user_type=user_type, password=password)
+        myUser = MyUser(email=email, date_of_birth='2020-1-1', user_type=user_type, password=make_password(password))
         myUser.save()
-        if user_type == "tradie":
+        if user_type == "Tradie":
             tradie = Tradie(myUser=myUser, first_name=firstname, last_name=lastname, accountStatus="Active", travelDistance=0)
             tradie.save()
             auth.login(request, myUser)
