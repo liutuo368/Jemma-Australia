@@ -111,7 +111,7 @@
                     <tbody>
                     {% for quote in current_quotes %}
                         <tr>
-                            <td class="hidden-480">{{ quote.id }}</td>
+                            <td class="hidden-480"><a href="tradie_quote_details?quote_id={{ quote.id }}">{{ quote.id }}</a></td>
                             <td class="hidden-480">{{ quote.customer.first_name }} {{ quote.customer.last_name }}</td>
                             <td class="hidden-480">{{ quote.customer.suburb }}</td>
                             <td class="hidden-480">{{ quote.date }}</td>
