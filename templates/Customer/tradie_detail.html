@@ -136,7 +136,7 @@
                 alert(
                     "The file (" +
                     readerEvt.name +
-                    ") does not match the upload conditions, The maximum file size for uploads should not exceed 300 KB"
+                    ") does not match the upload conditions, The maximum file size for uploads should not exceed 3 MB"
                 );
                 e.preventDefault();
                 return;
@@ -147,7 +147,7 @@
                 if (!filesCounterAlertStatus) {
                     filesCounterAlertStatus = true;
                     alert(
-                        "You have added more than 10 files. According to upload conditions you can upload 10 files maximum"
+                        "You have added more than 5 files. According to upload conditions you can upload 5 files maximum"
                     );
                 }
                 e.preventDefault();
@@ -171,7 +171,7 @@
 
         //To check file Size according to upload conditions
         function CheckFileSize(fileSize) {
-            if (fileSize < 300000) {
+            if (fileSize < 4194304) {
                 return true;
             } else {
                 return false;
@@ -190,7 +190,7 @@
                 }
             }
             //To check the length does not exceed 10 files maximum
-            if (len > 9) {
+            if (len > 4) {
                 return false;
             } else {
                 return true;
@@ -419,7 +419,7 @@
                             Allowed only files with extension (jpg, png, gif)
                         </li>
                         <li>
-                            Maximum number of allowed files 10 with 300 KB for each
+                            Maximum number of allowed files 5 with 4 MB for each
                         </li>
                     </ul>
                     <!--To give the control a modern look, I have applied a stylesheet in the parent span.-->
@@ -433,7 +433,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-success">Continue</button>
+                <button type="button" class="btn btn-success">Get Quote</button>
             </div>
         </div>
     </div>

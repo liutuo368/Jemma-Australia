@@ -104,6 +104,7 @@ register_list = [
     models.JobType,
     models.TradieJobType,
     models.Quote,
+    models.QuoteImage,
 ]
 
 admin.site.register(register_list)

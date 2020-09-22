@@ -23,9 +23,15 @@ class OrderStatusTypeChoice(Enum):
     Completed ="Completed"
 
 
+class GenderChoice(Enum):
+    Male = "Male"
+    Female = "Female"
+
+
 class QuoteStatusTypeChoice(Enum):
     Unread = "Unread"
-    AwaitingPayment = "Awaiting Payment"
+    Responded = "Responded"
+    Read = "Read"
 
 
 class States(Enum):
@@ -135,6 +141,13 @@ class Tradie(models.Model):
     joinDate = models.DateField(auto_now_add=True)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
+    gender = models.CharField(
+        null=False,
+        max_length=10,
+        choices=[(_type.name, _type.value) for _type in GenderChoice],
+        default='Male',
+        blank=True
+    )
     description = models.CharField(max_length=200, blank=True)
     phone = models.CharField(max_length=10, blank=True)
     address1 = models.CharField(max_length=100, blank=True)
@@ -145,7 +158,7 @@ class Tradie(models.Model):
         max_length=10,
         choices=[(_type.name, _type.value) for _type in States],
         default='ACT',
-        blank=True
+        blank=False
     )
     postcode = models.CharField(max_length=5, blank=True)
     company = models.CharField(max_length=50, null=True, blank=True)
@@ -212,6 +225,11 @@ class Quote(models.Model):
         default='Unread'
     )
     description = models.CharField(null=True, max_length=200)
+
+
+class QuoteImage(models.Model):
+    quote = models.ForeignKey("Quote", on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='quotes_images', default='image.png')
 
 
 class Certificate(models.Model):
