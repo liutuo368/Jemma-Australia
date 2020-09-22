@@ -118,6 +118,11 @@
                         <p>{{ current_quote.description }}</p>
                         <br>
                         <label>Images/Videos</label>
+                        {% for image in images %}
+                            <p>
+                                <img src="media/{{ image.image }}">
+                            </p>
+                        {% endfor %}
                         <br>
                     </form>
                 </div>

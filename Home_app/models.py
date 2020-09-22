@@ -229,7 +229,7 @@ class Quote(models.Model):
 
 class QuoteImage(models.Model):
     quote = models.ForeignKey("Quote", on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='quotes_images', default='image.png')
+    image = models.ImageField(upload_to='quotes', default='image.png')
 
 
 class Certificate(models.Model):

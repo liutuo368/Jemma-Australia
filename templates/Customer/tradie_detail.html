@@ -363,30 +363,24 @@
         <br>
 
         <div id="about" class="tab-pane fade in active">
-            <p>This is the self introduction section :)</p>
+            <p>{{ tradie.description }}</p>
         </div>
 
         <div id="reviews" class="tab-pane fade">
 
+            {% for rating in rating_list %}
             <div class="panel panel-default">
-                <h5>&nbsp&nbsp&nbsp&nbsp Robert Customer 5/5</h5>
-                <p>&nbsp&nbsp&nbsp&nbsp This is a test review.</p>
+                <h5> {{ rating.order.customer.first_name }}  {{ rating.points }}/5</h5>
+                <p> {{ rating.review}} </p>
             </div>
-
-            <div class="panel panel-default">
-                <h5>&nbsp&nbsp&nbsp&nbsp Robert Customer 5/5</h5>
-                <p>&nbsp&nbsp&nbsp&nbsp This is a test review.</p>
-            </div>
-
-            <div class="panel panel-default">
-                <h5>&nbsp&nbsp&nbsp&nbsp Robert Customer 5/5</h5>
-                <p>&nbsp&nbsp&nbsp&nbsp This is a test review.</p>
-            </div>
+            {% endfor %}
 
         </div>
 
         <div id="services" class="tab-pane fade">
-            <p>This is the service section :)</p>
+            {% for job in job_list %}
+            <p>{{ job.jobType.jobName }}    Price: {{ job.price }}/hour</p>
+            {% endfor %}
         </div>
         <div id="calendar" class="tab-pane fade">
             <p>This is the calendar section :)</p>
@@ -397,6 +391,9 @@
 <div class="modal fade" id="quoteModal" tabindex="-1" role="dialog" aria-labelledby="quoteModalTitle"
      aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
+        <input type="text" name="tradie_id" form="quote_form" value="{{ tradie.myUser_id }}" style="display:none;"/>
+        <form action="send_quote" method="post" enctype="multipart/form-data" id="quote_form">
+            {% csrf_token %}
         <div class="modal-content">
             <div class="modal-header">
                 <h2 class="modal-title" id="exampleModalLongTitle" style="text-align: center">Get quotes</h2>
@@ -407,7 +404,7 @@
             <div class="modal-body">
                 <div class="form-group">
                     <label for="exampleFormControlTextarea1">Problem description</label>
-                    <textarea placeholder="Hi, I am..." class="form-control" id="exampleFormControlTextarea1"
+                    <textarea name="description" placeholder="Hi, I am..." class="form-control" id="exampleFormControlTextarea1"
                               rows="3"></textarea>
                 </div>
             </div>
@@ -425,17 +422,18 @@
                     <!--To give the control a modern look, I have applied a stylesheet in the parent span.-->
                     <span class="btn btn-success fileinput-button">
                         <span>Chose Image</span>
-                        <input type="file" name="files[]" id="files" multiple
+                        <input type="file" name="files[]" id="files" multiple="true"
                                accept="image/jpeg, image/png, image/gif,"><br/>
                     </span>
-                    <output id="Filelist"></output>
+                    <output id="Filelist" name="fileList"></output>
                 </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-success">Get Quote</button>
+                <button type="submit" class="btn btn-success">Send Quote</button>
             </div>
         </div>
+        </form>
     </div>
 </div>
 </body>
