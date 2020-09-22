@@ -32,13 +32,16 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
-            if ({{ login_status|safe }}) {
-                $("#menu").load("top_menu_sign_in");
-            } else {
-                $("#menu").load("top_menu_without_sign_in");
-            }
+            var menu_name;
 
+            if({{ login_status|safe }}) {
+                menu_name = "top_menu_sign_in";
+            } else {
+                menu_name = "top_menu_without_sign_in";
+            }
             $("#menu").load("top_menu_sign_in");
+            $("#menu").load(menu_name);
+
 
             $("#footer").load("footer");
         });
