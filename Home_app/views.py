@@ -10,9 +10,11 @@ from Home_app.models import TradieJobType
 from Home_app.models import Rating
 from Home_app.models import MyUser
 from Home_app.models import Quote
+from Home_app.models import QuoteImage
 from django.db.models import Q
 import json
 import Jemma.Encrypt as en
+from Jemma.settings import BASE_DIR
 
 
 def index(request):
@@ -230,6 +232,7 @@ def tradie_detail(request):
     tradie_id = request.GET["tradie_id"]
     tradie = Tradie.objects.get(myUser_id=int(tradie_id))
     rating_list = Rating.objects.filter(user=tradie.myUser)
+    job_list = TradieJobType.objects.filter(tradie=tradie)
     avg_rating = 5
     if len(rating_list) > 0:
         sum_rating = 0
@@ -239,9 +242,23 @@ def tradie_detail(request):
     context = {
         "tradie": tradie,
         "rating_number": len(rating_list),
-        "rating": avg_rating
+        "rating": avg_rating,
+        "rating_list": rating_list,
+        "job_list": job_list
     }
     return render(request, "Customer/tradie_detail.html", context)
+
+
+def send_quote(request):
+    tradie_id = request.POST["tradie_id"]
+    description = request.POST["description"]
+    images = request.FILES.getlist("files[]")
+    quote = Quote(customer=(Customer.objects.get(myUser=request.user)), tradie=(Tradie.objects.get(myUser_id=tradie_id)), description=description)
+    quote.save()
+    for img in images:
+        image = QuoteImage(image=img, quote=quote)
+        image.save()
+    return HttpResponseRedirect("tradie_detail?tradie_id=" + tradie_id)
 
 
 def tradie_calendar(request):
@@ -341,10 +358,12 @@ def tradie_quote_details(request):
             raise Http404("Tradie does not exist")
         quote_id = request.GET["quote_id"]
         current_quote = Quote.objects.get(id=quote_id)
+        images = QuoteImage.objects.filter(quote=current_quote)
         context = {
             "login_status": json.dumps(True),
             "current_quote": current_quote,
-            "fullname": tradie.first_name + " " + tradie.last_name
+            "fullname": tradie.first_name + " " + tradie.last_name,
+            "images": images
         }
         return render(request, "Tradie/tradie_quote_details.html", context)
     else:
