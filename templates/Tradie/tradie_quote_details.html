@@ -64,6 +64,14 @@
         #footer, .page-wrap:after {
             height: 130px;
         }
+
+        #imageUpload {
+            display: none;
+        }
+
+        #profileImage {
+            cursor: pointer;
+        }
     </style>
 </head>
 
@@ -196,5 +204,10 @@
     </div>
 </div>
 <div id="footer"></div>
+<script>
+    $("#profileImage").click(function (e) {
+        $("#imageUpload").click();
+    });
+</script>
 </body>
 </html>

@@ -42,6 +42,13 @@
             color: rgba(000, 0, 0, 0.9) !important;
         }
 
+        #imageUpload {
+            display: none;
+        }
+
+        #profileImage {
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -163,5 +170,10 @@
 </div>
 
 <div id="footer"></div>
+<script>
+    $("#profileImage").click(function (e) {
+        $("#imageUpload").click();
+    });
+</script>
 </body>
 </html>

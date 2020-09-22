@@ -78,6 +78,14 @@
         #footer, .page-wrap:after {
             height: 130px;
         }
+
+        #imageUpload {
+            display: none;
+        }
+
+        #profileImage {
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -193,15 +201,14 @@
 <script src="../../static/JS/app.js"></script>
 <script src="../../static/JS/table-advanced.js"></script>
 <script>
-
     jQuery(document).ready(function () {
-
         App.init();
-
         TableAdvanced.init();
-
     });
 
+    $("#profileImage").click(function (e) {
+        $("#imageUpload").click();
+    });
 </script>
 </body>
 </html>
