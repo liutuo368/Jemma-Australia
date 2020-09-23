@@ -3,9 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Tradie Profile</title>
-
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -36,7 +34,31 @@
             $("#footer").load("footer");
         });
     </script>
+
     <style>
+        * {
+            margin: 0;
+        }
+
+        html, body {
+            height: 100%;
+        }
+
+        .page-wrap {
+            min-height: 100%;
+            /* equal to footer height */
+            margin-bottom: -130px;
+        }
+
+        .page-wrap:after {
+            content: "";
+            display: block;
+        }
+
+        #footer, .page-wrap:after {
+            height: 130px;
+        }
+
         .nav-tabs .nav-link:hover {
             background-color: #e8e8e8;
             color: grey !important;
@@ -70,12 +92,12 @@
 
 <div id="top_menu"></div>
 
-<div>
+<div class="page-wrap">
 
-    <div class="row bg-white">
+    <div class="row col-md-12">
 
         <div class="col-md-2" style="margin-left: 7%;">
-            <div style="height: 10%"></div>
+            <div style="height: 15%"></div>
             <div id="side_menu" style="width: 100%"></div>
         </div>
 
@@ -134,8 +156,6 @@
                     </div>
                 </div>
             </div>
-            <br>
-
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist">
                 <li class="nav-item">
