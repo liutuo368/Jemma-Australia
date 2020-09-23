@@ -37,7 +37,8 @@ urlpatterns = [
     path('update_customer_profile', views.update_customer_profile),
     path('send_quote', views.send_quote),
     path('accept_quote', views.tradie_accept_quote),
-    path('decline_quote', views.tradie_decline_quote)
+    path('decline_quote', views.tradie_decline_quote),
+    path('upload_hp', views.upload_hp)
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
