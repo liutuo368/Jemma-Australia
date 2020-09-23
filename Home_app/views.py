@@ -114,7 +114,7 @@ def profile(request):
 
 def upload_hp(request):
     if request.user.is_authenticated:
-        photo = request.FILES["profile_photo"]
+        photo = request.FILES["files[]"]
         request.user.user_hp = photo
         request.user.save()
         return HttpResponseRedirect("profile")
