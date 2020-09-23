@@ -35,6 +35,14 @@
 
         //the handler for file upload event
         function handleFileSelect(e) {
+
+            //remove the renderred images
+            var lis = document.querySelectorAll("#imgList li");
+            for (var i = 0; (li = lis[i]); i++) {
+                li.parentNode.removeChild(li);
+            }
+            AttachmentArray = []
+
             //to make sure the user select file/files
             if (!e.target.files) return;
 
@@ -369,17 +377,17 @@
         <div id="reviews" class="tab-pane fade">
 
             {% for rating in rating_list %}
-            <div class="panel panel-default">
-                <h5> {{ rating.order.customer.first_name }}  {{ rating.points }}/5</h5>
-                <p> {{ rating.review}} </p>
-            </div>
+                <div class="panel panel-default">
+                    <h5> {{ rating.order.customer.first_name }} {{ rating.points }}/5</h5>
+                    <p> {{ rating.review }} </p>
+                </div>
             {% endfor %}
 
         </div>
 
         <div id="services" class="tab-pane fade">
             {% for job in job_list %}
-            <p>{{ job.jobType.jobName }}    Price: {{ job.price }}/hour</p>
+                <p>{{ job.jobType.jobName }} Price: {{ job.price }}/hour</p>
             {% endfor %}
         </div>
         <div id="calendar" class="tab-pane fade">
@@ -394,45 +402,47 @@
         <input type="text" name="tradie_id" form="quote_form" value="{{ tradie.myUser_id }}" style="display:none;"/>
         <form action="send_quote" method="post" enctype="multipart/form-data" id="quote_form">
             {% csrf_token %}
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title" id="exampleModalLongTitle" style="text-align: center">Get quotes</h2>
-                <br/>
-                <br/>
-                Please feel free to upload images and videos together with this message to briefly describe your demands
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label for="exampleFormControlTextarea1">Problem description</label>
-                    <textarea name="description" placeholder="Hi, I am..." class="form-control" id="exampleFormControlTextarea1"
-                              rows="3"></textarea>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="exampleModalLongTitle" style="text-align: center">Get quotes</h2>
+                    <br/>
+                    <br/>
+                    Please feel free to upload images and videos together with this message to briefly describe your
+                    demands
                 </div>
-            </div>
-            <div class="modal-body">
-                <div>
-                    <label>Attachment Instructions :</label>
-                    <ul>
-                        <li>
-                            Allowed only files with extension (jpg, png, gif)
-                        </li>
-                        <li>
-                            Maximum number of allowed files 5 with 4 MB for each
-                        </li>
-                    </ul>
-                    <!--To give the control a modern look, I have applied a stylesheet in the parent span.-->
-                    <span class="btn btn-success fileinput-button">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Problem description</label>
+                        <textarea name="description" placeholder="Hi, I am..." class="form-control"
+                                  id="exampleFormControlTextarea1"
+                                  rows="3"></textarea>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <label>Attachment Instructions :</label>
+                        <ul>
+                            <li>
+                                Allowed only files with extension (jpg, png, gif)
+                            </li>
+                            <li>
+                                Maximum number of allowed files 5 with 4 MB for each
+                            </li>
+                        </ul>
+                        <!--To give the control a modern look, I have applied a stylesheet in the parent span.-->
+                        <span class="btn btn-success fileinput-button">
                         <span>Chose Image</span>
                         <input type="file" name="files[]" id="files" multiple="true"
                                accept="image/jpeg, image/png, image/gif,"><br/>
                     </span>
-                    <output id="Filelist" name="fileList"></output>
+                        <output id="Filelist" name="fileList"></output>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-success">Send Quote</button>
                 </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-success">Send Quote</button>
-            </div>
-        </div>
         </form>
     </div>
 </div>

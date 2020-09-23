@@ -49,6 +49,14 @@
         .page-content {
             margin-left: 0px;
         }
+
+        #imageUpload {
+            display: none;
+        }
+
+        #profileImage {
+            cursor: pointer;
+        }
     </style>
 </head>
 
@@ -69,10 +77,15 @@
         <div id="profile_header" class="container align-items-center justify-content-center mb-3">
             <div class="row">
                 <div class="col-md-2 text-center">
-                    <img class="img-rounded rounded-circle"
+                    <img class="rounded-circle"
+                         id="profileImage"
                          src="{{ user.user_hp.url }}"
                          alt="user_profile_picture"
-                         style="height: 100px;">
+                         style="height: 120px;">
+                    <form action="upload_hp" method="POST" enctype="multipart/form-data">
+                        <input id="imageUpload" type="file" name="profile_photo" placeholder="Photo" required=""
+                           capture>
+                    </form>
                 </div>
 
                 <div class="col-md-10 align-self-center">
@@ -1225,17 +1238,15 @@
 <script src="../../static/JS/calendar.js"></script>
 
 <script>
-
     jQuery(document).ready(function () {
-
         // initiate layout and plugins
-
         App.init();
-
         Calendar.init();
-
     });
 
+    $("#profileImage").click(function (e) {
+        $("#imageUpload").click();
+    });
 </script>
 </body>
 </html>

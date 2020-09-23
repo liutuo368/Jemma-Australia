@@ -15,6 +15,7 @@ urlpatterns = [
     path('footer', views.footer),
     path('side_menu', views.side_menu),
     path('tradie', views.tradie_profile),
+    path('profile', views.profile),
     path('tradie_profile', views.tradie_profile),
     path('tradie_current_job', views.tradie_current_job),
     path('tradie_history', views.tradie_history),
@@ -34,7 +35,9 @@ urlpatterns = [
     path('customer_current_order', views.customer_current_order),
     path('tradie_quote_details', views.tradie_quote_details),
     path('update_customer_profile', views.update_customer_profile),
-    path('send_quote', views.send_quote)
+    path('send_quote', views.send_quote),
+    path('accept_quote', views.tradie_accept_quote),
+    path('decline_quote', views.tradie_decline_quote)
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

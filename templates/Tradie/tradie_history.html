@@ -80,6 +80,14 @@
         #footer, .page-wrap:after {
             height: 130px;
         }
+
+        #imageUpload {
+            display: none;
+        }
+
+        #profileImage {
+            cursor: pointer;
+        }
     </style>
 </head>
 
@@ -102,10 +110,13 @@
             <div id="profile_header" class="container align-items-center justify-content-center mb-3">
                 <div class="row">
                     <div class="col-md-2 text-center">
-                        <img class="img-rounded rounded-circle "
+                        <img class="rounded-circle"
+                             id="profileImage"
                              src="{{ user.user_hp.url }}"
                              alt="user_profile_picture"
-                             style="height: 100px;">
+                             style="height: 120px;">
+                        <input id="imageUpload" type="file" name="profile_photo" placeholder="Photo" required=""
+                               capture>
                     </div>
 
                     <div class="col-md-10 align-self-center">
@@ -194,15 +205,14 @@
 <script src="../../static/JS/app.js"></script>
 <script src="../../static/JS/table-advanced.js"></script>
 <script>
-
     jQuery(document).ready(function () {
-
         App.init();
-
         TableAdvanced.init();
-
     });
 
+    $("#profileImage").click(function (e) {
+        $("#imageUpload").click();
+    });
 </script>
 </body>
 </html>

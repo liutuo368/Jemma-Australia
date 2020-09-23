@@ -101,6 +101,27 @@ def terms_and_conditions(request):
     return render(request, "Home/terms_and_conditions.html", context)
 
 
+def profile(request):
+    if request.user.is_authenticated:
+        try:
+            Tradie.objects.get(myUser=request.user)
+            Customer.objects.get(myUser=request.user)
+        except Tradie.DoesNotExist:
+            return HttpResponseRedirect("customer_profile")
+        except Customer.DoesNotExist:
+            return HttpResponseRedirect("tradie_profile")
+
+
+def upload_hp(request):
+    if request.user.is_authenticated:
+        photo = request.FILES["profile_photo"]
+        request.user.user_hp = photo
+        request.user.save()
+        return HttpResponseRedirect("profile")
+    else:
+        raise Http404("Haven't logged in")
+
+
 def tradie_profile(request):
     if request.user.is_authenticated:
         try:
@@ -366,6 +387,44 @@ def tradie_quote_details(request):
             "images": images
         }
         return render(request, "Tradie/tradie_quote_details.html", context)
+    else:
+        raise Http404("Haven't logged in")
+
+
+def tradie_accept_quote(request):
+    if request.user.is_authenticated:
+        try:
+            tradie = Tradie.objects.get(myUser=request.user)
+        except Tradie.DoesNotExist:
+            raise Http404("Tradie does not exist")
+        quote_id = request.POST["quote_id"]
+        price = request.POST["price"]
+        current_quote = Quote.objects.get(id=quote_id)
+        if current_quote.tradie == tradie:
+            current_quote.status = "Responded"
+            current_quote.price = float(price)
+            current_quote.save()
+            return HttpResponseRedirect("tradie_quote_details?quote_id=" + quote_id)
+        else:
+            raise Http404("You don't have permission to do that")
+    else:
+        raise Http404("Haven't logged in")
+
+
+def tradie_decline_quote(request):
+    if request.user.is_authenticated:
+        try:
+            tradie = Tradie.objects.get(myUser=request.user)
+        except Tradie.DoesNotExist:
+            raise Http404("Tradie does not exist")
+        quote_id = request.GET["id"]
+        current_quote = Quote.objects.get(id=quote_id)
+        if current_quote.tradie == tradie:
+            current_quote.status = "Declined"
+            current_quote.save()
+            return HttpResponseRedirect("tradie_quote_details?quote_id=" + quote_id)
+        else:
+            raise Http404("You don't have permission to do that")
     else:
         raise Http404("Haven't logged in")
 

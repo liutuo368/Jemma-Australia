@@ -42,6 +42,13 @@
             color: rgba(000, 0, 0, 0.9) !important;
         }
 
+        #imageUpload {
+            display: none;
+        }
+
+        #profileImage {
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -59,14 +66,13 @@
         <div id="profile_header" class="container align-items-center justify-content-center mb-3">
             <div class="row">
                 <div class="col-md-2 text-center">
-                    <img class="img-rounded rounded-circle "
+                    <img class="rounded-circle"
+                         id="profileImage"
                          src="{{ user.user_hp.url }}"
                          alt="user_profile_picture"
-                         style="height: 100px;">
-                    <button class="btn btn-sm btn-white mx-auto">
-                        <i class="fa fa-upload"></i>
-                        Update Image
-                    </button>
+                         style="height: 120px;">
+                    <input id="imageUpload" type="file" name="profile_photo" placeholder="Photo" required=""
+                           capture>
                 </div>
 
                 <div class="col-md-10 align-self-center">
@@ -164,5 +170,10 @@
 </div>
 
 <div id="footer"></div>
+<script>
+    $("#profileImage").click(function (e) {
+        $("#imageUpload").click();
+    });
+</script>
 </body>
 </html>
