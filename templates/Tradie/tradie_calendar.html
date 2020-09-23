@@ -49,14 +49,6 @@
         .page-content {
             margin-left: 0px;
         }
-
-        #imageUpload {
-            display: none;
-        }
-
-        #profileImage {
-            cursor: pointer;
-        }
     </style>
 </head>
 
@@ -82,10 +74,6 @@
                          src="{{ user.user_hp.url }}"
                          alt="user_profile_picture"
                          style="height: 120px;">
-                    <form action="upload_hp" method="POST" enctype="multipart/form-data">
-                        <input id="imageUpload" type="file" name="profile_photo" placeholder="Photo" required=""
-                           capture>
-                    </form>
                 </div>
 
                 <div class="col-md-10 align-self-center">
@@ -1242,10 +1230,6 @@
         // initiate layout and plugins
         App.init();
         Calendar.init();
-    });
-
-    $("#profileImage").click(function (e) {
-        $("#imageUpload").click();
     });
 </script>
 </body>

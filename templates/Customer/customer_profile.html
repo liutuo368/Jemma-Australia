@@ -49,6 +49,15 @@
         #profileImage {
             cursor: pointer;
         }
+
+        .image-section {
+            border: 5px solid #CCCCCC;
+            border-radius: 50%;
+        }
+
+        .image-section:hover {
+            border-color: #44bbf7;
+        }
     </style>
 </head>
 <body>
@@ -66,14 +75,50 @@
         <div id="profile_header" class="container align-items-center justify-content-center mb-3">
             <div class="row">
                 <div class="col-md-2 text-center">
-                    <img class="rounded-circle"
-                         id="profileImage"
-                         src="{{ user.user_hp.url }}"
-                         alt="user_profile_picture"
-                         style="height: 120px;">
-                    <input id="imageUpload" type="file" name="profile_photo" placeholder="Photo" required=""
-                           capture>
-                </div>
+                        <img class="rounded-circle image-section"
+                             id="profileImage"
+                             src="{{ user.user_hp.url }}"
+                             alt="user_profile_picture"
+                             style="height: 120px;">
+                        <p class="font-weight-light">Update Picture</p>
+                        <button id="imageUpload" class="btn btn-primary" data-toggle="modal"
+                                data-target="#upload-image">Upload Image
+                        </button>
+                    </div>
+                <div class="modal fade" id="upload-image">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Upload Profile Picture</h5>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="upload_hp" method="post" enctype="multipart/form-data">
+                                        <div class="form-group">
+                                            <div class="main-img-preview text-center">
+                                                <img class="rounded-circle"
+                                                     id="img-preview"
+                                                     src="{{ user.user_hp.url }}"
+                                                     alt="user_profile_picture"
+                                                     style="height: 120px;">
+                                            </div>
+                                            <div class="custom-file mt-2">
+                                                <input type="file" name="files[]" multiple
+                                                       class="custom-file-input form-control" id="customFile">
+                                                <label class="custom-file-label" for="customFile">Choose file</label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="button" name="upload" value="upload" id="upload"
+                                                    class="btn btn-block btn-dark"><i class="fa fa-fw fa-upload"></i>
+                                                Upload
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                 <div class="col-md-10 align-self-center">
                     <h4 class="text-left align-middle" align="left">Welcome, {{ fullname }}</h4>
@@ -173,6 +218,41 @@
 <script>
     $("#profileImage").click(function (e) {
         $("#imageUpload").click();
+    });
+
+    $(document).ready(function () {
+        $('input[type="file"]').on("change", function () {
+            let filenames = [];
+            let files = document.getElementById("customFile").files;
+            if (files.length > 1) {
+                filenames.push("Total Files (" + files.length + ")");
+            } else {
+                for (let i in files) {
+                    if (files.hasOwnProperty(i)) {
+                        filenames.push(files[i].name);
+                    }
+                }
+            }
+            $(this)
+                .next(".custom-file-label")
+                .html(filenames.join(","));
+        });
+    });
+
+    // Source: http://stackoverflow.com/a/4459419/6396981
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#img-preview').attr('src', e.target.result);
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#customFile").change(function () {
+        readURL(this);
     });
 </script>
 </body>

@@ -58,14 +58,6 @@
         #footer, .page-wrap:after {
             height: 130px;
         }
-
-        #imageUpload {
-            display: none;
-        }
-
-        #profileImage {
-            cursor: pointer;
-        }
     </style>
 </head>
 <body>
@@ -91,8 +83,6 @@
                              src="{{ user.user_hp.url }}"
                              alt="user_profile_picture"
                              style="height: 120px;">
-                        <input id="imageUpload" type="file" name="profile_photo" placeholder="Photo" required=""
-                               capture>
                     </div>
 
                     <div class="col-md-10 align-self-center">
@@ -145,10 +135,6 @@
     jQuery(document).ready(function () {
         App.init();
         TableAdvanced.init();
-    });
-
-    $("#profileImage").click(function (e) {
-        $("#imageUpload").click();
     });
 </script>
 </body>
