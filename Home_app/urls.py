@@ -15,6 +15,7 @@ urlpatterns = [
     path('footer', views.footer),
     path('side_menu', views.side_menu),
     path('tradie', views.tradie_profile),
+    path('profile', views.profile),
     path('tradie_profile', views.tradie_profile),
     path('tradie_current_job', views.tradie_current_job),
     path('tradie_history', views.tradie_history),

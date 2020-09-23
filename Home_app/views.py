@@ -101,6 +101,27 @@ def terms_and_conditions(request):
     return render(request, "Home/terms_and_conditions.html", context)
 
 
+def profile(request):
+    if request.user.is_authenticated:
+        try:
+            Tradie.objects.get(myUser=request.user)
+            Customer.objects.get(myUser=request.user)
+        except Tradie.DoesNotExist:
+            return HttpResponseRedirect("customer_profile")
+        except Customer.DoesNotExist:
+            return HttpResponseRedirect("tradie_profile")
+
+
+def upload_hp(request):
+    if request.user.is_authenticated:
+        photo = request.FILES["profile_photo"]
+        request.user.user_hp = photo
+        request.user.save()
+        return HttpResponseRedirect("profile")
+    else:
+        raise Http404("Haven't logged in")
+
+
 def tradie_profile(request):
     if request.user.is_authenticated:
         try:

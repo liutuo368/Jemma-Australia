@@ -82,8 +82,10 @@
                          src="{{ user.user_hp.url }}"
                          alt="user_profile_picture"
                          style="height: 120px;">
-                    <input id="imageUpload" type="file" name="profile_photo" placeholder="Photo" required=""
+                    <form action="upload_hp" method="POST" enctype="multipart/form-data">
+                        <input id="imageUpload" type="file" name="profile_photo" placeholder="Photo" required=""
                            capture>
+                    </form>
                 </div>
 
                 <div class="col-md-10 align-self-center">
