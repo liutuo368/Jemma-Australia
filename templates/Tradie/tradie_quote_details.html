@@ -161,7 +161,8 @@
                         <!-- Modal body -->
                         <div class="modal-body">
                             <!--form for entering payment amount-->
-                            <form method="post">
+                            <input type="text" name="quote_id" form="quote_acceptance_form" value="{{ current_quote.id }}" style="display:none;"/>
+                            <form method="post" action="accept_quote" id="quote_acceptance_form">
                                 {% csrf_token %}
                                 <div class="alert alert-secondary" role="alert">
                                     The payment amount includes the material fees and your expected working hours times
@@ -170,7 +171,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="payment">Payment amount:</label>
-                                    <input type="number" class="form-control" placeholder="Enter" id="payment"
+                                    <input type="number" name="price" class="form-control" placeholder="Enter" id="payment"
                                            min="0" required>
                                     <div class="valid-feedback">Valid.</div>
                                     <div class="invalid-feedback">Please fill out this field.</div>
@@ -191,11 +192,7 @@
                         </div>
                         <!-- Modal body -->
                         <div class="modal-body">
-                            <!--form for entering payment amount-->
-                            <form method="post">
-                                {% csrf_token %}
-                                <button type="submit" class="btn btn-danger float-right">Confirm Decline</button>
-                            </form>
+                            <button type="button" class="btn btn-danger float-right" onclick="window.location.href='decline_quote?id={{ current_quote.id }}'">Confirm Decline</button>
                         </div>
                     </div>
                 </div>

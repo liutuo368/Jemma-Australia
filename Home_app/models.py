@@ -31,7 +31,8 @@ class GenderChoice(Enum):
 class QuoteStatusTypeChoice(Enum):
     Unread = "Unread"
     Responded = "Responded"
-    Read = "Read"
+    Declined = "Declined"
+    Finished = "Finished"
 
 
 class States(Enum):
@@ -218,6 +219,7 @@ class Order(models.Model):
 class Quote(models.Model):
     customer = models.ForeignKey("Customer", on_delete=models.CASCADE)
     tradie = models.ForeignKey("Tradie", on_delete=models.CASCADE)
+    price = models.FloatField(default=0)
     date = models.DateField(auto_now_add=True)
     status = models.CharField(
         max_length=20,
