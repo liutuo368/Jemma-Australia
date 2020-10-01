@@ -402,6 +402,11 @@ def tradie_quote_details(request):
 def customer_quote_details(request):
     return render(request, "Customer/customer_quote_details.html")
 
+def customer_order_detail(request):
+    return render(request, "Customer/customer_order_detail.html")
+
+def tradie_order_detail(request):
+    return render(request, "Tradie/tradie_order_detail.html")
 
 def tradie_accept_quote(request):
     if request.user.is_authenticated:

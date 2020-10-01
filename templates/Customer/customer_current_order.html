@@ -109,6 +109,7 @@
                     <tbody>
                     {% for order in current_orders %}
                         <tr>
+                            <td class="hidden-480"><a href="customer_order_detail?order_id={{ order.id }}">{{ order.id }}</a></td>
                             <td class="hidden-480">{{ order.id }}</td>
                             <td class="hidden-480">{{ order.category }}</td>
                             <td class="hidden-480">{{ order.customer.suburb }}</td>
