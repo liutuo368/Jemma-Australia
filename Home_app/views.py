@@ -15,6 +15,7 @@ from Home_app.models import JobType
 from django.db.models import Q
 import json
 import Jemma.Encrypt as en
+from django import forms
 from Jemma.settings import BASE_DIR
 
 
@@ -287,8 +288,8 @@ def send_quote(request):
             image.save()
         return HttpResponseRedirect("tradie_detail?tradie_id=" + tradie_id)
     else:
-        raise Http404("Haven't logged in")
-
+        html = "<html><body>Please sign in first before you submit the quote :)</body></html>"
+        return HttpResponse(html)
 
 def tradie_calendar(request):
     return render(request, "Tradie/tradie_calendar.html")
