@@ -11,6 +11,7 @@ from Home_app.models import Rating
 from Home_app.models import MyUser
 from Home_app.models import Quote
 from Home_app.models import QuoteImage
+from Home_app.models import JobType
 from django.db.models import Q
 import json
 import Jemma.Encrypt as en
@@ -229,7 +230,7 @@ def customer_search_result(request):
         login_status = True
     job_type = request.GET["job_type"]
     location = request.GET["location"]
-    job_type_list = TradieJobType.objects.filter(jobType=job_type)
+    job_type_list = TradieJobType.objects.filter(jobType=JobType.objects.get(jobName=job_type))
     tradie_list = []
     for var in job_type_list:
         if var.tradie.suburb == location:
