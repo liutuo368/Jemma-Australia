@@ -126,9 +126,11 @@
                         <br>
                         <label>Images/Videos</label>
                         {% for image in images %}
-                            <p>
-                                <img width="40%" height="60%" src="media/{{ image.image }}">
-                            </p>
+                            <div style="height: 300px; width: 300px ;overflow: hidden;">
+                                <p>
+                                    <img src="media/{{ image.image }}" style='height: 100%; width: 100%; object-fit: contain'>
+                                </p>
+                            </div>
                         {% endfor %}
                         <br>
                     </form>
@@ -136,7 +138,8 @@
             </div>
             <div class="text-right mt-5">
                 <div class="btn-group" role="group" aria-label="Quote group">
-                    <button id="cancel-button" type="button" class="btn btn-secondary" onclick="window.location.href='/tradie_quotes'">
+                    <button id="cancel-button" type="button" class="btn btn-secondary"
+                            onclick="window.location.href='/tradie_quotes'">
                         Cancel
                     </button>
 
