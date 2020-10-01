@@ -271,15 +271,22 @@ def tradie_detail(request):
 
 
 def send_quote(request):
-    tradie_id = request.POST["tradie_id"]
-    description = request.POST["description"]
-    images = request.FILES.getlist("files[]")
-    quote = Quote(customer=(Customer.objects.get(myUser=request.user)), tradie=(Tradie.objects.get(myUser_id=tradie_id)), description=description)
-    quote.save()
-    for img in images:
-        image = QuoteImage(image=img, quote=quote)
-        image.save()
-    return HttpResponseRedirect("tradie_detail?tradie_id=" + tradie_id)
+    if request.user.is_authenticated:
+        try:
+            customer = Customer.objects.get(myUser=request.user)
+        except Customer.DoesNotExist:
+            raise Http404("Customer does not exist")
+        tradie_id = request.POST["tradie_id"]
+        description = request.POST["description"]
+        images = request.FILES.getlist("files[]")
+        quote = Quote(customer=(Customer.objects.get(myUser=request.user)), tradie=(Tradie.objects.get(myUser_id=tradie_id)), description=description)
+        quote.save()
+        for img in images:
+            image = QuoteImage(image=img, quote=quote)
+            image.save()
+        return HttpResponseRedirect("tradie_detail?tradie_id=" + tradie_id)
+    else:
+        raise Http404("Haven't logged in")
 
 
 def tradie_calendar(request):
