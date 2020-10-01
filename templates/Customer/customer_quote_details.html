@@ -33,6 +33,17 @@
             $("#top_menu").load("top_menu_sign_in");
             $("#side_menu").load("side_menu_customer");
             $("#footer").load("footer");
+
+            function showDialog2() {
+                alert('tes')
+                $("#payment-amount").modal("hide");
+                $("#payment-finish").modal("show").addClass("fade");
+                alert('tes2')
+            }
+
+            $("#payment").on("click", function () {
+                $('payment-amount').modal('hide');
+            });
         });
     </script>
     <style>
@@ -196,8 +207,8 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <br/>
-                                            <button type="button" class="btn btn-success btn-lg btn-block">
+                                            <button id="payment" type="button" class="btn btn-success btn-lg btn-block"
+                                                    data-toggle="modal" data-target="#payment-finish">
                                                 Pay Now   <span class="glyphicon glyphicon-chevron-right"></span>
                                             </button>
                                             </td>
@@ -228,6 +239,53 @@
                                     onclick="window.location.href='decline_quote?id={{ current_quote.id }}'">Confirm
                                 Decline
                             </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="payment-finish">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h3 class="modal-title">Finish Payment</h3>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <!--form for entering payment amount-->
+                            <input type="text" name="quote_id" form="quote_acceptance_form"
+                                   value="{{ current_quote.id }}" style="display:none;"/>
+                            <form method="post" action="accept_quote" id="quote_acceptance_form">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-md-12">
+                                            <br>
+                                            <br>
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <h4 class="panel-title">
+                                                        Have you finished the payment?
+                                                    </h4>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <br>
+                                            <div class="text-right mt-5">
+                                                <button type="button" class="btn btn-secondary"
+                                                        onclick="window.history.back()">
+                                                    Not yet
+                                                </button>
+                                                <button type="button" class="btn btn-success"
+                                                        onclick="window.location.href='/customer_current_order'">
+                                                    Finished
+                                                </button>
+                                            </div>
+                                            </td>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
