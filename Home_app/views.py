@@ -391,6 +391,10 @@ def tradie_quote_details(request):
         raise Http404("Haven't logged in")
 
 
+def customer_quote_details(request):
+    return render(request, "Customer/customer_quote_details.html")
+
+
 def tradie_accept_quote(request):
     if request.user.is_authenticated:
         try:

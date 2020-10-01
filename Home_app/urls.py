@@ -34,6 +34,7 @@ urlpatterns = [
     path('customer_history', views.customer_history),
     path('customer_current_order', views.customer_current_order),
     path('tradie_quote_details', views.tradie_quote_details),
+    path('customer_quote_details', views.customer_quote_details),
     path('update_customer_profile', views.update_customer_profile),
     path('send_quote', views.send_quote),
     path('accept_quote', views.tradie_accept_quote),
