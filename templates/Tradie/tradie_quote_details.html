@@ -33,6 +33,11 @@
             $("#top_menu").load("top_menu_sign_in");
             $("#side_menu").load("side_menu");
             $("#footer").load("footer");
+
+            if ('{{current_quote.status}}' == 'Declined' || '{{current_quote.status}}' == 'Responded') {
+                $("#decline-button").attr("disabled", true);
+                $("#accept-button").attr("disabled", true);
+            }
         });
     </script>
     <style>
