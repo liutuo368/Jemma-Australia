@@ -33,6 +33,11 @@
             $("#top_menu").load("top_menu_sign_in");
             $("#side_menu").load("side_menu");
             $("#footer").load("footer");
+
+            if ('{{current_quote.status}}' == 'Declined' || '{{current_quote.status}}' == 'Responded') {
+                $("#decline-button").attr("disabled", true);
+                $("#accept-button").attr("disabled", true);
+            }
         });
     </script>
     <style>
@@ -121,9 +126,11 @@
                         <br>
                         <label>Images/Videos</label>
                         {% for image in images %}
-                            <p>
-                                <img width="40%" height="60%" src="media/{{ image.image }}">
-                            </p>
+                            <div style="height: 300px; width: 300px ;overflow: hidden;">
+                                <p>
+                                    <img src="media/{{ image.image }}" style='height: 100%; width: 100%; object-fit: contain'>
+                                </p>
+                            </div>
                         {% endfor %}
                         <br>
                     </form>
@@ -131,7 +138,8 @@
             </div>
             <div class="text-right mt-5">
                 <div class="btn-group" role="group" aria-label="Quote group">
-                    <button id="cancel-button" type="button" class="btn btn-secondary" onclick="window.history.back()">
+                    <button id="cancel-button" type="button" class="btn btn-secondary"
+                            onclick="window.location.href='/tradie_quotes'">
                         Cancel
                     </button>
 
