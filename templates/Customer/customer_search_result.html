@@ -33,6 +33,7 @@
         $(document).ready(function () {
             var menu_name;
 
+
             if({{ login_status|safe }}) {
                 menu_name = "top_menu_sign_in";
             } else {
@@ -42,10 +43,7 @@
             $("#menu").load(menu_name);
 
             $("#footer").load("footer");
-
         });
-
-
 
         function onclick_tradie(tradie_id) {
             tradie_iframe.src = 'tradie_detail?tradie_id=' + tradie_id;

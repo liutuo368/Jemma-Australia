@@ -33,6 +33,17 @@
             $("#top_menu").load("top_menu_sign_in");
             $("#side_menu").load("side_menu_customer");
             $("#footer").load("footer");
+
+            function showDialog2() {
+                alert('tes')
+                $("#payment-amount").modal("hide");
+                $("#payment-finish").modal("show").addClass("fade");
+                alert('tes2')
+            }
+
+            $("#payment").on("click", function () {
+                $('payment-amount').modal('hide');
+            });
         });
     </script>
     <style>
@@ -102,14 +113,16 @@
                     <form class="form-horizontal">
                         <label>Quote ID: {{ current_quote.id }}</label>
                         <br>
-                        <label>Client
+                        <label>Tradie
                             Name:&nbsp;{{ current_quote.customer.first_name }} {{ current_quote.customer.last_name }}</label>
                         <br>
-                        <label>Client Location: {{ current_quote.customer.suburb }}</label>
+                        <label>Tradie Location: {{ current_quote.customer.suburb }}</label>
                         <br>
                         <label>Date: {{ current_quote.date }}</label>
                         <br>
                         <label>Status: {{ current_quote.status }}</label>
+                        <br>
+                        <label>Amount: $500</label>
                         <br>
                     </form>
                 </div>
@@ -121,11 +134,17 @@
                         <br>
                         <label>Images/Videos</label>
                         {% for image in images %}
-                            <p>
-                                <img src="media/{{ image.image }}">
-                            </p>
+                            <div style="height: 300px; width: 300px ;overflow: hidden;">
+                                <p>
+                                    <img src="media/{{ image.image }}"
+                                         style='height: 100%; width: 100%; object-fit: contain'>
+                                </p>
+                            </div>
                         {% endfor %}
                         <br>
+                        <label>
+                            Feedback:
+                        </label>
                     </form>
                 </div>
             </div>
@@ -149,7 +168,7 @@
                     <div class="modal-content">
                         <!-- Modal Header -->
                         <div class="modal-header">
-                            <h4 class="modal-title">Update Order Information</h4>
+                            <h4 class="modal-title">Payment Details</h4>
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
                         <!-- Modal body -->
@@ -158,21 +177,44 @@
                             <input type="text" name="quote_id" form="quote_acceptance_form"
                                    value="{{ current_quote.id }}" style="display:none;"/>
                             <form method="post" action="accept_quote" id="quote_acceptance_form">
-                                {% csrf_token %}
-                                <div class="alert alert-secondary" role="alert">
-                                    The payment amount includes the material fees and your expected working hours times
-                                    your hourly rate.
-                                    Please discuss this payment details with your client before you submit it :)
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-md-12">
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <h5 class="panel-title">
+                                                        Please check order details:
+                                                    </h5>
+                                                    <div class="col-xs-3 col-md-12">
+                                                        <div class="form-group">
+                                                            <label>
+                                                                Tradie Name:
+                                                            </label>
+                                                            <br>
+                                                            <label>
+                                                                Date & Time:
+                                                            </label>
+                                                            <br>
+                                                            <label>
+                                                                Amount:
+                                                            </label>
+                                                            <br>
+                                                            <div class="form-group">
+                                                                <label for="Amount">Confirm Amount $</label>
+                                                                <input name="Amount" id="Amount"/>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <button id="payment" type="button" class="btn btn-success btn-lg btn-block"
+                                                    data-toggle="modal" data-target="#payment-finish">
+                                                Pay Now   <span class="glyphicon glyphicon-chevron-right"></span>
+                                            </button>
+                                            </td>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="payment">Payment amount:</label>
-                                    <input type="number" name="price" class="form-control" placeholder="Enter"
-                                           id="payment"
-                                           min="0" required>
-                                    <div class="valid-feedback">Valid.</div>
-                                    <div class="invalid-feedback">Please fill out this field.</div>
-                                </div>
-                                <button type="submit" class="btn btn-success float-right">Submit</button>
                             </form>
                         </div>
                     </div>
@@ -187,7 +229,8 @@
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
                         <div class="form-group modal-body">
-                            <label for="comment">Dear Customer, we were wondering if you would like to say why you want to decline this order :)</label>
+                            <label for="comment">Dear Customer, we were wondering if you would like to say why you want
+                                to decline this order :)</label>
                             <textarea class="form-control" rows="5" id="comment"></textarea>
                         </div>
                         <!-- Modal body -->
@@ -196,6 +239,53 @@
                                     onclick="window.location.href='decline_quote?id={{ current_quote.id }}'">Confirm
                                 Decline
                             </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="payment-finish">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <!-- Modal Header -->
+                        <div class="modal-header">
+                            <h3 class="modal-title">Finish Payment</h3>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+                        <!-- Modal body -->
+                        <div class="modal-body">
+                            <!--form for entering payment amount-->
+                            <input type="text" name="quote_id" form="quote_acceptance_form"
+                                   value="{{ current_quote.id }}" style="display:none;"/>
+                            <form method="post" action="accept_quote" id="quote_acceptance_form">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-md-12">
+                                            <br>
+                                            <br>
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <h4 class="panel-title">
+                                                        Have you finished the payment?
+                                                    </h4>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <br>
+                                            <div class="text-right mt-5">
+                                                <button type="button" class="btn btn-secondary"
+                                                        onclick="window.history.back()">
+                                                    Not yet
+                                                </button>
+                                                <button type="button" class="btn btn-success"
+                                                        onclick="window.location.href='/customer_current_order'">
+                                                    Finished
+                                                </button>
+                                            </div>
+                                            </td>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
