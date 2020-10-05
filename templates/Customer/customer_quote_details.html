@@ -224,6 +224,9 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <!-- Modal Header -->
+                        <input type="text" name="quote_id" form="decline_form" value="{{ current_quote.id }}" style="display:none;"/>
+                        <form action="customer_decline_quote" method="POST" id="decline_form">
+                            {% csrf_token %}
                         <div class="modal-header">
                             <h4 class="modal-title">Confirm Decline</h4>
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -231,15 +234,13 @@
                         <div class="form-group modal-body">
                             <label for="comment">Dear Customer, we were wondering if you would like to say why you want
                                 to decline this order :)</label>
-                            <textarea class="form-control" rows="5" id="comment"></textarea>
+                            <textarea class="form-control" rows="5" id="comment" name="decline_reason"></textarea>
                         </div>
                         <!-- Modal body -->
                         <div class="modal-body">
-                            <button type="button" class="btn btn-danger float-right"
-                                    onclick="window.location.href='decline_quote?id={{ current_quote.id }}'">Confirm
-                                Decline
-                            </button>
+                            <button type="submit" class="btn btn-danger float-right">Confirm Decline</button>
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -277,7 +278,7 @@
                                                     Not yet
                                                 </button>
                                                 <button type="button" class="btn btn-success"
-                                                        onclick="window.location.href='/customer_current_order'">
+                                                        onclick="window.location.href='customer_finish_payment?quote_id={{ current_quote.id }}'">
                                                     Finished
                                                 </button>
                                             </div>

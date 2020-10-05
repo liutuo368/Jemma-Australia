@@ -31,7 +31,8 @@ class GenderChoice(Enum):
 class QuoteStatusTypeChoice(Enum):
     Unread = "Unread"
     Responded = "Responded"
-    Declined = "Declined"
+    TradieDeclined = "Tradie Declined"
+    CustomerDeclined = "Customer Declined"
     Finished = "Finished"
 
 
@@ -211,6 +212,7 @@ class Order(models.Model):
         choices=[(_type.name, _type.value) for _type in OrderStatusTypeChoice],
         default='Pending')
     category = models.CharField(max_length=20)
+    price = models.FloatField(default=0)
     tradie = models.ForeignKey("Tradie", on_delete=models.CASCADE)
     customer = models.ForeignKey("Customer", on_delete=models.CASCADE)
     orderDate = models.DateTimeField(auto_now_add=True)
@@ -220,6 +222,7 @@ class Quote(models.Model):
     customer = models.ForeignKey("Customer", on_delete=models.CASCADE)
     tradie = models.ForeignKey("Tradie", on_delete=models.CASCADE)
     price = models.FloatField(default=0)
+    category = models.CharField(max_length=20, default="")
     date = models.DateField(auto_now_add=True)
     status = models.CharField(
         max_length=20,
@@ -227,6 +230,8 @@ class Quote(models.Model):
         default='Unread'
     )
     description = models.CharField(null=True, max_length=200)
+    feedback = models.CharField(null=True, max_length=200)
+    declineReason = models.CharField(null=True, max_length=200)
 
 
 class QuoteImage(models.Model):

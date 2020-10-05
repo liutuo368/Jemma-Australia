@@ -39,8 +39,9 @@ urlpatterns = [
     path('send_quote', views.send_quote),
     path('accept_quote', views.tradie_accept_quote),
     path('decline_quote', views.tradie_decline_quote),
+    path('customer_decline_quote', views.customer_decline_quote),
     path('tradie_order_detail', views.tradie_order_detail),
-
+    path('customer_finish_payment', views.customer_finish_payment),
     path('upload_hp', views.upload_hp)
 ]
 

@@ -45,11 +45,11 @@
             $("#footer").load("footer");
         });
 
-        function onclick_tradie(tradie_id) {
-            tradie_iframe.src = 'tradie_detail?tradie_id=' + tradie_id;
+        function onclick_tradie(tradie_id, job_type) {
+            tradie_iframe.src = 'tradie_detail?tradie_id=' + tradie_id + '&job_type=' + job_type;
         }
         window.onload = function() {
-            onclick_tradie({{ tradie_list.0.0.tradie.myUser.id }});
+            onclick_tradie({{ tradie_list.0.0.tradie.myUser.id }}, {{ job_type }});
         }
 
     </script>
@@ -244,7 +244,7 @@
         <div class="col-md-4">
             <table class="table table-hover">
                 {% for var, rating_number, rating in tradie_list %}
-                <tr class="tradie-card" onClick="onclick_tradie('{{ var.tradie.myUser.id }}')">
+                <tr class="tradie-card" onClick="onclick_tradie('{{ var.tradie.myUser.id }}', '{{ job_type }}')">
                     <td class="row1">
                         <img class="art-img" src="{{ var.tradie.myUser.user_hp.url }}" alt="user picture">
                         <div class="user-information-box">

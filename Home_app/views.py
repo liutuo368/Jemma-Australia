@@ -246,13 +246,15 @@ def customer_search_result(request):
 
     context = {
         "login_status": json.dumps(login_status),
-        "tradie_list": tradie_list
+        "tradie_list": tradie_list,
+        "job_type": job_type
     }
     return render(request, "Customer/customer_search_result.html", context)
 
 
 def tradie_detail(request):
     tradie_id = request.GET["tradie_id"]
+    category = request.GET["job_type"]
     tradie = Tradie.objects.get(myUser_id=int(tradie_id))
     rating_list = Rating.objects.filter(user=tradie.myUser)
     job_list = TradieJobType.objects.filter(tradie=tradie)
@@ -264,6 +266,7 @@ def tradie_detail(request):
         avg_rating = round(sum_rating / len(rating_list), 1)
     context = {
         "tradie": tradie,
+        "category": category,
         "rating_number": len(rating_list),
         "rating": avg_rating,
         "rating_list": rating_list,
@@ -279,9 +282,10 @@ def send_quote(request):
         except Customer.DoesNotExist:
             raise Http404("Customer does not exist")
         tradie_id = request.POST["tradie_id"]
+        category = request.POST["category"]
         description = request.POST["description"]
         images = request.FILES.getlist("files[]")
-        quote = Quote(customer=(Customer.objects.get(myUser=request.user)), tradie=(Tradie.objects.get(myUser_id=tradie_id)), description=description)
+        quote = Quote(customer=customer, tradie=(Tradie.objects.get(myUser_id=tradie_id)), category=category,description=description)
         quote.save()
         for img in images:
             image = QuoteImage(image=img, quote=quote)
@@ -291,8 +295,10 @@ def send_quote(request):
         html = "<html><body>Please sign in first before you submit the quote :)</body></html>"
         return HttpResponse(html)
 
+
 def tradie_calendar(request):
     return render(request, "Tradie/tradie_calendar.html")
+
 
 def tradie_quotes(request):
     if request.user.is_authenticated:
@@ -380,6 +386,26 @@ def customer_current_order(request):
         raise Http404("Haven't logged in")
 
 
+def customer_finish_payment(request):
+    if request.user.is_authenticated:
+        try:
+            customer = Customer.objects.get(myUser=request.user)
+        except Customer.DoesNotExist:
+            raise Http404("Customer does not exist")
+        quote_id = request.GET["quote_id"]
+        current_quote = Quote.objects.get(id=quote_id)
+        if current_quote.customer == customer:
+            current_quote.status = "Finished"
+            current_quote.save()
+            new_order = Order(orderStatus='Pending', category=current_quote.category, price=current_quote.price, tradie=current_quote.tradie, customer=current_quote.customer)
+            new_order.save()
+            return HttpResponseRedirect("customer_current_order")
+        else:
+            raise Http404("You don't have permission to do that")
+    else:
+        raise Http404("Haven't logged in")
+
+
 def tradie_quote_details(request):
     if request.user.is_authenticated:
         try:
@@ -401,13 +427,32 @@ def tradie_quote_details(request):
 
 
 def customer_quote_details(request):
-    return render(request, "Customer/customer_quote_details.html")
+    if request.user.is_authenticated:
+        try:
+            customer = Customer.objects.get(myUser=request.user)
+        except Customer.DoesNotExist:
+            raise Http404("Customer does not exist")
+        quote_id = request.GET["quote_id"]
+        current_quote = Quote.objects.get(id=quote_id)
+        images = QuoteImage.objects.filter(quote=current_quote)
+        context = {
+            "login_status": json.dumps(True),
+            "current_quote": current_quote,
+            "fullname": customer.first_name + " " + customer.last_name,
+            "images": images
+        }
+        return render(request, "Customer/customer_quote_details.html", context)
+    else:
+        raise Http404("Haven't logged in")
+
 
 def customer_order_detail(request):
     return render(request, "Customer/customer_order_detail.html")
 
+
 def tradie_order_detail(request):
     return render(request, "Tradie/tradie_order_detail.html")
+
 
 def tradie_accept_quote(request):
     if request.user.is_authenticated:
@@ -438,9 +483,29 @@ def tradie_decline_quote(request):
         quote_id = request.GET["id"]
         current_quote = Quote.objects.get(id=quote_id)
         if current_quote.tradie == tradie:
-            current_quote.status = "Declined"
+            current_quote.status = "Tradie Declined"
             current_quote.save()
             return HttpResponseRedirect("tradie_quote_details?quote_id=" + quote_id)
+        else:
+            raise Http404("You don't have permission to do that")
+    else:
+        raise Http404("Haven't logged in")
+
+
+def customer_decline_quote(request):
+    if request.user.is_authenticated:
+        try:
+            customer = Customer.objects.get(myUser=request.user)
+        except Customer.DoesNotExist:
+            raise Http404("Customer does not exist")
+        quote_id = request.POST["quote_id"]
+        reason = request.POST["decline_reason"]
+        current_quote = Quote.objects.get(id=quote_id)
+        if current_quote.customer == customer:
+            current_quote.status = "Customer Declined"
+            current_quote.declineReason = reason
+            current_quote.save()
+            return HttpResponseRedirect("customer_quote_details?quote_id=" + quote_id)
         else:
             raise Http404("You don't have permission to do that")
     else:
