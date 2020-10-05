@@ -100,18 +100,18 @@
             <div>
                 <div class="quote-metadata custom-border mb-5">
                     <form class="form-horizontal">
-                        <label>Order ID: {{ current_quote.id }}</label>
+                        <label>Order ID: {{ current_order.id }}</label>
                         <br>
                         <label>Customer
-                            Name:&nbsp;{{ current_quote.customer.first_name }} {{ current_quote.customer.last_name }}</label>
+                            Name:&nbsp;{{ current_order.customer.first_name }} {{ current_order.customer.last_name }}</label>
                         <br>
-                        <label>Customer Location: {{ current_quote.customer.suburb }}</label>
+                        <label>Customer Location: {{ current_order.customer.suburb }}</label>
                         <br>
-                        <label>Date: {{ current_quote.date }}</label>
+                        <label>Date: {{ current_order.orderDate }}</label>
                         <br>
-                        <label>Status: {{ current_quote.status }}</label>
+                        <label>Status: {{ current_order.orderStatus }}</label>
                         <br>
-                        <label>Amount: {{ current_quote.status }}</label>
+                        <label>Amount: {{ current_order.price }}</label>
                         <br>
                     </form>
                 </div>
@@ -169,7 +169,7 @@
                         </div>
                         <!-- Modal body -->
                         <div class="modal-body">
-                            <button type="button" class="btn btn-danger float-left" onclick="window.location.href='decline_quote?id={{ current_quote.id }}'">Confirm Finish
+                            <button type="button" class="btn btn-danger float-left" onclick="window.location.href='tradie_finish_job?job_id={{ current_order.id }}'">Confirm Finish
                             </button>
 
                         </div>

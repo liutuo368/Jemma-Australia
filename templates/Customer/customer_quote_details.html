@@ -145,6 +145,7 @@
                         <label>
                             Feedback:
                         </label>
+                        <p>{{ current_quote.feedback }}</p>
                     </form>
                 </div>
             </div>
@@ -188,15 +189,15 @@
                                                     <div class="col-xs-3 col-md-12">
                                                         <div class="form-group">
                                                             <label>
-                                                                Tradie Name:
+                                                                Tradie Name: {{ current_quote.tradie.first_name }}
                                                             </label>
                                                             <br>
                                                             <label>
-                                                                Date & Time:
+                                                                Date & Time: {{ current_quote.date }}
                                                             </label>
                                                             <br>
                                                             <label>
-                                                                Amount:
+                                                                Amount: {{ current_quote.price }}
                                                             </label>
                                                             <br>
                                                             <div class="form-group">

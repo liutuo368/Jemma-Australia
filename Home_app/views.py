@@ -451,7 +451,39 @@ def customer_order_detail(request):
 
 
 def tradie_order_detail(request):
-    return render(request, "Tradie/tradie_order_detail.html")
+    if request.user.is_authenticated:
+        try:
+            tradie = Tradie.objects.get(myUser=request.user)
+        except Tradie.DoesNotExist:
+            raise Http404("Tradie does not exist")
+        job_id = request.GET["job_id"]
+        current_job = Order.objects.get(id=job_id)
+        context = {
+            "login_status": json.dumps(True),
+            "current_order": current_job,
+            "fullname": tradie.first_name + " " + tradie.last_name
+        }
+        return render(request, "Tradie/tradie_order_detail.html", context)
+    else:
+        raise Http404("Haven't logged in")
+
+
+def tradie_finish_job(request):
+    if request.user.is_authenticated:
+        try:
+            tradie = Tradie.objects.get(myUser=request.user)
+        except Tradie.DoesNotExist:
+            raise Http404("Tradie does not exist")
+        job_id = request.GET["job_id"]
+        current_job = Order.objects.get(id=job_id)
+        if current_job.tradie == tradie:
+            current_job.orderStatus = "Finished"
+            current_job.save()
+            return HttpResponseRedirect("tradie_current_job")
+        else:
+            raise Http404("You don't have the permission to do that!")
+    else:
+        raise Http404("Haven't logged in")
 
 
 def tradie_accept_quote(request):

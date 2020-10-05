@@ -42,6 +42,7 @@ urlpatterns = [
     path('customer_decline_quote', views.customer_decline_quote),
     path('tradie_order_detail', views.tradie_order_detail),
     path('customer_finish_payment', views.customer_finish_payment),
+    path('tradie_finish_job', views.tradie_finish_job),
     path('upload_hp', views.upload_hp)
 ]
 
