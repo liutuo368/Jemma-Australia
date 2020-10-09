@@ -35,7 +35,7 @@
             var menu_name;
 
 
-            if({{ login_status|safe }}) {
+            if ({{ login_status|safe }}) {
                 menu_name = "top_menu_sign_in";
             } else {
                 menu_name = "top_menu_without_sign_in";
@@ -47,10 +47,17 @@
         });
 
     </script>
+
+    <style>
+        .sticky-top {
+            position: sticky;
+            top: 0;
+        }
+    </style>
 </head>
 <body class="d-flex flex-column min-vh-100">
 
-<div id="menu"></div>
+<div class="sticky-top" id="menu"></div>
 
 <div class="container wrapper flex-grow-1 text-center row-fluid">
 
@@ -68,7 +75,8 @@
             <h5 class="bold">Help & Support Service</h5>
             <br>
             <p class="text-left">Email Support: support@gmail.com</p>
-            <p class="text-left">If you get any queries of our system, or if you have any questions to be clarified about Jemma, please
+            <p class="text-left">If you get any queries of our system, or if you have any questions to be clarified
+                about Jemma, please
                 use the email to contact our support team.</p>
         </div>
         <div class="col-md-4">
@@ -81,13 +89,13 @@
             <p class="text-left">Login Support: (02)6296 2111</p>
             <p class="text-left">Working Hours:</p>
             <div class="align">
-            <p>Sunday Holiday</p>
-            <p>Monday 9am-5pm</p>
-            <p>Tuesday 9am-5pm</p>
-            <p>Wednesday 9am-5pm</p>
-            <p>Thursday 9am-5pm</p>
-            <p>Friday 9am-5pm</p>
-            <p>Saturday 9am-5pm</p>
+                <p>Sunday Holiday</p>
+                <p>Monday 9am-5pm</p>
+                <p>Tuesday 9am-5pm</p>
+                <p>Wednesday 9am-5pm</p>
+                <p>Thursday 9am-5pm</p>
+                <p>Friday 9am-5pm</p>
+                <p>Saturday 9am-5pm</p>
             </div>
         </div>
         <div class="col-md-4">
