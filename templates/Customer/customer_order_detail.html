@@ -31,7 +31,7 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $("#top_menu").load("top_menu_sign_in");
-            $("#side_menu").load("side_menu");
+            $("#side_menu").load("side_menu_customer");
             $("#footer").load("footer");
         });
     </script>
@@ -100,26 +100,26 @@
             <div>
                 <div class="quote-metadata custom-border mb-5">
                     <form class="form-horizontal">
-                        <label>Order ID: {{ current_quote.id }}</label>
+                        <label>Order ID: {{ current_order.id }}</label>
                         <br>
                         <label>Tradie
-                            Name:&nbsp;{{ current_quote.customer.first_name }} {{ current_quote.customer.last_name }}</label>
+                            Name:&nbsp;{{ current_order.tradie.first_name }} {{ current_order.tradie.last_name }}</label>
                         <br>
-                        <label>Tradie Location: {{ current_quote.customer.suburb }}</label>
+                        <label>Tradie Location: {{ current_order.customer.suburb }}</label>
                         <br>
-                        <label>Date: {{ current_quote.date }}</label>
+                        <label>Date: {{ current_order.orderDate }}</label>
                         <br>
-                        <label>Status: {{ current_quote.status }}</label>
+                        <label>Status: {{ current_order.orderStatus }}</label>
                         <br>
-                        <label>Amount: {{ current_quote.status }}</label>
+                        <label>Amount: {{ current_order.price }}</label>
                         <br>
                     </form>
                 </div>
                 <div class="quote-details">
                     <form class="form-horizontal">
-                        <label>Quote Description:</label>
+                        <label>Order Description:</label>
                         <br>
-                        <p>{{ current_quote.description }}</p>
+                        <p>{{ current_order.description }}</p>
                         <br>
                         <label>Images/Videos</label>
                         {% for image in images %}

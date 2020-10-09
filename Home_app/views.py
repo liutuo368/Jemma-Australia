@@ -447,7 +447,23 @@ def customer_quote_details(request):
 
 
 def customer_order_detail(request):
-    return render(request, "Customer/customer_order_detail.html")
+    if request.user.is_authenticated:
+        try:
+            customer = Customer.objects.get(myUser=request.user)
+        except Customer.DoesNotExist:
+            raise Http404("Customer does not exist")
+        order_id = request.GET["order_id"]
+        current_order = Order.objects.get(id=order_id)
+        # images = QuoteImage.objects.filter(quote=current_order)
+        context = {
+            "login_status": json.dumps(True),
+            "current_order": current_order,
+            "fullname": customer.first_name + " " + customer.last_name,
+            # "images": images
+        }
+        return render(request, "Customer/customer_order_detail.html", context)
+    else:
+        raise Http404("Haven't logged in")
 
 
 def tradie_order_detail(request):
