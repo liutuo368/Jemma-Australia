@@ -76,6 +76,10 @@
             cursor: pointer;
         }
 
+        #upload-label {
+            cursor: pointer;
+        }
+
         .image-section {
             border: 5px solid #CCCCCC;
             border-radius: 50%;
@@ -110,7 +114,7 @@
                              src="{{ user.user_hp.url }}"
                              alt="user_profile_picture"
                              style="height: 120px;">
-                        <p class="font-weight-light">Update Picture</p>
+                        <p id="upload-label" class="font-weight-light">Update Picture</p>
                         <button id="imageUpload" class="btn btn-primary" data-toggle="modal"
                                 data-target="#upload-image">Upload Image
                         </button>
@@ -152,8 +156,8 @@
                     </div>
 
                     <div class="col-md-10 align-self-center">
-                        <h4 class="text-left align-middle" align="left">Welcome, Tradie</h4>
-                        <h5 class="text-left align-middle" align="left">Tradie company</h5>
+                        <h4 class="text-left align-middle" align="left">Welcome, {{ fullname }}</h4>
+                        <h5 class="text-left align-middle" align="left">{{ company }}</h5>
                     </div>
                 </div>
             </div>
@@ -170,23 +174,15 @@
             <!-- Tab panes -->
             <div class="tab-content" style="border-width: 10px">
                 <div id="home" class="container tab-pane active"><br>
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                            <form class="form-horizontal">
-                                <h5 class="panel-title pull-left">Personal Description:</h5><br>
-                                <label class="panel-title pull-left">{{ description }}</label>
-                                <br><br>
-                            </form>
-                        </div>
+                    <div>
+                        <h5><strong>Personal Description:</strong></h5>
+                        <p>{{ description }}</p>
+                        <hr class="rgba-white-light">
                     </div>
-                    <hr class="rgba-white-light">
 
                     <div class="panel panel-default">
                         <div class="panel-body">
-
-                            <h5 class="panel-title pull-left">Licenses &amp; Qualifications:</h5>
-                            <br>
-
+                            <h5><strong>Licenses &amp; Qualifications:</strong></h5>
                             <div id="jobType" class="row col-xs-12 col-md-12 text-center">
                                 <table class="table table-striped table-bordered table-hover table-full-width"
                                        id="sample_2">
@@ -205,132 +201,113 @@
                                         <td class="hidden-480"><img class="img-thumbnail img-responsive align-left"
                                                                     src="../../static/IMAGES/certification.png"
                                                                     alt="certification"
-                                                                    style="width: 50px;">
-                                            <br></td>
+                                                                    style="width: 50px;"></td>
                                     </tr>
                                     </tbody>
                                 </table>
                             </div>
-
+                            <hr class="rgba-white-light">
                         </div>
 
-                        <hr class="rgba-white-light">
-
                         <div class="panel-body">
-                            <h5 class="panel-title pull-left"><strong>Personal detail</strong></h5>
-                            <br>
+                            <h5><strong>Personal detail</strong></h5>
                             <form class="form-horizontal">
-
+                                <hr class="rgba-white-light">
                                 <label for="Your_location">Full Name:&nbsp; {{ fullname }}&nbsp;</label>
                                 <hr class="rgba-white-light">
-
-                                <br>
                                 <label for="Your_gender">Address&nbsp:&nbsp;{{ address }}</label>
                                 <hr class="rgba-white-light">
-                                <br>
                                 <label for="Your_gender">Contact Number:&nbsp;{{ phone }}&nbsp;</label>
                                 <hr class="rgba-white-light">
-                                <br>
                                 <label for="Your_gender">Company Name:&nbsp;{{ company }}</label>
                                 <hr class="rgba-white-light">
-                                <br>
                                 <label for="Your_gender">Company ABN:&nbsp;{{ ABN }}&nbsp;</label>
                                 <hr class="rgba-white-light">
-                                <br>
                                 <label for="Your_gender">Bank BSB:&nbsp;{{ BSB }}</label>
                                 <hr class="rgba-white-light">
-                                <br>
                                 <label for="Your_gender">Bank Account Number&nbsp:&nbsp;{{ accountNo }}</label>
                                 <hr class="rgba-white-light">
-                                <br>
                                 <label for="Your_gender">Bank Account Name:&nbsp;{{ accountName }}</label>
-                                <hr class="rgba-white-light">
-                                <br>
                             </form>
                         </div>
                     </div>
                 </div>
 
                 <div id="menu1" class="container tab-pane fade"><br>
-                    <div>
-                        <div>
-                            <div class="panel panel-default">
-                                <div class="panel-body">
-                                    <form action="update_tradie_profile" class="form-horizontal"
-                                          method="post">{% csrf_token %}
-                                        <h5 for="Your_Description" class="panel-title pull-left">Personal
-                                            Description:</h5><br>
-                                        <input ctype="text" class="form-control" rows="3" name="description"
-                                               placeholder="Fill me out" value="{{ description }}">
-                                        <br>
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <form action="update_tradie_profile" class="form-horizontal"
+                                  method="post">{% csrf_token %}
+                                <h5 for="Your_Description" class="panel-title pull-left">Personal
+                                    Description:</h5>
+                                <input ctype="text" class="form-control" rows="3" name="description"
+                                       placeholder="Fill me out" value="{{ description }}">
+                                <br>
+                                <h5 class="panel-title pull-left">Licenses & Qualifications: </h5><br>
+                                <br>
 
-                                        <h5 class="panel-title pull-left">Licenses & Qualifications: </h5><br>
-                                        <br>
-
-                                        <div class="row">
-                                            <div class="col">
-                                                <input type="text" class="form-control" placeholder="JobType">
-                                            </div>
-                                            <div class="col">
-                                                <input type="text" class="form-control" placeholder="Price">
-                                            </div>
-                                            <div class="col">
-                                                <input class="form-control" type="file" rows="3"
-                                                       placeholder="Fill me out">
-                                            </div>
-                                        </div>
-                                        <br>
-
-                                        <h5 class="panel-title pull-left"><strong>Personal detail:</strong></h5>
-                                        <br>
-                                        <label for="Your_FullName">Full Name:</label>
-                                        <input type="text" class="form-control" name="fullName"
-                                               placeholder="Fill me out"
-                                               value="{{ fullname }}">
-                                        <br>
-                                        <label for="Your_Address">Address&nbsp:</label>
-                                        <input type="text" class="form-control" name="address"
-                                               placeholder="Fill me out"
-                                               value="{{ address }}">
-                                        <br>
-                                        <label for="Your_Number">Contact Number:</label>
-                                        <input type="text" class="form-control" name="number"
-                                               placeholder="Fill me out"
-                                               value="{{ phone }}">
-                                        <br>
-                                        <label for="Your_CompanyName">Company Name:</label>
-                                        <input type="text" class="form-control" name="companyName"
-                                               placeholder="Fill me out"
-                                               value="{{ company }}">
-                                        <br>
-                                        <label for="Your_CompanyABN">Company ABN&nbsp;</label>
-                                        <input type="text" class="form-control" name="companyABN"
-                                               placeholder="Fill me out" cardNumber
-                                               value="{{ ABN }}">
-                                        <br>
-                                        <label for="Your_BSB">Bank BSB:&nbsp;</label>
-                                        <input type="text" class="form-control" name="BSB"
-                                               placeholder="Fill me out"
-                                               value="{{ BSB }}">
-                                        <br>
-                                        <label for="Your_BankNumber">Bank Account Number:&nbsp;</label>
-                                        <input type="text" class="form-control" name="bankNumber"
-                                               placeholder="Fill me out"
-                                               value="{{ accountNo }}">
-                                        <br>
-                                        <label for="Your_BankName">Bank Account Name:&nbsp;</label>
-                                        <input type="text" class="form-control" name="bankName"
-                                               placeholder="Fill me out"
-                                               value="{{ accountName }}">
-                                        <br>
-                                        <input class="btn btn-primary" type="submit" value="Update">
-
-                                        <button class="btn btn-secondary" type="reset">
-                                            Reset
-                                        </button>
-                                    </form>
+                                <div class="row">
+                                    <div class="col">
+                                        <input type="text" class="form-control" placeholder="JobType">
+                                    </div>
+                                    <div class="col">
+                                        <input type="text" class="form-control" placeholder="Price">
+                                    </div>
+                                    <div class="col">
+                                        <input class="form-control" type="file" rows="3"
+                                               placeholder="Fill me out">
+                                    </div>
                                 </div>
-                            </div>
+                                <br>
+
+                                <h5 class="panel-title"><strong>Personal detail:</strong></h5>
+
+                                <label for="Your_FullName">Full Name:</label>
+                                <input type="text" class="form-control" name="fullName"
+                                       placeholder="Fill me out"
+                                       value="{{ fullname }}">
+                                <br>
+                                <label for="Your_Address">Address&nbsp:</label>
+                                <input type="text" class="form-control" name="address"
+                                       placeholder="Fill me out"
+                                       value="{{ address }}">
+                                <br>
+                                <label for="Your_Number">Contact Number:</label>
+                                <input type="text" class="form-control" name="number"
+                                       placeholder="Fill me out"
+                                       value="{{ phone }}">
+                                <br>
+                                <label for="Your_CompanyName">Company Name:</label>
+                                <input type="text" class="form-control" name="companyName"
+                                       placeholder="Fill me out"
+                                       value="{{ company }}">
+                                <br>
+                                <label for="Your_CompanyABN">Company ABN&nbsp;</label>
+                                <input type="text" class="form-control" name="companyABN"
+                                       placeholder="Fill me out" cardNumber
+                                       value="{{ ABN }}">
+                                <br>
+                                <label for="Your_BSB">Bank BSB:&nbsp;</label>
+                                <input type="text" class="form-control" name="BSB"
+                                       placeholder="Fill me out"
+                                       value="{{ BSB }}">
+                                <br>
+                                <label for="Your_BankNumber">Bank Account Number:&nbsp;</label>
+                                <input type="text" class="form-control" name="bankNumber"
+                                       placeholder="Fill me out"
+                                       value="{{ accountNo }}">
+                                <br>
+                                <label for="Your_BankName">Bank Account Name:&nbsp;</label>
+                                <input type="text" class="form-control" name="bankName"
+                                       placeholder="Fill me out"
+                                       value="{{ accountName }}">
+                                <br>
+                                <button class="btn btn-secondary pull-right" type="reset">
+                                    Reset
+                                </button>
+                                <input class="btn btn-success pull-right" type="submit" value="Update">
+
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -344,6 +321,10 @@
 
 <script>
     $("#profileImage").click(function (e) {
+        $("#imageUpload").click();
+    });
+
+    $("#upload-label").click(function (e) {
         $("#imageUpload").click();
     });
 
