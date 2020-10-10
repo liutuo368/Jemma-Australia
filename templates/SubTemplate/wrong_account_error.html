@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>404 Page</title>
+    <title>Wrong account type</title>
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -42,7 +42,6 @@
 
             $("#footer").load("footer");
         });
-
     </script>
 
     <style>
@@ -54,17 +53,6 @@
         #error-image {
             max-width: 70%;
         }
-
-        .container {
-            position: relative;
-            text-align: center;
-        }
-
-        .top-middle {
-            position: absolute;
-            top: 15%;
-            left: 47%;
-        }
     </style>
 </head>
 
@@ -72,15 +60,11 @@
 <section class="page_404" style="alignment: center;">
     <div class="container">
         <div class="text-center">
-            <div class="container">
-                <img src="../../static/IMAGES/not_found.gif" alt="error occurred" id="error-image">
-                <h1 class="top-middle">404</h1>
-            </div>
-            <div>
-                <h2>Looks like you...</h2>
+            <img src="../../static/IMAGES/not_found.gif" alt="error occurred" id="error-image">
+            <div style="margin-top: -40px;">
+                <h2>Looks like you tried to log into a wrong type of account...</h2>
                 <br>
-                <p>If you would like to check your profile, you need to select the correct account type when you log
-                    in.</p>
+                <p>If you would like to check your profile, you need to select the correct account type when you log in.</p>
                 <p>If you would like to send a quote, you need to log in as a customer.</p>
                 <button class="btn btn-success mt-3">Back to Home</button>
             </div>
