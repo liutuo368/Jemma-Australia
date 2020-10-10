@@ -34,15 +34,27 @@
             $("#side_menu").load("side_menu_customer");
             $("#footer").load("footer");
 
-            function showDialog2() {
-                alert('tes')
-                $("#payment-amount").modal("hide");
-                $("#payment-finish").modal("show").addClass("fade");
-                alert('tes2')
-            }
+            $('#payment').click(function () {
+                var amount_label = document.getElementById("labelAmount").value,
+                    amount_input = document.getElementById("Amount").value;
+                amount_input = parseFloat(amount_input).toFixed(1);
+                if (isNaN(amount_input)) {
+                    document.getElementById("errorEmptyMessageDiv").style.display = "block";
+                    document.getElementById("errorEmptyMessageDiv").style.visibility = "visible"
+                    document.getElementById("errorMismatchDiv").style.display = "none";
+                } else {
+                    if (amount_label != amount_input) {
+                        document.getElementById("errorMismatchDiv").style.display = "block";
+                        document.getElementById("errorMismatchDiv").style.visibility = "visible"
+                        document.getElementById("errorEmptyMessageDiv").style.display = "none";
+                    } else {
+                        document.getElementById("errorEmptyMessageDiv").style.display = "none";
+                        document.getElementById("errorMismatchDiv").style.display = "none";
+                        var backOfferButton = document.getElementById('payment');
+                        backOfferButton.dataset.target = "#payment-finish";
 
-            $("#payment").on("click", function () {
-                $('payment-amount').modal('hide');
+                    }
+                }
             });
         });
     </script>
@@ -199,17 +211,30 @@
                                                             <label>
                                                                 Amount: {{ current_quote.price }}
                                                             </label>
+                                                            <input hidden="hidden" name="labelAmount" id="labelAmount"
+                                                                   value={{ current_quote.price }}>
                                                             <br>
                                                             <div class="form-group">
                                                                 <label for="Amount">Confirm Amount $</label>
-                                                                <input name="Amount" id="Amount"/>
+                                                                <input name="Amount" id="Amount" type="text"
+                                                                       placeholder={{ current_quote.price }} required/>
+                                                                <div id="errorMismatchDiv"
+                                                                     style="visibility: hidden; display:none !important; ">
+                                                                    <label style="color: red;">Please entry the same
+                                                                        amount.</label>
+                                                                </div>
+                                                                <div id="errorEmptyMessageDiv"
+                                                                     style="visibility: hidden; display:none !important; ">
+                                                                    <label style="color: red;">Please entry the an
+                                                                        amount.</label>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                             <button id="payment" type="button" class="btn btn-success btn-lg btn-block"
-                                                    data-toggle="modal" data-target="#payment-finish">
+                                                    data-toggle="modal">
                                                 Pay Now   <span class="glyphicon glyphicon-chevron-right"></span>
                                             </button>
                                             </td>
@@ -225,22 +250,24 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <!-- Modal Header -->
-                        <input type="text" name="quote_id" form="decline_form" value="{{ current_quote.id }}" style="display:none;"/>
+                        <input type="text" name="quote_id" form="decline_form" value="{{ current_quote.id }}"
+                               style="display:none;"/>
                         <form action="customer_decline_quote" method="POST" id="decline_form">
                             {% csrf_token %}
-                        <div class="modal-header">
-                            <h4 class="modal-title">Confirm Decline</h4>
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        </div>
-                        <div class="form-group modal-body">
-                            <label for="comment">Dear Customer, we were wondering if you would like to say why you want
-                                to decline this order :)</label>
-                            <textarea class="form-control" rows="5" id="comment" name="decline_reason"></textarea>
-                        </div>
-                        <!-- Modal body -->
-                        <div class="modal-body">
-                            <button type="submit" class="btn btn-danger float-right">Confirm Decline</button>
-                        </div>
+                            <div class="modal-header">
+                                <h4 class="modal-title">Confirm Decline</h4>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <div class="form-group modal-body">
+                                <label for="comment">Dear Customer, we were wondering if you would like to say why you
+                                    want
+                                    to decline this order :)</label>
+                                <textarea class="form-control" rows="5" id="comment" name="decline_reason"></textarea>
+                            </div>
+                            <!-- Modal body -->
+                            <div class="modal-body">
+                                <button type="submit" class="btn btn-danger float-right">Confirm Decline</button>
+                            </div>
                         </form>
                     </div>
                 </div>
