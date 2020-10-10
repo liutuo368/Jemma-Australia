@@ -34,6 +34,11 @@
             $("#side_menu").load("side_menu_customer");
             $("#footer").load("footer");
 
+            if ('{{current_quote.status}}'.includes('Declined') || '{{current_quote.status}}'.includes('Unread') || '{{current_quote.status}}'.includes('Finished')) {
+                $("#decline-button").attr("disabled", true);
+                $("#accept-button").attr("disabled", true);
+            }
+
             $('#payment').click(function () {
                 var amount_label = document.getElementById("labelAmount").value,
                     amount_input = document.getElementById("Amount").value;
