@@ -45,7 +45,9 @@ urlpatterns = [
     path('tradie_finish_job', views.tradie_finish_job),
     path('upload_hp', views.upload_hp),
     path('customer_order_detail', views.customer_order_detail),
-    path('tradie_rating', views.tradie_rating)
+    path('tradie_rating', views.tradie_rating),
+    path('customer_rating', views.customer_rating)
+
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

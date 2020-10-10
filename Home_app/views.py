@@ -636,3 +636,7 @@ def updatehp(request):
 
 def tradie_rating(request):
     return render(request, "Tradie/tradie_rating.html")
+
+
+def customer_rating(request):
+    return render(request, "Customer/customer_rating.html")
