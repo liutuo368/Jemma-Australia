@@ -50,7 +50,8 @@ urlpatterns = [
     path('not_found', views.not_found),
     path('not_login_error', views.not_login_error),
     path('wrong_account_error', views.wrong_account_error),
-    path('no_tradie_found_error', views.no_tradie_found_error)
+    path('no_tradie_found_error', views.no_tradie_found_error),
+    path('tradie_send_quote_error', views.tradie_send_quote_error)
 
 ]
 

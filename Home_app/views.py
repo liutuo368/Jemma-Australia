@@ -281,7 +281,7 @@ def send_quote(request):
         try:
             customer = Customer.objects.get(myUser=request.user)
         except Customer.DoesNotExist:
-            return render(request, "SubTemplate/wrong_account_error.html")
+            return render(request, "SubTemplate/tradie_send_quote_error.html")
         tradie_id = request.POST["tradie_id"]
         category = request.POST["category"]
         description = request.POST["description"]
@@ -662,3 +662,6 @@ def wrong_account_error(request):
 
 def no_tradie_found_error(request):
     return render(request, "SubTemplate/no_tradie_found_error.html")
+
+def tradie_send_quote_error(request):
+    return render(request, "SubTemplate/tradie_send_quote_error.html")
