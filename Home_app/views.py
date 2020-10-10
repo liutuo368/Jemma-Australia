@@ -640,3 +640,6 @@ def tradie_rating(request):
 
 def customer_rating(request):
     return render(request, "Customer/customer_rating.html")
+
+def not_found(request):
+    return render(request, "SubTemplate/not_found.html")

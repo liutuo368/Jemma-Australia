@@ -46,7 +46,8 @@ urlpatterns = [
     path('upload_hp', views.upload_hp),
     path('customer_order_detail', views.customer_order_detail),
     path('tradie_rating', views.tradie_rating),
-    path('customer_rating', views.customer_rating)
+    path('customer_rating', views.customer_rating),
+    path('not_found', views.not_found)
 
 ]
 
