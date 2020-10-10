@@ -40,14 +40,14 @@ def login(request):
                 auth.login(request, user)
                 return HttpResponseRedirect("tradie")
             except Tradie.DoesNotExist:
-                raise Http404("Tradie does not exist")
+                return render(request, "SubTemplate/wrong_account_error.html")
         elif user_type == "Customer":
             try:
                 Customer.objects.get(myUser=user)
                 auth.login(request, user)
                 return HttpResponseRedirect("customer")
             except Customer.DoesNotExist:
-                raise Http404("Customer does not exist")
+                return render(request, "SubTemplate/wrong_account_error.html")
     else:
         raise Http404("User does not exist")
 
@@ -66,7 +66,8 @@ def sign_up(request):
         myUser = MyUser(email=email, date_of_birth='2020-1-1', user_type=user_type, password=make_password(password))
         myUser.save()
         if user_type == "Tradie":
-            tradie = Tradie(myUser=myUser, first_name=firstname, last_name=lastname, accountStatus="Active", travelDistance=0)
+            tradie = Tradie(myUser=myUser, first_name=firstname, last_name=lastname, accountStatus="Active",
+                            travelDistance=0)
             tradie.save()
             auth.login(request, myUser)
             return HttpResponseRedirect("tradie")
@@ -280,12 +281,13 @@ def send_quote(request):
         try:
             customer = Customer.objects.get(myUser=request.user)
         except Customer.DoesNotExist:
-            raise Http404("Customer does not exist")
+            return render(request, "SubTemplate/wrong_account_error.html")
         tradie_id = request.POST["tradie_id"]
         category = request.POST["category"]
         description = request.POST["description"]
         images = request.FILES.getlist("files[]")
-        quote = Quote(customer=customer, tradie=(Tradie.objects.get(myUser_id=tradie_id)), category=category,description=description)
+        quote = Quote(customer=customer, tradie=(Tradie.objects.get(myUser_id=tradie_id)), category=category,
+                      description=description)
         quote.save()
         for img in images:
             image = QuoteImage(image=img, quote=quote)
@@ -313,7 +315,7 @@ def tradie_quotes(request):
         }
         return render(request, "Tradie/tradie_quotes.html", context)
     else:
-        raise Http404("Haven't logged in")
+        return render(request, "SubTemplate/not_login_error.html")
 
 
 def top_menu_without_sign_in(request):
@@ -331,8 +333,10 @@ def footer(request):
 def side_menu(request):
     return render(request, "SubTemplate/side_menu.html")
 
+
 def side_menu_customer(request):
     return render(request, "SubTemplate/side_menu_customer.html")
+
 
 def customer_quote(request):
     if request.user.is_authenticated:
@@ -357,7 +361,8 @@ def customer_history(request):
             customer = Customer.objects.get(myUser=request.user)
         except Customer.DoesNotExist:
             raise Http404("Customer does not exist")
-        order_history = Order.objects.filter(Q(customer=customer), Q(orderStatus="Rejected") | Q(orderStatus="Completed"))
+        order_history = Order.objects.filter(Q(customer=customer),
+                                             Q(orderStatus="Rejected") | Q(orderStatus="Completed"))
         context = {
             "login_status": json.dumps(True),
             "order_history": order_history,
@@ -374,7 +379,8 @@ def customer_current_order(request):
             customer = Customer.objects.get(myUser=request.user)
         except Customer.DoesNotExist:
             raise Http404("Customer does not exist")
-        current_offers = Order.objects.filter(Q(customer=customer), Q(orderStatus="Pending") | Q(orderStatus="Accepted"))
+        current_offers = Order.objects.filter(Q(customer=customer),
+                                              Q(orderStatus="Pending") | Q(orderStatus="Accepted"))
         context = {
             "login_status": json.dumps(True),
             "current_orders": current_offers,
@@ -396,7 +402,8 @@ def customer_finish_payment(request):
         if current_quote.customer == customer:
             current_quote.status = "Finished"
             current_quote.save()
-            new_order = Order(orderStatus='Pending', category=current_quote.category, price=current_quote.price, tradie=current_quote.tradie, customer=current_quote.customer)
+            new_order = Order(orderStatus='Pending', category=current_quote.category, price=current_quote.price,
+                              tradie=current_quote.tradie, customer=current_quote.customer)
             new_order.save()
             return HttpResponseRedirect("customer_current_order")
         else:
@@ -565,7 +572,7 @@ def update_tradie_profile(request):
     full_name = request.POST["fullName"]
     first_name = full_name.split(" ", 1)[0]
     last_name = full_name.split(" ", 1)[-1]
-    tradie.first_name =first_name
+    tradie.first_name = first_name
     tradie.last_name = last_name
 
     address = request.POST["address"]
@@ -641,5 +648,14 @@ def tradie_rating(request):
 def customer_rating(request):
     return render(request, "Customer/customer_rating.html")
 
+
 def not_found(request):
     return render(request, "SubTemplate/not_found.html")
+
+
+def not_login_error(request):
+    return render(request, "SubTemplate/not_login_error.html")
+
+
+def wrong_account_error(request):
+    return render(request, "SubTemplate/wrong_account_error.html")

@@ -47,7 +47,9 @@ urlpatterns = [
     path('customer_order_detail', views.customer_order_detail),
     path('tradie_rating', views.tradie_rating),
     path('customer_rating', views.customer_rating),
-    path('not_found', views.not_found)
+    path('not_found', views.not_found),
+    path('not_login_error', views.not_login_error),
+    path('wrong_account_error', views.wrong_account_error)
 
 ]
 
