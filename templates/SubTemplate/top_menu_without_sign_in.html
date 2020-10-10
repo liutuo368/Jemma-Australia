@@ -196,7 +196,7 @@
                                 Customer
                             </label>
                             <br>
-                            <button type="submit" class="btn btn-secondary">Submit</button>
+                            <button type="submit" class="btn btn-secondary" id ="register_submit">Submit</button>
 
                         </form>
                     </div>
@@ -225,19 +225,23 @@
 
 <script>
     feather.replace();
+</script>
 
-    var password = document.getElementById("password"), confirm_password = document.getElementById("confirm_password");
+<script>
+    $(document).ready(function () {
+        $('#register_submit').click(function (){
+            var password = document.getElementById("password"), confirm_password = document.getElementById("confirm_password");
 
-    function validatePassword() {
-        if (password.value != confirm_password.value) {
-            confirm_password.setCustomValidity("Passwords Don't Match");
-        } else {
-            confirm_password.setCustomValidity('');
-        }
-    }
-
-    password.onchange = validatePassword;
-    confirm_password.onkeyup = validatePassword;
+            if (password.value != confirm_password.value) {
+                confirm_password.setCustomValidity("Passwords Don't Match");
+            } else {
+                confirm_password.setCustomValidity('');
+            }
+            password.onchange = validatePassword;
+            confirm_password.onkeyup = validatePassword;
+            }
+        )
+    });
 </script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
