@@ -47,68 +47,74 @@
     <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
     <script>
-        $(document).ready(function(){
-        $("input[type='radio']").click(function(){
-        var sim = $("input[type='radio']:checked").val();
-        //alert(sim);
-        if (sim<3) { $('.myratings').css('color','red'); $(".myratings").text(sim); }else{ $('.myratings').css('color','green'); $(".myratings").text(sim); } }); });
+        $(document).ready(function () {
+            $("input[type='radio']").click(function () {
+                var sim = $("input[type='radio']:checked").val();
+                //alert(sim);
+                if (sim < 3) {
+                    $('.myratings').css('color', 'red');
+                    $(".myratings").text(sim);
+                } else {
+                    $('.myratings').css('color', 'green');
+                    $(".myratings").text(sim);
+                }
+            });
+        });
     </script>
     <style>
         @import url(https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
         @import url(http://fonts.googleapis.com/css?family=Calibri:400,300,700);
-    fieldset,
 
-    .rating {
-        border: none;
-    }
+        fieldset,
+        .rating {
+            border: none;
+        }
 
-    .myratings {
-        font-size: 30px;
-        color: green
-    }
+        .myratings {
+            font-size: 30px;
+            color: green
+        }
 
-    .rating>[id^="star"] {
-        display: none
-    }
+        .rating > [id^="star"] {
+            display: none
+        }
 
-    .rating>label:before {
-        margin: 30px;
-        font-size: 2.25em;
-        font-family: FontAwesome;
-        display: inline-block;
-        content: "\f005"
-    }
+        .rating > label:before {
+            margin: 30px;
+            font-size: 2.25em;
+            font-family: FontAwesome;
+            display: inline-block;
+            content: "\f005"
+        }
 
-    .rating>label {
-        color: #ddd;
-        float: right;
-    }
+        .rating > label {
+            color: #ddd;
+            float: right;
+        }
 
-    .rating>[id^="star"]:checked~label,
-    .rating:not(:checked)>label:hover,
-    .rating:not(:checked)>label:hover~label {
-        color: #FFD700
-    }
+        .rating > [id^="star"]:checked ~ label,
+        .rating:not(:checked) > label:hover,
+        .rating:not(:checked) > label:hover ~ label {
+            color: #FFD700
+        }
 
-    .rating>[id^="star"]:checked+label:hover,
-    .rating>[id^="star"]:checked~label:hover,
-    .rating>label:hover~[id^="star"]:checked~label,
-    .rating>[id^="star"]:checked~label:hover~label {
-        color: #FFED85
-    }
+        .rating > [id^="star"]:checked + label:hover,
+        .rating > [id^="star"]:checked ~ label:hover,
+        .rating > label:hover ~ [id^="star"]:checked ~ label,
+        .rating > [id^="star"]:checked ~ label:hover ~ label {
+            color: #FFED85
+        }
 
-    .reset-option {
-        display: none
-    }
+        .reset-option {
+            display: none
+        }
 
-    .reset-button {
-        margin: 6px 12px;
-        background-color: rgb(255, 255, 255);
-        text-transform: uppercase
-    }
-
+        .reset-button {
+            margin: 6px 12px;
+            background-color: rgb(255, 255, 255);
+            text-transform: uppercase
+        }
     </style>
-
 </head>
 
 
@@ -118,69 +124,63 @@
 
 <div class="page-wrap">
     <div class="row bg-white">
-
-        <div class="col-md-2" style="margin-left: 7%;">
-            <div style="height: 10%"></div>
+        <div class="col-md-3" style="margin-left:5%;">
+            <div style="height: 20%"></div>
             <div id="side_menu" style="width: 100%"></div>
         </div>
-
-        <div class="col-md-8" style="margin-left: 3%">
-            <div id="profile_header" class="container align-items-center justify-content-center mb-3">
-                <div class="row">
-                    <div class="col-md-2 text-center">
-                        <img class="rounded-circle"
-                             id="profileImage"
-                             src="{{ user.user_hp.url }}"
-                             alt="user_profile_picture"
-                             style="height: 120px;">
+        <div class="col-md-6" style="margin-left: 3%; background-color: #bded8e">
+            <div class="card">
+                <div class="p-3">
+                    <div class="first text-center"><img src="https://i.imgur.com/KCcF6WN.png" width="80">
+                        <h3 class="mt-2">Thanks</h3>
+                        <br>
                     </div>
-
-                    <div class="col-md-10 align-self-center">
-                        <h4 class="text-left align-middle" align="left">Welcome, {{ fullname }}</h4>
-                    </div>
-                </div>
-            </div>
-
-            <div >
-                <div class="card">
-                    <div class="p-3">
-                        <div class="first text-center"> <img src="https://i.imgur.com/KCcF6WN.png" width="80">
-                            <h3 class="mt-2">Thanks</h3>
-                            <h1 class="myratings"> 5</h1>
-                            <br>
-                        </div>
-                        <div class="border p-3 rounded">
-
-                            <div class="center col-md-10">
-                                <fieldset class="rating" >
-
-                                    <input type="radio" id="star5" name="rating" value="5" /><label class="full" for="star5" title="Awesome - 5 stars"></label>
-                                    <input type="radio" id="star4" name="rating" value="4" /><label class="full" for="star4" title="Pretty good - 4 stars"></label>
-                                    <input type="radio" id="star3" name="rating" value="3" /><label class="full" for="star3" title="Meh - 3 stars"></label>
-                                    <input type="radio" id="star2" name="rating" value="2" /><label class="full" for="star2" title="Kinda bad - 2 stars"></label>
-                                    <input type="radio" id="star1" name="rating" value="1" /><label class="full" for="star1" title="Sucks big time - 1 star"></label>
-                                    <input type="radio" class="reset-option" name="rating" value="reset" />
+                    <div class="p-3 rounded">
+                        <div class="row">
+                            <div class="col-md-1" style="padding-top: 40px; padding-left: 150px;">
+                                <h1 class="myratings">5</h1>
+                            </div>
+                            <div class="center col-md-8">
+                                <fieldset class="rating">
+                                    <input type="radio" id="star5" name="rating" value="5"/><label class="full"
+                                                                                                   for="star5"
+                                                                                                   title="Awesome - 5 stars"></label>
+                                    <input type="radio" id="star4" name="rating" value="4"/><label class="full"
+                                                                                                   for="star4"
+                                                                                                   title="Pretty good - 4 stars"></label>
+                                    <input type="radio" id="star3" name="rating" value="3"/><label class="full"
+                                                                                                   for="star3"
+                                                                                                   title="Meh - 3 stars"></label>
+                                    <input type="radio" id="star2" name="rating" value="2"/><label class="full"
+                                                                                                   for="star2"
+                                                                                                   title="Kinda bad - 2 stars"></label>
+                                    <input type="radio" id="star1" name="rating" value="1"/><label class="full"
+                                                                                                   for="star1"
+                                                                                                   title="Sucks big time - 1 star"></label>
+                                    <input type="radio" class="reset-option" name="rating" value="reset"/>
                                 </fieldset>
                             </div>
-
-                            <div class="mt-4"> <textarea class="area form-control" rows="7" placeholder="add comments"> </textarea> </div>
-                            <div class="button mt-4 text-right"> <button class="btn btn-success submit-button">Submit</button> </div>
-
                         </div>
+                    </div>
 
+                    <div class="mt-4"><textarea class="area form-control" rows="7"
+                                                placeholder="add comments"> </textarea></div>
+                    <div class="button mt-4 text-right">
+                        <button class="btn btn-success submit-button">Submit</button>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </div>
+
 <div id="footer"></div>
+
 <script>
     function disableButton(btn) {
         document.getElementById(btn.id).disabled = true;
     }
-
 </script>
+
 </body>
 </html>

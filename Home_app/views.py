@@ -632,3 +632,7 @@ def update_customer_profile(request):
 
 def updatehp(request):
     return HttpResponse()
+
+
+def tradie_rating(request):
+    return render(request, "Tradie/tradie_rating.html")
