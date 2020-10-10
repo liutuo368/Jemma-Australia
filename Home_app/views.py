@@ -292,8 +292,7 @@ def send_quote(request):
             image.save()
         return HttpResponseRedirect("tradie_detail?tradie_id=" + tradie_id)
     else:
-        html = "<html><body>Please sign in first before you submit the quote :)</body></html>"
-        return HttpResponse(html)
+        return render(request, "SubTemplate/not_login_error.html")
 
 
 def tradie_calendar(request):
