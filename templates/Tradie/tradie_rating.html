@@ -114,6 +114,21 @@
             background-color: rgb(255, 255, 255);
             text-transform: uppercase
         }
+
+        .page-wrap {
+            min-height: 100%;
+            /* equal to footer height */
+            margin-bottom: 10px;
+        }
+
+        .page-wrap:after {
+            content: "";
+            display: block;
+        }
+
+        #footer, .page-wrap:after {
+            height: 50px;
+        }
     </style>
 </head>
 
@@ -129,10 +144,10 @@
             <div id="side_menu" style="width: 100%"></div>
         </div>
 
-            <div class="card col-md-6 shadow-sm bg-red rounded" style="margin-left: 3%;">
+            <div class="card col-md-6 shadow-sm bg-red rounded" style="margin-left: 3%; margin-top: 2%;">
 
                 <br>
-                    <div class="card-header first text-center" >
+                    <div class="card-header first text-center" style="padding: 0 0 0 0 !important;">
                         <img src="../../static/IMAGES/Banner1.png" width=100%>
                     </div>
 
