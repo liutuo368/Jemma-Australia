@@ -52,10 +52,10 @@
                 var sim = $("input[type='radio']:checked").val();
                 //alert(sim);
                 if (sim < 3) {
-                    $('.myratings').css('color', 'red');
+                    $('.myratings').css('color', '#FA8072');
                     $(".myratings").text(sim);
                 } else {
-                    $('.myratings').css('color', 'green');
+                    $('.myratings').css('color', '#9ACD32');
                     $(".myratings").text(sim);
                 }
             });
@@ -72,7 +72,7 @@
 
         .myratings {
             font-size: 30px;
-            color: green
+            color: lightgray;
         }
 
         .rating > [id^="star"] {
@@ -109,12 +109,6 @@
             display: none
         }
 
-        .reset-button {
-            margin: 6px 12px;
-            background-color: rgb(255, 255, 255);
-            text-transform: uppercase
-        }
-
         .page-wrap {
             min-height: 100%;
             /* equal to footer height */
@@ -144,59 +138,45 @@
             <div id="side_menu" style="width: 100%"></div>
         </div>
 
-            <div class="card col-md-6 shadow-sm bg-red rounded" style="margin-left: 3%; margin-top: 2%;">
+        <div class="card col-md-6 rounded" style="margin-top: 3%; border: 0;">
 
-                <br>
-                    <div class="card-header first text-center" style="padding: 0 0 0 0 !important;">
-                        <img src="../../static/IMAGES/Banner1.png" width=100%>
-                    </div>
-
-                    <div class=" card-body p-3 rounded">
-                        <div class="row">
-                            <div class="col-md-1" style="padding-top: 40px; padding-left: 150px;">
-                                <h1 class="myratings">5</h1>
-                            </div>
-                            <div class="center col-md-8">
-                                <fieldset class="rating">
-                                    <input type="radio" id="star5" name="rating" value="5"/><label class="full"
-                                                                                                   for="star5"
-                                                                                                   title="Awesome - 5 stars"></label>
-                                    <input type="radio" id="star4" name="rating" value="4"/><label class="full"
-                                                                                                   for="star4"
-                                                                                                   title="Pretty good - 4 stars"></label>
-                                    <input type="radio" id="star3" name="rating" value="3"/><label class="full"
-                                                                                                   for="star3"
-                                                                                                   title="Meh - 3 stars"></label>
-                                    <input type="radio" id="star2" name="rating" value="2"/><label class="full"
-                                                                                                   for="star2"
-                                                                                                   title="Kinda bad - 2 stars"></label>
-                                    <input type="radio" id="star1" name="rating" value="1"/><label class="full"
-                                                                                                   for="star1"
-                                                                                                   title="Sucks big time - 1 star"></label>
-                                    <input type="radio" class="reset-option" name="rating" value="reset"/>
-                                </fieldset>
-                            </div>
-
-                        </div>
-                    </div>
-
-                <textarea class="area form-control" rows="7" placeholder="add comments"></textarea>
-
-                <br>
-                <button class="btn btn-success submit-button">Submit</button>
-                <br>
-
+            <div class="card-header first text-center" style="padding: 0 0 0 0 !important;">
+                <img src="../../static/IMAGES/Banner1.png" style="width: 100%;">
             </div>
+
+            <div class="card-body rounded">
+                <div class="row">
+                    <div class="col-md-8">
+                        <fieldset class="rating">
+                            <input type="radio" id="star5" name="rating" value="5"/><label class="full"
+                                                                                           for="star5"
+                                                                                           title="Awesome - 5 stars"></label>
+                            <input type="radio" id="star4" name="rating" value="4"/><label class="full"
+                                                                                           for="star4"
+                                                                                           title="Pretty good - 4 stars"></label>
+                            <input type="radio" id="star3" name="rating" value="3"/><label class="full"
+                                                                                           for="star3"
+                                                                                           title="Meh - 3 stars"></label>
+                            <input type="radio" id="star2" name="rating" value="2"/><label class="full"
+                                                                                           for="star2"
+                                                                                           title="Kinda bad - 2 stars"></label>
+                            <input type="radio" id="star1" name="rating" value="1"/><label class="full"
+                                                                                           for="star1"
+                                                                                           title="Sucks big time - 1 star"></label>
+                            <input type="radio" class="reset-option" name="rating" value="reset"/>
+                        </fieldset>
+                    </div>
+                    <div class="col-md-2" style="padding-top: 3%;">
+                        <h1 class="myratings">0</h1>
+                    </div>
+                </div>
+            </div>
+            <textarea class="area form-control" rows="7" placeholder="Please add comments here"></textarea>
+            <button class="btn btn-secondary submit-button mt-3">Submit</button>
+        </div>
     </div>
 </div>
 
 <div id="footer"></div>
-
-<script>
-    function disableButton(btn) {
-        document.getElementById(btn.id).disabled = true;
-    }
-</script>
-
 </body>
 </html>
