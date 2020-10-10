@@ -659,3 +659,6 @@ def not_login_error(request):
 
 def wrong_account_error(request):
     return render(request, "SubTemplate/wrong_account_error.html")
+
+def no_tradie_found_error(request):
+    return render(request, "SubTemplate/no_tradie_found_error.html")

@@ -45,7 +45,12 @@
         });
 
         function onclick_tradie(tradie_id) {
-            tradie_iframe.src = 'tradie_detail?tradie_id=' + tradie_id + '&job_type={{ job_type }}';
+             if (typeof tradie_id == 'undefined') {
+                tradie_iframe.src = "no_tradie_found_error";
+            }
+            else {
+                 tradie_iframe.src = 'tradie_detail?tradie_id=' + tradie_id + '&job_type={{ job_type }}';
+             }
         }
         window.onload = function() {
             onclick_tradie({{ tradie_list.0.0.tradie.myUser.id }});
