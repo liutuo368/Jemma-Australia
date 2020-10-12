@@ -52,7 +52,10 @@ urlpatterns = [
     path('no_tradie_found_error', views.no_tradie_found_error),
     path('tradie_send_quote_error', views.tradie_send_quote_error),
     path('tradie_history_detail', views.tradie_history_detail),
-    path('customer_history_details', views.customer_history_details)
+    path('customer_history_details', views.customer_history_details),
+    path('customer_finish_order', views.customer_finish_order),
+    path('customer_submit_rating', views.customer_submit_rating)
+
 
 ]
 

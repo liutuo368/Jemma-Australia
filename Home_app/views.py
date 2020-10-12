@@ -241,7 +241,7 @@ def customer_search_result(request):
                 sum_rating = 0
                 for rating in rating_list:
                     sum_rating += rating.points
-                tradie_list.append((var, round(sum_rating / len(rating_list), 1)))
+                tradie_list.append((var, len(rating_list), round(sum_rating / len(rating_list))))
             else:
                 tradie_list.append((var, len(rating_list), 5))
 
@@ -570,6 +570,24 @@ def customer_decline_quote(request):
         raise Http404("Haven't logged in")
 
 
+def customer_finish_order(request):
+    if request.user.is_authenticated:
+        try:
+            customer = Customer.objects.get(myUser=request.user)
+        except Customer.DoesNotExist:
+            raise Http404("Customer does not exist")
+        order_id = request.GET["order_id"]
+        current_order = Order.objects.get(id=order_id)
+        if current_order.customer == customer:
+            current_order.orderStatus = "Finished"
+            current_order.save()
+            return HttpResponseRedirect("customer_rating?order_id=" + order_id)
+        else:
+            raise Http404("You don't have permission to do that")
+    else:
+        raise Http404("Haven't logged in")
+
+
 def update_tradie_profile(request):
     tradie = Tradie.objects.get(myUser=request.user)
     tradie.description = request.POST["description"]
@@ -650,7 +668,42 @@ def tradie_rating(request):
 
 
 def customer_rating(request):
-    return render(request, "Customer/customer_rating.html")
+    if request.user.is_authenticated:
+        try:
+            customer = Customer.objects.get(myUser=request.user)
+        except Customer.DoesNotExist:
+            raise Http404("Customer does not exist")
+        order_id = request.GET["order_id"]
+        current_order = Order.objects.get(id=order_id)
+        if current_order.customer == customer:
+            context = {
+                "current_order": current_order
+            }
+            return render(request, "Customer/customer_rating.html", context)
+        else:
+            raise Http404("You don't have permission to do that")
+    else:
+        raise Http404("Haven't logged in")
+
+
+def customer_submit_rating(request):
+    if request.user.is_authenticated:
+        try:
+            customer = Customer.objects.get(myUser=request.user)
+        except Customer.DoesNotExist:
+            raise Http404("Customer does not exist")
+        order_id = request.POST["order_id"]
+        rate_no = request.POST["rate_no"]
+        comments = request.POST["comments"]
+        current_order = Order.objects.get(id=order_id)
+        if current_order.customer == customer:
+            new_rating = Rating(user=current_order.tradie.myUser, order=current_order, review=comments, points=int(rate_no))
+            new_rating.save()
+            return HttpResponseRedirect("customer_order_detail?order_id=" + order_id)
+        else:
+            raise Http404("You don't have permission to do that")
+    else:
+        raise Http404("Haven't logged in")
 
 
 def not_found(request):

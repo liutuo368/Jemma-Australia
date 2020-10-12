@@ -43,6 +43,7 @@
         $(document).ready(function () {
             $("input[type='radio']").click(function () {
                 var sim = $("input[type='radio']:checked").val();
+                document.getElementById("rating_input").value = sim;
                 //alert(sim);
                 if (sim < 3) {
                     $('.myRating').css('color', '#FA8072');
@@ -133,7 +134,10 @@
             <div class="card-header first" style="padding: 0 0 0 0 !important; border: 0;">
                 <img src="../../static/IMAGES/Banner1.png" alt="banner" style="width: 100%;">
             </div>
-
+            <input type="text" name="order_id" value="{{ current_order.id }}" form="rating_form" style="display:none;"/>
+            <input type="text" name="rate_no" id="rating_input" form="rating_form" style="display:none;"/>
+            <form method="post" action="customer_submit_rating" id="rating_form">
+                    {% csrf_token %}
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-8">
@@ -155,8 +159,9 @@
                     </div>
                 </div>
             </div>
-            <textarea class="area form-control" rows="7" placeholder="Please add some comments here"></textarea>
-            <button class="btn btn-secondary submit-button mt-3">Submit</button>
+            <textarea class="area form-control" name="comments" rows="7" placeholder="Please add some comments here"></textarea>
+            <button class="btn btn-secondary submit-button mt-3" type="submit">Submit</button>
+            </form>
         </div>
     </div>
 </div>
