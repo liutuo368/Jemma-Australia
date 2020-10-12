@@ -33,27 +33,16 @@
     <script type="text/javascript">
         $(document).ready(function () {
             var menu_name;
-
-
             if ({{ login_status|safe }}) {
                 menu_name = "top_menu_sign_in";
             } else {
                 menu_name = "top_menu_without_sign_in";
             }
-            $("#menu").load("top_menu_sign_in");
+            $("#menu").load("top_menu_without_sign_in");
             $("#menu").load(menu_name);
-
             $("#footer").load("footer");
         });
-
     </script>
-
-    <style>
-        .sticky-top {
-            position: sticky;
-            top: 0;
-        }
-    </style>
 </head>
 <body class="d-flex flex-column min-vh-100">
 

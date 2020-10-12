@@ -33,19 +33,15 @@
     <script type="text/javascript">
         $(document).ready(function () {
             var menu_name;
-
-
             if ({{ login_status|safe }}) {
                 menu_name = "top_menu_sign_in";
             } else {
                 menu_name = "top_menu_without_sign_in";
             }
-            $("#menu").load("top_menu_sign_in");
+            $("#menu").load("top_menu_without_sign_in");
             $("#menu").load(menu_name);
-
             $("#footer").load("footer");
         });
-
     </script>
     <style>
         .nav-pills .nav-link:not(.active) {
