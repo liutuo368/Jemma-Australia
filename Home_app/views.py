@@ -660,8 +660,18 @@ def not_login_error(request):
 def wrong_account_error(request):
     return render(request, "SubTemplate/wrong_account_error.html")
 
+
 def no_tradie_found_error(request):
     return render(request, "SubTemplate/no_tradie_found_error.html")
 
+
 def tradie_send_quote_error(request):
     return render(request, "SubTemplate/tradie_send_quote_error.html")
+
+
+def customer_history_details(request):
+    return render(request, "Customer/customer_history_details.html")
+
+
+def tradie_history_detail(request):
+    return render(request, "Tradie/tradie_history_detail.html")

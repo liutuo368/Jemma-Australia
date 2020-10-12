@@ -121,6 +121,7 @@
 
                     <div class="col-md-10 align-self-center">
                         <h4 class="text-left align-middle" align="left">Welcome, {{ fullname }}</h4>
+                        <h5 class="text-left align-middle" align="left">{{ company }}</h5>
                     </div>
                 </div>
             </div>
@@ -152,9 +153,8 @@
                         <label>Images/Videos</label>
                         {% for image in images %}
                             <div style="height: 300px; width: 300px ;overflow: hidden;">
-                                <p>
-                                    <img src="media/{{ image.image }}"
-                                         style='height: 100%; width: 100%; object-fit: contain'>
+                                <p><img src="media/{{ image.image }}"
+                                        style='height: 100%; width: 100%; object-fit: contain'>
                                 </p>
                             </div>
                         {% endfor %}
@@ -315,7 +315,6 @@
                                                     Finished
                                                 </button>
                                             </div>
-                                            </td>
                                         </div>
                                     </div>
                                 </div>
@@ -327,11 +326,7 @@
         </div>
     </div>
 </div>
+
 <div id="footer"></div>
-<script>
-    function disableButton(btn) {
-        document.getElementById(btn.id).disabled = true;
-    }
-</script>
 </body>
 </html>

@@ -93,6 +93,7 @@
 
                     <div class="col-md-10 align-self-center">
                         <h4 class="text-left align-middle" align="left">Welcome, {{ fullname }}</h4>
+                        <h5 class="text-left align-middle" align="left">{{ company }}</h5>
                     </div>
                 </div>
             </div>
@@ -117,16 +118,9 @@
                 </div>
                 <div class="quote-details">
                     <form class="form-horizontal">
-                        <label>Quote Description:</label>
+                        <label>Order Description:</label>
                         <br>
                         <p>{{ current_quote.description }}</p>
-                        <br>
-                        <label>Images/Videos</label>
-                        {% for image in images %}
-                            <p>
-                                <img src="media/{{ image.image }}">
-                            </p>
-                        {% endfor %}
                         <br>
                     </form>
                 </div>
@@ -137,7 +131,7 @@
                         Cancel
                     </button>
                     <button id="decline-button" type="button" class="btn btn-danger" data-toggle="modal"
-                            data-target="#confirm-decline">
+                            data-target="#confirm-finish">
                         Finish
                     </button>
                 </div>
@@ -154,12 +148,12 @@
                         <div class="modal-body">
                             <!--form for entering payment amount-->
                             <input type="text" name="quote_id" form="quote_acceptance_form"
-                                    style="display:none;"/>
+                                   style="display:none;"/>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="modal fade" id="confirm-decline">
+            <div class="modal fade" id="confirm-finish">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <!-- Modal Header -->
@@ -169,9 +163,9 @@
                         </div>
                         <!-- Modal body -->
                         <div class="modal-body">
-                            <button type="button" class="btn btn-danger float-left" onclick="window.location.href='tradie_rating'">Confirm Finish
+                            <button type="button" class="btn btn-danger float-left"
+                                    onclick="window.location.href='tradie_rating'">Confirm Finish
                             </button>
-
                         </div>
                     </div>
                 </div>
@@ -180,10 +174,5 @@
     </div>
 </div>
 <div id="footer"></div>
-<script>
-    function disableButton(btn) {
-        document.getElementById(btn.id).disabled = true;
-    }
-</script>
 </body>
 </html>

@@ -3,7 +3,6 @@ from . import views
 from django.conf import settings
 from django.conf.urls.static import static
 
-
 urlpatterns = [
     path('', views.index),
     path('index', views.index),
@@ -51,7 +50,9 @@ urlpatterns = [
     path('not_login_error', views.not_login_error),
     path('wrong_account_error', views.wrong_account_error),
     path('no_tradie_found_error', views.no_tradie_found_error),
-    path('tradie_send_quote_error', views.tradie_send_quote_error)
+    path('tradie_send_quote_error', views.tradie_send_quote_error),
+    path('tradie_history_detail', views.tradie_history_detail),
+    path('customer_history_details', views.customer_history_details)
 
 ]
 
