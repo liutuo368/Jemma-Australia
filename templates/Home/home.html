@@ -33,12 +33,13 @@
     <script type="text/javascript">
         $(document).ready(function () {
             var menu_name;
+            $("#menu").load("top_menu_without_sign_in");
             if ({{ login_status|safe }}) {
                 menu_name = "top_menu_sign_in";
             } else {
                 menu_name = "top_menu_without_sign_in";
             }
-            $("#menu").load("top_menu_without_sign_in");
+            $("#menu").load("top_menu_sign_in");
             $("#menu").load(menu_name);
             $("#footer").load("footer");
         });
@@ -85,11 +86,6 @@
             background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23000' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
             margin-right: -5px;
         }
-
-        .sticky-top {
-            position: sticky;
-            top:0;
-        }
     </style>
 </head>
 
@@ -101,7 +97,8 @@
 
     <div class="row text-center justify-content-center">
         <div class="col-md-7" style="margin: auto;">
-            <h2 style="font-family: 'Bangla MN', serif; font-size:1.7vw;">Jemma makes everyone’s life <br><br> just that bit easier.</h2>
+            <h2 style="font-family: 'Bangla MN', serif; font-size:1.7vw;">Jemma makes everyone’s life <br><br> just that
+                bit easier.</h2>
         </div>
         <div class="col-md-5">
             <img class="scaled-img" src="../../static/IMAGES/unsplash.jpg" alt="unsplash image">
