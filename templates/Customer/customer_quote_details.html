@@ -45,12 +45,12 @@
                 amount_input = parseFloat(amount_input).toFixed(1);
                 if (isNaN(amount_input)) {
                     document.getElementById("errorEmptyMessageDiv").style.display = "block";
-                    document.getElementById("errorEmptyMessageDiv").style.visibility = "visible"
+                    document.getElementById("errorEmptyMessageDiv").style.visibility = "visible";
                     document.getElementById("errorMismatchDiv").style.display = "none";
                 } else {
                     if (amount_label != amount_input) {
                         document.getElementById("errorMismatchDiv").style.display = "block";
-                        document.getElementById("errorMismatchDiv").style.visibility = "visible"
+                        document.getElementById("errorMismatchDiv").style.visibility = "visible";
                         document.getElementById("errorEmptyMessageDiv").style.display = "none";
                     } else {
                         document.getElementById("errorEmptyMessageDiv").style.display = "none";

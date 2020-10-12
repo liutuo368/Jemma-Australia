@@ -33,6 +33,9 @@
     <script src='https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
 
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/v4-shims.css">
+
     <script type="text/javascript">
         $(document).ready(function () {
             $("#top_menu").load("top_menu_sign_in");
@@ -43,6 +46,8 @@
         $(document).ready(function () {
             $("input[type='radio']").click(function () {
                 var sim = $("input[type='radio']:checked").val();
+                $('#comment-button').removeClass('disabled');
+                document.getElementById("rating_input").value = sim;
                 //alert(sim);
                 if (sim < 3) {
                     $('.myRating').css('color', '#FA8072');
@@ -52,57 +57,72 @@
                     $(".myRating").text(sim);
                 }
             });
+
+            $("#comment-button").on('click', function (e) {
+                if ($(this).hasClass('disabled')) {
+                    e.preventDefault();
+                    alert("Please select a rate before you submit the feedback")
+                }
+            });
         });
     </script>
 
     <style>
-        @import url(https://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
-        @import url(http://fonts.googleapis.com/css?family=Calibri:400,300,700);
-
-        fieldset,
-        .rating {
-            border: none;
+        .rating-group {
+            display: inline-flex;
         }
 
-        .myRating {
-            font-size: 30px;
-            color: lightgray;
+        /* make hover effect work properly in IE */
+        .rating-icon {
+            pointer-events: none;
         }
 
-        .rating > [id^="star"] {
+        /* hide radio inputs */
+        .rating-inputs {
+            position: absolute !important;
+            left: -9999px !important;
+        }
+
+        /* hide 'none' input from screenreaders */
+        .rating-input-none {
             display: none
         }
 
-        .rating > label:before {
-            margin: 20px;
-            font-size: 2.25em;
-            font-family: FontAwesome, serif;
-            display: inline-block;
-            content: "\f005"
+        /* set icon padding and size */
+        .rating-label {
+            cursor: pointer;
+            padding: 0 0.1em;
+            font-size: 2rem;
         }
 
-        .rating > label {
+        /* set default star color */
+        .rating-icon-star {
+            color: orange;
+        }
+
+        /* if any input is checked, make its following siblings grey */
+        .rating-inputs:checked ~ .rating-label .rating-icon-star {
             color: #ddd;
-            float: right;
         }
 
-        .rating > [id^="star"]:checked ~ label,
-        .rating:not(:checked) > label:hover,
-        .rating:not(:checked) > label:hover ~ label {
-            color: #FFD700
+        /* make all stars orange on rating group hover */
+        .rating-group:hover .rating-label .rating-icon-star {
+            color: orange;
         }
 
-        .rating > [id^="star"]:checked + label:hover,
-        .rating > [id^="star"]:checked ~ label:hover,
-        .rating > label:hover ~ [id^="star"]:checked ~ label,
-        .rating > [id^="star"]:checked ~ label:hover ~ label {
-            color: #FFED85
+        /* make hovered input's following siblings grey on hover */
+        .rating-inputs:hover ~ .rating-label .rating-icon-star {
+            color: #ddd;
+        }
+
+        .myRating {
+            color: lightgray;
         }
 
         .page-wrap {
             min-height: 100%;
             /* equal to footer height */
-            margin-bottom: 10px;
+            margin-bottom: 50px;
         }
 
         .page-wrap:after {
@@ -130,33 +150,44 @@
 
         <div class="card col-md-6" style="margin-top: 3%; border: 0;">
 
-            <div class="card-header" style="padding: 0 0 0 0 !important; border: 0;">
+            <div class="card-header first" style="padding: 0 0 0 0 !important; border: 0;">
                 <img src="../../static/IMAGES/Banner1.png" alt="banner" style="width: 100%;">
             </div>
-
-            <div class="card-body">
-                <div class="row">
-                    <div class="col-md-8">
-                        <fieldset class="rating">
-                            <label class="full" for="star5"></label>
-                            <input type="radio" id="star5" name="rating" value="5"/>
-                            <label class="full" for="star4"></label>
-                            <input type="radio" id="star4" name="rating" value="4"/>
-                            <label class="full" for="star3"></label>
-                            <input type="radio" id="star3" name="rating" value="3"/>
-                            <label class="full" for="star2"></label>
-                            <input type="radio" id="star2" name="rating" value="2"/>
-                            <label class="full" for="star1"></label>
-                            <input type="radio" id="star1" name="rating" value="1"/>
-                        </fieldset>
-                    </div>
-                    <div class="col-md-2" style="padding-top: 3%;">
-                        <h1 class="myRating">0</h1>
+            <input type="text" name="order_id" value="{{ current_order.id }}" form="rating_form" style="display:none;"/>
+            <input type="text" name="rate_no" id="rating_input" form="rating_form" style="display:none;"/>
+            <form method="post" action="" id="rating_form">
+                {% csrf_token %}
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4"></div>
+                        <div class="rating-group col-md-8">
+                            <input disabled checked class="rating-inputs rating-input-none" name="rating"
+                                   id="rating-none" value="0" type="radio"/>
+                            <label class="rating-label" aria-label="1 star" for="star1"><i
+                                    class="rating-icon rating-icon-star fas fa-star fa-lg"></i></label>
+                            <input class="rating-inputs" type="radio" id="star1" name="rating" value="1"/>
+                            <label class="rating-label" aria-label="2 star" for="star2"><i
+                                    class="rating-icon rating-icon-star fas fa-star fa-lg"></i></label>
+                            <input class="rating-inputs" type="radio" id="star2" name="rating" value="2"/>
+                            <label class="rating-label" aria-label="3 star" for="star3"><i
+                                    class="rating-icon rating-icon-star fas fa-star fa-lg"></i></label>
+                            <input class="rating-inputs" type="radio" id="star3" name="rating" value="3"/>
+                            <label class="rating-label" aria-label="4 star" for="star4"><i
+                                    class="rating-icon rating-icon-star fas fa-star fa-lg"></i></label>
+                            <input class="rating-inputs" type="radio" id="star4" name="rating" value="4"/>
+                            <label class="rating-label" aria-label="5 star" for="star5"><i
+                                    class="rating-icon rating-icon-star fas fa-star fa-lg"></i></label>
+                            <input class="rating-inputs" type="radio" id="star5" name="rating" value="5"/>
+                            <h1 class="myRating ml-3" id="rating-display">0</h1>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <textarea class="area form-control" rows="7" placeholder="Please add some comments here"></textarea>
-            <button class="btn btn-secondary submit-button mt-3">Submit</button>
+                <textarea class="area form-control" name="comments" rows="7"
+                          placeholder="Please add some comments here"></textarea>
+                <button class="btn btn-block btn-dark submit-button mt-3 disabled" type="submit" id="comment-button">
+                    Submit
+                </button>
+            </form>
         </div>
     </div>
 </div>
