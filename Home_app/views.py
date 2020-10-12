@@ -499,7 +499,7 @@ def tradie_finish_job(request):
         job_id = request.GET["job_id"]
         current_job = Order.objects.get(id=job_id)
         if current_job.tradie == tradie:
-            current_job.orderStatus = "Finished"
+            current_job.orderStatus = "Completed"
             current_job.save()
             return HttpResponseRedirect("tradie_current_job")
         else:
@@ -579,7 +579,7 @@ def customer_finish_order(request):
         order_id = request.GET["order_id"]
         current_order = Order.objects.get(id=order_id)
         if current_order.customer == customer:
-            current_order.orderStatus = "Finished"
+            current_order.orderStatus = "Completed"
             current_order.save()
             return HttpResponseRedirect("customer_rating?order_id=" + order_id)
         else:
