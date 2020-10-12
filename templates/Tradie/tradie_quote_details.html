@@ -198,18 +198,21 @@
                             <h4 class="modal-title">Confirm Decline</h4>
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
+                        <input type="text" name="quote_id" form="quote_decline_form" value="{{ current_quote.id }}" style="display:none;"/>
+                        <form method="post" action="decline_quote" id="quote_decline_form">
+                                {% csrf_token %}
                         <div class="form-group modal-body">
-                            <label for="comment">Dear Customer, we were wondering if you would like to say why you want
+                            <label for="comment">Dear Tradie, we were wondering if you would like to say why you want
                                 to decline this order :)</label>
-                            <textarea class="form-control" rows="5" id="comment"></textarea>
+                            <textarea name="feedback" class="form-control" rows="5" id="comment"></textarea>
                         </div>
                         <!-- Modal body -->
                         <div class="modal-body">
-                            <button type="button" class="btn btn-danger float-right"
-                                    onclick="window.location.href='decline_quote?id={{ current_quote.id }}'">Confirm
+                            <button type="submit" class="btn btn-danger float-right">Confirm
                                 Decline
                             </button>
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>

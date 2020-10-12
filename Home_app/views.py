@@ -283,7 +283,7 @@ def send_quote(request):
         except Customer.DoesNotExist:
             return render(request, "SubTemplate/tradie_send_quote_error.html")
         tradie_id = request.POST["tradie_id"]
-        category = request.POST["category"]
+        category = request.POST["job_type"]
         description = request.POST["description"]
         images = request.FILES.getlist("files[]")
         quote = Quote(customer=customer, tradie=(Tradie.objects.get(myUser_id=tradie_id)), category=category,
@@ -292,7 +292,7 @@ def send_quote(request):
         for img in images:
             image = QuoteImage(image=img, quote=quote)
             image.save()
-        return HttpResponseRedirect("tradie_detail?tradie_id=" + tradie_id)
+        return HttpResponseRedirect("tradie_detail?tradie_id=" + tradie_id+"&job_type=" + category)
     else:
         return render(request, "SubTemplate/not_login_error.html")
 
@@ -534,10 +534,13 @@ def tradie_decline_quote(request):
             tradie = Tradie.objects.get(myUser=request.user)
         except Tradie.DoesNotExist:
             raise Http404("Tradie does not exist")
-        quote_id = request.GET["id"]
+        quote_id = request.POST["quote_id"]
+        feedback = request.POST["feedback"]
         current_quote = Quote.objects.get(id=quote_id)
         if current_quote.tradie == tradie:
             current_quote.status = "Tradie Declined"
+            current_quote.declineReason = feedback
+            current_quote.feedback = feedback
             current_quote.save()
             return HttpResponseRedirect("tradie_quote_details?quote_id=" + quote_id)
         else:
@@ -558,6 +561,7 @@ def customer_decline_quote(request):
         if current_quote.customer == customer:
             current_quote.status = "Customer Declined"
             current_quote.declineReason = reason
+            current_quote.feedback = reason
             current_quote.save()
             return HttpResponseRedirect("customer_quote_details?quote_id=" + quote_id)
         else:

@@ -263,7 +263,7 @@ class TradieJobType(models.Model):
 class Rating(models.Model):
     user = models.ForeignKey("MyUser", on_delete=models.DO_NOTHING)
     order = models.ForeignKey("Order", on_delete=models.CASCADE)
-    review = models.CharField(max_length=255)
+    review = models.CharField(max_length=400)
     points = models.IntegerField()
 
     class Meta:

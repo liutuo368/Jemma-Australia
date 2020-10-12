@@ -403,9 +403,10 @@
      aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <input type="text" name="tradie_id" form="quote_form" value="{{ tradie.myUser_id }}" style="display:none;"/>
-        <input type="text" name="category" form="quote_form" value="{{ category }}" style="display:none;"/>
+        <input type="text" name="job_type" form="quote_form" value="{{ category }}" style="display:none;"/>
         <form action="send_quote" method="post" enctype="multipart/form-data" id="quote_form">
             {% csrf_token %}
+
             <div class="modal-content">
                 <div class="modal-header">
                     <h2 class="modal-title" id="exampleModalLongTitle" style="text-align: center">Get quotes</h2>
