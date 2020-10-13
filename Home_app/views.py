@@ -403,7 +403,7 @@ def customer_finish_payment(request):
             current_quote.status = "Finished"
             current_quote.save()
             new_order = Order(orderStatus='Pending', category=current_quote.category, price=current_quote.price,
-                              tradie=current_quote.tradie, customer=current_quote.customer)
+                              tradie=current_quote.tradie, customer=current_quote.customer, description=current_quote.description)
             new_order.save()
             return HttpResponseRedirect("customer_current_order")
         else:

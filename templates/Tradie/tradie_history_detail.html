@@ -97,8 +97,6 @@
                     <form class="form-horizontal">
                         <label>Order ID: {{ current_order.id }}</label>
                         <br>
-                        <label>Quote ID: {{ current_quote.id }}</label>
-                        <br>
                         <label>Customer
                             Name:&nbsp;{{ current_order.customer.first_name }} {{ current_order.customer.last_name }}</label>
                         <br>
@@ -117,13 +115,6 @@
                         <label>Order Description:</label>
                         <br>
                         <p>{{ current_quote.description }}</p>
-                        <br>
-                        <label>Images/Videos</label>
-                        {% for image in images %}
-                            <p>
-                                <img src="media/{{ image.image }}">
-                            </p>
-                        {% endfor %}
                         <br>
                         <label>Review:{{ rating.points }} / 5</label>
                         <br>
