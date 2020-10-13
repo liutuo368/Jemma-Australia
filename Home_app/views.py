@@ -664,7 +664,42 @@ def updatehp(request):
 
 
 def tradie_rating(request):
-    return render(request, "Tradie/tradie_rating.html")
+    if request.user.is_authenticated:
+        try:
+            tradie = Tradie.objects.get(myUser=request.user)
+        except Customer.DoesNotExist:
+            raise Http404("Tradie does not exist")
+        order_id = request.GET["job_id"]
+        current_order = Order.objects.get(id=order_id)
+        if current_order.tradie == tradie:
+            context = {
+                "current_order": current_order
+            }
+            return render(request, "Tradie/tradie_rating.html", context)
+        else:
+            raise Http404("You don't have permission to do that")
+    else:
+        raise Http404("Haven't logged in")
+
+
+def tradie_submit_rating(request):
+    if request.user.is_authenticated:
+        try:
+            tradie = Tradie.objects.get(myUser=request.user)
+        except Customer.DoesNotExist:
+            raise Http404("Tradie does not exist")
+        order_id = request.POST["order_id"]
+        rate_no = request.POST["rate_no"]
+        comments = request.POST["comments"]
+        current_order = Order.objects.get(id=order_id)
+        if current_order.tradie == tradie:
+            new_rating = Rating(user=current_order.customer.myUser, order=current_order, review=comments, points=int(rate_no))
+            new_rating.save()
+            return HttpResponseRedirect("tradie_history_detail?job_id=" + order_id)
+        else:
+            raise Http404("You don't have permission to do that")
+    else:
+        raise Http404("Haven't logged in")
 
 
 def customer_rating(request):
@@ -699,7 +734,7 @@ def customer_submit_rating(request):
         if current_order.customer == customer:
             new_rating = Rating(user=current_order.tradie.myUser, order=current_order, review=comments, points=int(rate_no))
             new_rating.save()
-            return HttpResponseRedirect("customer_order_detail?order_id=" + order_id)
+            return HttpResponseRedirect("customer_history_details?job_id=" + order_id)
         else:
             raise Http404("You don't have permission to do that")
     else:
@@ -727,8 +762,46 @@ def tradie_send_quote_error(request):
 
 
 def customer_history_details(request):
-    return render(request, "Customer/customer_history_details.html")
+    if request.user.is_authenticated:
+        try:
+            customer = Customer.objects.get(myUser=request.user)
+        except Customer.DoesNotExist:
+            raise Http404("Customer does not exist")
+        order_id = request.GET["job_id"]
+        current_order = Order.objects.get(id=order_id)
+        try:
+            rating = Rating.objects.get(order=current_order, user=customer.myUser)
+        except Rating.DoesNotExist:
+            rating = Rating(user=customer.myUser, order=current_order, review='Not reviewed yet', points=0)
+        context = {
+            "login_status": json.dumps(True),
+            "current_order": current_order,
+            "rating": rating,
+            "fullname": current_order.tradie.first_name + " " + current_order.tradie.last_name
+        }
+        return render(request, "Customer/customer_history_details.html", context)
+    else:
+        raise Http404("Haven't logged in")
 
 
 def tradie_history_detail(request):
-    return render(request, "Tradie/tradie_history_detail.html")
+    if request.user.is_authenticated:
+        try:
+            tradie = Tradie.objects.get(myUser=request.user)
+        except Tradie.DoesNotExist:
+            raise Http404("Tradie does not exist")
+        order_id = request.GET["job_id"]
+        current_order = Order.objects.get(id=order_id)
+        try:
+            rating = Rating.objects.get(order=current_order, user=tradie.myUser)
+        except Rating.DoesNotExist:
+            rating = Rating(user=tradie.myUser, order=current_order, review='Not reviewed yet', points=0)
+        context = {
+            "login_status": json.dumps(True),
+            "current_order": current_order,
+            "rating": rating,
+            "fullname": current_order.customer.first_name + " " + current_order.customer.last_name
+        }
+        return render(request, "Tradie/tradie_history_detail.html", context)
+    else:
+        raise Http404("Haven't logged in")

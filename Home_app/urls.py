@@ -54,7 +54,8 @@ urlpatterns = [
     path('tradie_history_detail', views.tradie_history_detail),
     path('customer_history_details', views.customer_history_details),
     path('customer_finish_order', views.customer_finish_order),
-    path('customer_submit_rating', views.customer_submit_rating)
+    path('customer_submit_rating', views.customer_submit_rating),
+    path('tradie_submit_rating', views.tradie_submit_rating),
 
 
 ]

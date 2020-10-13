@@ -155,7 +155,7 @@
             </div>
             <input type="text" name="order_id" value="{{ current_order.id }}" form="rating_form" style="display:none;"/>
             <input type="text" name="rate_no" id="rating_input" form="rating_form" style="display:none;"/>
-            <form method="post" action="" id="rating_form">
+            <form method="post" action="tradie_submit_rating" id="rating_form">
                 {% csrf_token %}
                 <div class="card-body">
                     <div class="row">

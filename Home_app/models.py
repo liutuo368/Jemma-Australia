@@ -215,6 +215,7 @@ class Order(models.Model):
     price = models.FloatField(default=0)
     tradie = models.ForeignKey("Tradie", on_delete=models.CASCADE)
     customer = models.ForeignKey("Customer", on_delete=models.CASCADE)
+    description = models.CharField(null=True, max_length=200)
     orderDate = models.DateTimeField(auto_now_add=True)
 
 

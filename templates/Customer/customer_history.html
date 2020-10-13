@@ -130,7 +130,7 @@
                     <tbody>
                     {% for order in order_history %}
                         <tr>
-                            <td class="hidden-480"><a href="customer_history_details?order_id={{ order.id }}">{{ order.id }}</a></td>
+                            <td class="hidden-480"><a href="customer_history_details?job_id={{ order.id }}">{{ order.id }}</a></td>
                             <td class="hidden-480">{{ order.category }}</td>
                             <td class="hidden-480">{{ order.customer.last_name }}</td>
                             <td class="hidden-480">{{ order.orderDate }}</td>
