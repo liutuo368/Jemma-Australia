@@ -770,13 +770,18 @@ def customer_history_details(request):
         order_id = request.GET["job_id"]
         current_order = Order.objects.get(id=order_id)
         try:
-            rating = Rating.objects.get(order=current_order, user=customer.myUser)
+            rating_a = Rating.objects.get(order=current_order, user=customer.myUser)
         except Rating.DoesNotExist:
-            rating = Rating(user=customer.myUser, order=current_order, review='Not reviewed yet', points=0)
+            rating_a = Rating(user=customer.myUser, order=current_order, review='Not reviewed yet', points=0)
+        try:
+            rating_b = Rating.objects.get(order=current_order, user=current_order.tradie.myUser)
+        except Rating.DoesNotExist:
+            rating_b = Rating(user=current_order.tradie.myUser, order=current_order, review='Not reviewed yet', points=0)
         context = {
             "login_status": json.dumps(True),
             "current_order": current_order,
-            "rating": rating,
+            "rating_a": rating_a,
+            "rating_b": rating_b,
             "fullname": current_order.tradie.first_name + " " + current_order.tradie.last_name
         }
         return render(request, "Customer/customer_history_details.html", context)
@@ -793,13 +798,18 @@ def tradie_history_detail(request):
         order_id = request.GET["job_id"]
         current_order = Order.objects.get(id=order_id)
         try:
-            rating = Rating.objects.get(order=current_order, user=tradie.myUser)
+            rating_a = Rating.objects.get(order=current_order, user=tradie.myUser)
         except Rating.DoesNotExist:
-            rating = Rating(user=tradie.myUser, order=current_order, review='Not reviewed yet', points=0)
+            rating_a = Rating(user=tradie.myUser, order=current_order, review='Not reviewed yet', points=0)
+        try:
+            rating_b = Rating.objects.get(order=current_order, user=current_order.customer.myUser)
+        except Rating.DoesNotExist:
+            rating_b = Rating(user=current_order.customer.myUser, order=current_order, review='Not reviewed yet', points=0)
         context = {
             "login_status": json.dumps(True),
             "current_order": current_order,
-            "rating": rating,
+            "rating_a": rating_a,
+            "rating_b": rating_b,
             "fullname": current_order.customer.first_name + " " + current_order.customer.last_name
         }
         return render(request, "Tradie/tradie_history_detail.html", context)

@@ -116,9 +116,12 @@
                         <br>
                         <p>{{ current_quote.description }}</p>
                         <br>
-                        <label>Review:{{ rating.points }} / 5</label>
+                        <label>Review from customer:{{ rating_a.points }} / 5</label>
                         <br>
-                        <p>{{ rating.review }}</p>
+                        <p>{{ rating_a.review }}</p>
+                        <label>My review for customer:{{ rating_b.points }} / 5</label>
+                        <br>
+                        <p>{{ rating_b.review }}</p>
                     </form>
                 </div>
             </div>
